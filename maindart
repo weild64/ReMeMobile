@@ -1,0 +1,60 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Warteg Evelyn',
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue[500],
+          leading: new Icon(Icons.home),
+          title: new Center(
+           child: new Text('Warteg Evelyn'),
+        ),
+          actions: <Widget>[new Icon(Icons.search)],
+        ),
+        body: new Container(
+          child: new ListView(
+
+            children: <Widget>[
+
+              new ButtonPlacement(icon: Icons.add_a_photo, teks:"Jadwal Evelyn"),
+              new ButtonPlacement(icon: Icons.add_a_photo, teks:"Jadwal Reynard Blanc"),
+              new ButtonPlacement(icon: Icons.add_a_photo, teks:"Jadwal Lily Ifeta"),
+              new ButtonPlacement(icon: Icons.add_a_photo, teks:"Jadwal Chloe Pawapua"),
+              new ButtonPlacement(icon: Icons.add_a_photo, teks:"Jadwal Warteg Event"),
+              new ButtonPlacement(icon: Icons.add_a_photo, teks:"Settings"),
+
+            ],
+          ),
+        ) ,
+      ),
+    );
+  }
+}
+
+class ButtonPlacement extends StatelessWidget {
+  ButtonPlacement({this.icon, this.teks});
+
+  final IconData icon;
+  final String teks;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(5.0),
+      child: new Card(
+        child: new Column(
+          children: <Widget>[
+            new Icon(icon, size: 70.0, color: Colors.cyan,),
+            new Text(teks, style: new TextStyle(fontSize: 25.0),),
+          ],
+        ),
+      ),
+    );
+  }
+}
