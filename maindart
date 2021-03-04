@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-void main() => runApp(MyApp());
+void main(){
+  runApp(new MaterialApp(
+  home: new Halawal(),
+  title: "Home",
+));
+}
 
-class MyApp extends StatelessWidget {
+class Halawal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Warteg Evelyn',
-      home: Scaffold(
+    return new Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue[500],
           leading: new Icon(Icons.home),
@@ -17,7 +20,7 @@ class MyApp extends StatelessWidget {
         ),
           actions: <Widget>[new Icon(Icons.search)],
         ),
-        body: new Container(
+        body: new Center(
           child: new ListView(
 
             children: <Widget>[
@@ -32,8 +35,7 @@ class MyApp extends StatelessWidget {
             ],
           ),
         ) ,
-      ),
-    );
+      );
   }
 }
 
