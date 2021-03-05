@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+
 void main(){
   runApp(new MaterialApp(
     home: new Halawal(),
@@ -28,26 +29,26 @@ class Halawal extends StatelessWidget {
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-          ElevatedButton(
-            child: new ButtonPlacement(icon: Icons.add_a_photo, teks:"All About Evelyn"),
+          FlatButton(
+            child: new ButtonEpel(/*icon: Icons.add_a_photo, teks:"All About Evelyn"*/),//icon dan teks disable
                onPressed: (){
                 Navigator.pushNamed(context, '/Halepel');
             },
         ),
               ElevatedButton(
-                child: new ButtonPlacement(icon: Icons.add_a_photo, teks:"All About Lily Ifeta"),
+                child: new ButtonLily(/*icon: Icons.add_a_photo, teks:"All About Lily Ifeta"*/),
                 onPressed: (){
                   Navigator.pushNamed(context, '/Halepel');
                 },
               ),
               ElevatedButton(
-                child: new ButtonPlacement(icon: Icons.add_a_photo, teks:"All About Reynard Blanc"),
+                child: new ButtonReynard(/*icon: Icons.add_a_photo, teks:"All About Reynard Blanc"*/),
                 onPressed: (){
                   Navigator.pushNamed(context, '/Halepel');
                 },
               ),
               ElevatedButton(
-                child: new ButtonPlacement(icon: Icons.add_a_photo, teks:"All About Chloe pawapua"),
+                child: new ButtonChloe(/*icon: Icons.add_a_photo, teks:"All About Chloe pawapua"*/),
                 onPressed: (){
                   Navigator.pushNamed(context, '/Halepel');
                 },
@@ -102,8 +103,88 @@ class ButtonPlacement extends StatelessWidget {
         child: new Column(
           children: <Widget>[
             new Icon(icon, size: 70.0, color: Colors.cyan,),
-            new Text(teks, style: TextStyle(fontSize: 25.0),)
+            new Text(teks, style: TextStyle(fontSize: 25.0),),
+            //new Image.asset('Image/Epel.jpg')
+          ],
+        ),
+      ),
+    );
+  }
+}
 
+class ButtonEpel extends StatelessWidget{
+  ButtonEpel({this.navigasi});
+
+  final String navigasi;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(0.0),
+      child: new Card(
+        child: new Column(
+          children: <Widget>[
+            new Image.asset('Image/BannerEpel.png')
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ButtonLily extends StatelessWidget{
+  ButtonLily({this.navigasi});
+
+  final String navigasi;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(0.0),
+      child: new Card(
+        child: new Column(
+          children: <Widget>[
+            new Image.asset('Image/BannerLily.png')
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+class ButtonReynard extends StatelessWidget{
+  ButtonReynard({this.navigasi});
+
+  final String navigasi;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(0.0),
+      child: new Card(
+        child: new Column(
+          children: <Widget>[
+            new Image.asset('Image/BannerRey.png')
+          ],
+        ),
+      ),
+    );
+  }
+
+}class ButtonChloe extends StatelessWidget{
+  ButtonChloe({this.navigasi});
+
+  final String navigasi;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(0.0),
+      child: new Card(
+        child: new Column(
+          children: <Widget>[
+            new Image.asset('Image/BannerChloe.png')
           ],
         ),
       ),
