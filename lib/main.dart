@@ -9,6 +9,9 @@ void main(){
     routes: <String, WidgetBuilder>{
       '/Halawal' : (BuildContext context) => new Halawal(),
       '/Halepel' : (BuildContext context) => new Halepel(),
+      '/Hallily' : (BuildContext context) => new Hallily(),
+      '/Halrey' : (BuildContext context) => new Halrey(),
+      '/Halchloe' : (BuildContext context) => new Halchloe()
     }
   ));
 }
@@ -34,31 +37,31 @@ class Halawal extends StatelessWidget {
                onPressed: (){
                 Navigator.pushNamed(context, '/Halepel');
             },
-        ),
+        ),//button epel
               ElevatedButton(
                 child: new ButtonLily(/*icon: Icons.add_a_photo, teks:"All About Lily Ifeta"*/),
                 onPressed: (){
-                  Navigator.pushNamed(context, '/Halepel');
+                  Navigator.pushNamed(context, '/Hallily');
                 },
-              ),
+              ),//button lily
               ElevatedButton(
                 child: new ButtonReynard(/*icon: Icons.add_a_photo, teks:"All About Reynard Blanc"*/),
                 onPressed: (){
-                  Navigator.pushNamed(context, '/Halepel');
+                  Navigator.pushNamed(context, '/Halrey');
                 },
-              ),
+              ),//button rey
               ElevatedButton(
                 child: new ButtonChloe(/*icon: Icons.add_a_photo, teks:"All About Chloe pawapua"*/),
                 onPressed: (){
-                  Navigator.pushNamed(context, '/Halepel');
+                  Navigator.pushNamed(context, '/Halchloe');
                 },
-              ),
+              ),//button chloe
               ElevatedButton(
                 child: new ButtonPlacement(icon: Icons.add_a_photo, teks:"Settings"),
                 onPressed: (){
                   Navigator.pushNamed(context, '/Halepel');
                 },
-              ),
+              ),//button setting
       ],
     ),
     ),
@@ -76,16 +79,154 @@ class Halepel extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           ElevatedButton(
+            child: Text("Profile Epel"),
+            onPressed: () {
+              Navigator.pushNamed(context, '/Halawal');
+            },
+          ),// Profile
+          ElevatedButton(
+            child: Text("Donation"),
+            onPressed: () {
+              Navigator.pushNamed(context, '/Halawal');
+            },
+          ), //Donation
+          ElevatedButton(
+            child: Text("Schedule"),
+            onPressed: () {
+              Navigator.pushNamed(context, '/Halawal');
+            },
+          ),// sched
+          ElevatedButton(
             child: Text("Kembali"),
             onPressed: () {
               Navigator.pushNamed(context, '/Halawal');
             },
-          ),
+          ), //Kembali
         ],
       ),
     ),
   );
 }
+}
+
+class Hallily extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(title: new Text("All About Lily"),),
+      body: new Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(
+              child: Text("Profile Lily"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),// Profile
+            ElevatedButton(
+              child: Text("Donation"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ), //Donation
+            ElevatedButton(
+              child: Text("Schedule"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),// sched
+            ElevatedButton(
+              child: Text("Kembali"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ), //Kembali
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Halrey extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(title: new Text("All About Reynard"),),
+      body: new Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(
+              child: Text("Profile Reynard"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),// Profile
+            ElevatedButton(
+              child: Text("Donation"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ), //Donation
+            ElevatedButton(
+              child: Text("Schedule"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),// sched
+            ElevatedButton(
+              child: Text("Kembali"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ), //Kembali
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Halchloe extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(title: new Text("All About Chloe"),),
+      body: new Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(
+              child: Text("Profile Chloe"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),// Profile
+            ElevatedButton(
+              child: Text("Donation"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ), //Donation
+            ElevatedButton(
+              child: Text("Schedule"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),// sched
+            ElevatedButton(
+              child: Text("Kembali"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ), //Kembali
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class ButtonPlacement extends StatelessWidget {
@@ -120,7 +261,14 @@ class ButtonEpel extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new Container(
-      padding: new EdgeInsets.all(0.0),
+      //width: 600.0, //testing fixed size button
+      //height: 100.0,
+      padding: new EdgeInsets.all(1.0),
+      /*decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('Image/BannerEpel.png'),
+          fit: BoxFit.cover,)
+      ),*/ //testing background image
       child: new Card(
         child: new Column(
           children: <Widget>[
@@ -152,7 +300,6 @@ class ButtonLily extends StatelessWidget{
   }
 }
 
-
 class ButtonReynard extends StatelessWidget{
   ButtonReynard({this.navigasi});
 
@@ -172,7 +319,9 @@ class ButtonReynard extends StatelessWidget{
     );
   }
 
-}class ButtonChloe extends StatelessWidget{
+}
+
+class ButtonChloe extends StatelessWidget{
   ButtonChloe({this.navigasi});
 
   final String navigasi;
