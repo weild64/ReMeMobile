@@ -38,25 +38,25 @@ class Halawal extends StatelessWidget {
                 Navigator.pushNamed(context, '/Halepel');
             },
         ),//button epel
-              ElevatedButton(
+              FlatButton(
                 child: new ButtonLily(/*icon: Icons.add_a_photo, teks:"All About Lily Ifeta"*/),
                 onPressed: (){
                   Navigator.pushNamed(context, '/Hallily');
                 },
               ),//button lily
-              ElevatedButton(
+              FlatButton(
                 child: new ButtonReynard(/*icon: Icons.add_a_photo, teks:"All About Reynard Blanc"*/),
                 onPressed: (){
                   Navigator.pushNamed(context, '/Halrey');
                 },
               ),//button rey
-              ElevatedButton(
+              FlatButton(
                 child: new ButtonChloe(/*icon: Icons.add_a_photo, teks:"All About Chloe pawapua"*/),
                 onPressed: (){
                   Navigator.pushNamed(context, '/Halchloe');
                 },
               ),//button chloe
-              ElevatedButton(
+              FlatButton(
                 child: new ButtonPlacement(icon: Icons.add_a_photo, teks:"Settings"),
                 onPressed: (){
                   Navigator.pushNamed(context, '/Halepel');
@@ -269,6 +269,7 @@ class ButtonEpel extends StatelessWidget{
           image: AssetImage('Image/BannerEpel.png'),
           fit: BoxFit.cover,)
       ),*/ //testing background image
+      color: Colors.pinkAccent,
       child: new Card(
         child: new Column(
           children: <Widget>[
@@ -289,6 +290,7 @@ class ButtonLily extends StatelessWidget{
   Widget build(BuildContext context) {
     return new Container(
       padding: new EdgeInsets.all(0.0),
+      color: Colors.blue,
       child: new Card(
         child: new Column(
           children: <Widget>[
@@ -309,6 +311,7 @@ class ButtonReynard extends StatelessWidget{
   Widget build(BuildContext context) {
     return new Container(
       padding: new EdgeInsets.all(0.0),
+      color: Colors.grey,
       child: new Card(
         child: new Column(
           children: <Widget>[
@@ -330,6 +333,7 @@ class ButtonChloe extends StatelessWidget{
   Widget build(BuildContext context) {
     return new Container(
       padding: new EdgeInsets.all(0.0),
+      color: Colors.green,
       child: new Card(
         child: new Column(
           children: <Widget>[
