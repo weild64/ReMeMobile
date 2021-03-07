@@ -7,15 +7,15 @@ const warteg_url = 'https://s.id/wartegepel';
 void main(){
   runApp(new MaterialApp(
     home: new Halawal(),
-    title: "Home",
+    title: "Warteg Evelyn",
     routes: <String, WidgetBuilder>{
       '/Halawal' : (BuildContext context) => new Halawal(),
       '/Halepel' : (BuildContext context) => new Halepel(),
       '/Hallily' : (BuildContext context) => new Hallily(),
       '/Halrey' : (BuildContext context) => new Halrey(),
       '/Halchloe' : (BuildContext context) => new Halchloe(),
-      '/Halwarteg' : (BuildContext context) => new Halwarteg(),
       '/Halsettings' : (BuildContext context) => new Halsettings(),
+      '/SchedTable' : (BuildContext context) => new SchedTable()
     }
   ));
 }
@@ -61,13 +61,7 @@ class Halawal extends StatelessWidget {
                 },
               ),//button chloe
               FlatButton(
-                child: new ButtonWarteg(/*icon: Icons.add_a_photo, teks:"All About Chloe pawapua"*/),
-                onPressed: (){
-                  Navigator.pushNamed(context, '/Halwarteg');
-                },
-              ),
-              FlatButton(
-                child: new ButtonPlacement(icon: Icons.settings, teks:"Settings"),
+                child: new ButtonPlacement(icon: Icons.add_a_photo, teks:"Settings"),
                 onPressed: (){
                   Navigator.pushNamed(context, '/Halsettings');
                 },
@@ -96,16 +90,14 @@ class Halepel extends StatelessWidget {
           ),// Profile
           ElevatedButton(
             child: Text("Donation"),
-              onPressed: () async {
-                if (await canLaunch('https://trakteer.id/evelynvtuber')){
-                  await launch('https://trakteer.id/evelynvtuber');
-                };
-              }
+            onPressed: () {
+              Navigator.pushNamed(context, '/Halawal');
+            },
           ), //Donation
           ElevatedButton(
             child: Text("Schedule"),
             onPressed: () {
-              Navigator.pushNamed(context, '/Halawal');
+              Navigator.pushNamed(context, '/SchedTable');
             },
           ),// sched
           ElevatedButton(
@@ -138,11 +130,9 @@ class Hallily extends StatelessWidget {
             ),// Profile
             ElevatedButton(
               child: Text("Donation"),
-                onPressed: () async {
-                  if (await canLaunch('https://trakteer.id/lilyifeta')){
-                    await launch('https://trakteer.id/lilyifeta');
-                  };
-                }
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
             ), //Donation
             ElevatedButton(
               child: Text("Schedule"),
@@ -180,11 +170,9 @@ class Halrey extends StatelessWidget {
             ),// Profile
             ElevatedButton(
               child: Text("Donation"),
-                onPressed: () async {
-                  if (await canLaunch('https://trakteer.id/reynardblanc')){
-                    await launch('https://trakteer.id/reynardblanc');
-                  };
-                }
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
             ), //Donation
             ElevatedButton(
               child: Text("Schedule"),
@@ -222,11 +210,9 @@ class Halchloe extends StatelessWidget {
             ),// Profile
             ElevatedButton(
               child: Text("Donation"),
-                onPressed: () async {
-                  if (await canLaunch('https://trakteer.id/chloepawapua')){
-                    await launch('https://trakteer.id/chloepawapua');
-                  };
-                }
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
             ), //Donation
             ElevatedButton(
               child: Text("Schedule"),
@@ -234,60 +220,6 @@ class Halchloe extends StatelessWidget {
                 Navigator.pushNamed(context, '/Halawal');
               },
             ),// sched
-            ElevatedButton(
-              child: Text("Kembali"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ), //Kembali
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Halwarteg extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(title: new Text("Warteg Epelz Page"),),
-      body: new Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              child: Text("Jadwal Podcast"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),// Profile
-            ElevatedButton(
-              child: Text("Jadwal Radio"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ), //Donation
-            ElevatedButton(
-              child: Text("Jadwal Makrab"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),// sched
-            ElevatedButton(
-              child: Text("Discord Link"),
-              onPressed: () async {
-                if (await canLaunch('https://s.id/wartegepel')){
-                  await launch('https://s.id/wartegepel');
-                };
-              }
-              ),
-            ElevatedButton(
-              child: Text("Donation"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),
             ElevatedButton(
               child: Text("Kembali"),
               onPressed: () {
@@ -317,17 +249,17 @@ class Halsettings extends StatelessWidget {
               },
             ),// Profile
             FlatButton(
-                child: Text("About Us"),
+              child: Text("About Us"),
               onPressed: (){
-                  showAboutDialog(context: context,
+                showAboutDialog(context: context,
                   applicationIcon: FlutterLogo(),
-                    applicationName: 'Warteg Epel Project',
-                    applicationVersion: '0.0.2',
-                    applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
-                    children: <Widget> [
-                      Text('Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
-                ],
-                  );
+                  applicationName: 'Warteg Epel Project',
+                  applicationVersion: '0.0.2',
+                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
+                  children: <Widget> [
+                    Text('Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
+                  ],
+                );
               },
             ), //Donation
             FlatButton(
@@ -348,7 +280,6 @@ class Halsettings extends StatelessWidget {
     );
   }
 }
-
 
 class ButtonPlacement extends StatelessWidget {
   ButtonPlacement({this.icon, this.teks, this.navigasi});
@@ -466,22 +397,67 @@ class ButtonChloe extends StatelessWidget{
   }
 }
 
-class ButtonWarteg extends StatelessWidget{
-  ButtonWarteg({this.navigasi});
-
-  final String navigasi;
-
+class SchedTable extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      padding: new EdgeInsets.all(0.0),
-      color: Colors.blueAccent,
-      child: new Card(
-        child: new Column(
-          children: <Widget>[
-            new Image.asset('Image/BannerWarteg.png')
-          ],
-        ),
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text('Flutter DataTable Example'),
+          ),
+          body: ListView(children: <Widget>[
+            Center(
+                child: Text(
+                  'Evelyn Schedule 23 Feb - 27 Feb 2021',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                )),
+            DataTable(
+              columns: [
+                DataColumn(label: Text(
+                    'No',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                )),
+                DataColumn(label: Text(
+                    'Tanggal',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                )),
+                DataColumn(label: Text(
+                    'Judul',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                )),
+                DataColumn(label: Text(
+                    'Jam',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                )),
+              ],
+              rows: [
+                DataRow(cells: [
+                  DataCell(Text('1')),
+                  DataCell(Text('23 Feb 2021')),
+                  DataCell(Text('Omori')),
+                  DataCell(Text('19.00')),
+                ]),
+                DataRow(cells: [
+                  DataCell(Text('2')),
+                  DataCell(Text('24 Feb 2021')),
+                  DataCell(Text('RFA')),
+                  DataCell(Text('06.00')),
+                ]),
+                DataRow(cells: [
+                  DataCell(Text('3')),
+                  DataCell(Text('24 Feb 2021')),
+                  DataCell(Text('Minecraft')),
+                  DataCell(Text('09.00')),
+                ]),
+                DataRow(cells: [
+                  DataCell(Text('4')),
+                  DataCell(Text('24 Feb 2021')),
+                  DataCell(Text('JackBox Collab')),
+                  DataCell(Text('19.00')),
+                ]),
+              ],
+            ),
+          ])
       ),
     );
   }
