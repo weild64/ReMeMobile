@@ -3,12 +3,13 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
+import 'package:splashscreen/splashscreen.dart';
 
 const warteg_url = 'https://s.id/wartegepel';
 
 void main(){
   runApp(new MaterialApp(
-    home: new Halawal(),
+    home: new SplashScreenPage(),
     title: "Warteg Evelyn",
     routes: <String, WidgetBuilder>{
       '/Halawal' : (BuildContext context) => new Halawal(),
@@ -27,17 +28,40 @@ void main(){
   ));
 }
 
+class SplashScreenPage extends StatefulWidget {
+  @override
+  _SplashScreenPageState createState() => new _SplashScreenPageState();
+}
+
+class _SplashScreenPageState extends State<SplashScreenPage> {
+  @override
+  Widget build(BuildContext context) {
+    return new SplashScreen(
+      seconds: 5,
+      navigateAfterSeconds: new Halawal(),
+      title: new Text(
+        'Welcome To Warteg Mobile',
+        style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+      ),
+      image: new Image.network(
+          'https://flutter.io/images/catalog-widget-placeholder.png'),
+      backgroundColor: Colors.cyan,
+      loaderColor: Colors.green,
+    );
+  }
+}
+
+
 class Halawal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.blue[500],
-        title: new Center(
-          child: new Text('Warteg Evelyn'),
-        ),
-        actions: <Widget>[new Icon(Icons.search)],
+        title:
+        new Text('Warteg Evelyn'),
       ),
         drawer: Drawer(
           child: ListView(
@@ -131,12 +155,6 @@ class Halawal extends StatelessWidget {
                   Navigator.pushNamed(context, '/Halwarteg');
                 },
               ),
-              FlatButton(
-                child: new ButtonPlacement(icon: Icons.settings, teks:"Settings"),
-                onPressed: (){
-                  Navigator.pushNamed(context, '/Halsettings');
-                },
-              ),//button setting
       ],
     ),
     ),
