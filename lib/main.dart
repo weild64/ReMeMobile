@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 
 const warteg_url = 'https://s.id/wartegepel';
 
@@ -28,16 +30,74 @@ void main(){
 class Halawal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return MaterialApp(
+      home: Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[500],
-        leading: new Icon(Icons.home),
         title: new Center(
           child: new Text('Warteg Evelyn'),
         ),
         actions: <Widget>[new Icon(Icons.search)],
       ),
-      body: new Center(
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                child: Text('Warteg Portable'),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+              ),
+              ListTile(
+                title: Text('Home'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/Halawal');
+                },
+              ),
+              ListTile(
+                title: Text('Settings'),
+                onTap: () {
+                  Navigator.pushNamed(context, '/Halsettings');
+                },
+              ),
+              ListTile(
+                  title: Text("Discord Link"),
+                  onTap: () async {
+                    if (await canLaunch('https://s.id/wartegepel')){
+                      await launch('https://s.id/wartegepel');
+                    };
+                  }
+              ),
+              ListTile(
+                title: Text('About Us'),
+                onTap: () {
+                  showAboutDialog(context: context,
+                    applicationIcon: FlutterLogo(),
+                    applicationName: 'Warteg Epel Project',
+                    applicationVersion: '0.0.2',
+                    applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
+                    children: <Widget>[
+                      Text(
+                          'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
+                    ],
+                  );
+                },
+              ),
+              ListTile(
+                title: Text('Close App'),
+                onTap: () {
+                  SystemNavigator.pop();
+                },
+              ),
+            ],
+          ),
+        ),
+      body: DoubleBackToCloseApp(
+          snackBar: const SnackBar(
+          content: Text('Tap back again to leave'),
+            ),
+      child :new Center(
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -80,6 +140,8 @@ class Halawal extends StatelessWidget {
       ],
     ),
     ),
+    ),
+    ),
     );
   }
 }
@@ -117,6 +179,60 @@ class Halepel extends StatelessWidget {
               Navigator.pushNamed(context, '/Halawal');
             },
           ), //Kembali
+        ],
+    ),
+  ),
+    drawer: Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            child: Text('Warteg Portable'),
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
+          ),
+          ListTile(
+            title: Text('Home'),
+            onTap: () {
+              Navigator.pushNamed(context, '/Halawal');
+            },
+          ),
+          ListTile(
+            title: Text('Settings'),
+            onTap: () {
+              Navigator.pushNamed(context, '/Halsettings');
+            },
+          ),
+          ListTile(
+              title: Text("Discord Link"),
+              onTap: () async {
+                if (await canLaunch('https://s.id/wartegepel')){
+                  await launch('https://s.id/wartegepel');
+                };
+              }
+          ),
+          ListTile(
+            title: Text('About Us'),
+            onTap: () {
+              showAboutDialog(context: context,
+                applicationIcon: FlutterLogo(),
+                applicationName: 'Warteg Epel Project',
+                applicationVersion: '0.0.2',
+                applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
+                children: <Widget>[
+                  Text(
+                      'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
+                ],
+              );
+            },
+          ),
+          ListTile(
+            title: Text('Close App'),
+            onTap: () {
+              SystemNavigator.pop();
+            },
+          ),
         ],
       ),
     ),
@@ -160,6 +276,60 @@ class Hallily extends StatelessWidget {
           ],
         ),
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Warteg Portable'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),
+            ListTile(
+              title: Text('Settings'),
+              onTap: () {
+                Navigator.pushNamed(context, '/Halsettings');
+              },
+            ),
+            ListTile(
+                title: Text("Discord Link"),
+                onTap: () async {
+                  if (await canLaunch('https://s.id/wartegepel')){
+                    await launch('https://s.id/wartegepel');
+                  };
+                }
+            ),
+            ListTile(
+              title: Text('About Us'),
+              onTap: () {
+                showAboutDialog(context: context,
+                  applicationIcon: FlutterLogo(),
+                  applicationName: 'Warteg Epel Project',
+                  applicationVersion: '0.0.2',
+                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
+                  children: <Widget>[
+                    Text(
+                        'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
+                  ],
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Close App'),
+              onTap: () {
+                SystemNavigator.pop();
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -197,6 +367,60 @@ class Halrey extends StatelessWidget {
                 Navigator.pushNamed(context, '/Halawal');
               },
             ), //Kembali
+          ],
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Warteg Portable'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),
+            ListTile(
+              title: Text('Settings'),
+              onTap: () {
+                Navigator.pushNamed(context, '/Halsettings');
+              },
+            ),
+            ListTile(
+                title: Text("Discord Link"),
+                onTap: () async {
+                  if (await canLaunch('https://s.id/wartegepel')){
+                    await launch('https://s.id/wartegepel');
+                  };
+                }
+            ),
+            ListTile(
+              title: Text('About Us'),
+              onTap: () {
+                showAboutDialog(context: context,
+                  applicationIcon: FlutterLogo(),
+                  applicationName: 'Warteg Epel Project',
+                  applicationVersion: '0.0.2',
+                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
+                  children: <Widget>[
+                    Text(
+                        'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
+                  ],
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Close App'),
+              onTap: () {
+                SystemNavigator.pop();
+              },
+            ),
           ],
         ),
       ),
@@ -240,6 +464,60 @@ class Halchloe extends StatelessWidget {
           ],
         ),
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Warteg Portable'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),
+            ListTile(
+              title: Text('Settings'),
+              onTap: () {
+                Navigator.pushNamed(context, '/Halsettings');
+              },
+            ),
+            ListTile(
+                title: Text("Discord Link"),
+                onTap: () async {
+                  if (await canLaunch('https://s.id/wartegepel')){
+                    await launch('https://s.id/wartegepel');
+                  };
+                }
+            ),
+            ListTile(
+              title: Text('About Us'),
+              onTap: () {
+                showAboutDialog(context: context,
+                  applicationIcon: FlutterLogo(),
+                  applicationName: 'Warteg Epel Project',
+                  applicationVersion: '0.0.2',
+                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
+                  children: <Widget>[
+                    Text(
+                        'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
+                  ],
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Close App'),
+              onTap: () {
+                SystemNavigator.pop();
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -272,14 +550,6 @@ class Halwarteg extends StatelessWidget {
               },
             ),// sched
             ElevatedButton(
-                child: Text("Discord Link"),
-                onPressed: () async {
-                  if (await canLaunch('https://s.id/wartegepel')){
-                    await launch('https://s.id/wartegepel');
-                  };
-                }
-            ),
-            ElevatedButton(
               child: Text("Donation"),
                 onPressed: () async {
                   if (await canLaunch('https://trakteer.id/wartegepelz')){
@@ -293,6 +563,60 @@ class Halwarteg extends StatelessWidget {
                 Navigator.pushNamed(context, '/Halawal');
               },
             ), //Kembali
+          ],
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Warteg Portable'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),
+            ListTile(
+              title: Text('Settings'),
+              onTap: () {
+                Navigator.pushNamed(context, '/Halsettings');
+              },
+            ),
+            ListTile(
+                title: Text("Discord Link"),
+                onTap: () async {
+                  if (await canLaunch('https://s.id/wartegepel')){
+                    await launch('https://s.id/wartegepel');
+                  };
+                }
+            ),
+            ListTile(
+              title: Text('About Us'),
+              onTap: () {
+                showAboutDialog(context: context,
+                  applicationIcon: FlutterLogo(),
+                  applicationName: 'Warteg Epel Project',
+                  applicationVersion: '0.0.2',
+                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
+                  children: <Widget>[
+                    Text(
+                        'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
+                  ],
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Close App'),
+              onTap: () {
+                SystemNavigator.pop();
+              },
+            ),
           ],
         ),
       ),
@@ -310,31 +634,65 @@ class Halsettings extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start ,
           children: <Widget>[
             FlatButton(
-              child: Text("Setting Alarm"),
+              child: Text("Setting Notifikasi"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
-            ),// Profile
-            FlatButton(
-              child: Text("About Us"),
-              onPressed: (){
-                showAboutDialog(context: context,
-                  applicationIcon: FlutterLogo(),
-                  applicationName: 'Warteg Epel Project',
-                  applicationVersion: '0.0.2',
-                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
-                  children: <Widget> [
-                    Text('Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
-                  ],
-                );
-              },
-            ), //Donation// sched
+            ),
             FlatButton(
               child: Text("Kembali"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
             ), //Kembali
+          ],
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Warteg Portable'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),
+            ListTile(
+                title: Text("Discord Link"),
+                onTap: () async {
+                  if (await canLaunch('https://s.id/wartegepel')){
+                    await launch('https://s.id/wartegepel');
+                  };
+                }
+            ),
+            ListTile(
+              title: Text('About Us'),
+              onTap: () {
+                showAboutDialog(context: context,
+                  applicationIcon: FlutterLogo(),
+                  applicationName: 'Warteg Epel Project',
+                  applicationVersion: '0.0.2',
+                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
+                  children: <Widget>[
+                    Text(
+                        'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
+                  ],
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Close App'),
+              onTap: () {
+                SystemNavigator.pop();
+              },
+            ),
           ],
         ),
       ),
