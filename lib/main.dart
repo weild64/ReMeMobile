@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:splashscreen/splashscreen.dart';
+import 'dart:async';
 
 const warteg_url = 'https://s.id/wartegepel';
 
@@ -52,12 +53,41 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
 }
 
 
-class Halawal extends StatelessWidget {
+class Halawal extends StatefulWidget {
+  Halawal({Key key, this.title}) :super(key: key);
+
+  final String title;
+
   @override
+  State<StatefulWidget> createState() => new _Halawal();
+}
+class _Halawal extends State<Halawal> {
+
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+      context: context,
+      builder: (context) => new AlertDialog(
+        title: new Text('Are you sure?'),
+        content: new Text('Do you want to exit an App'),
+        actions: <Widget>[
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: new Text('No'),
+          ),
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: new Text('Yes'),
+          ),
+        ],
+      ),
+    )) ?? false;
+  }
+
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-      appBar: AppBar(
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: new Scaffold(
+        appBar: new AppBar(
         centerTitle: true,
         backgroundColor: Colors.blue[500],
         title:
@@ -117,18 +147,14 @@ class Halawal extends StatelessWidget {
             ],
           ),
         ),
-      body: DoubleBackToCloseApp(
-          snackBar: const SnackBar(
-          content: Text('Tap back again to leave'),
-            ),
-      child :new Center(
+      body: new Center(
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
           FlatButton(
             child: new ButtonEpel(/*icon: Icons.add_a_photo, teks:"All About Evelyn"*/),//icon dan teks disable
                onPressed: (){
-                Navigator.pushNamed(context, '/Halepel');
+                 Navigator.pushNamed(context, '/Halepel');
             },
         ),//button epel
               FlatButton(
@@ -159,12 +185,12 @@ class Halawal extends StatelessWidget {
     ),
     ),
     ),
-    ),
     );
   }
 }
 
 class Halepel extends StatelessWidget {
+
 @override
   Widget build(BuildContext context) {
   return new Scaffold(
