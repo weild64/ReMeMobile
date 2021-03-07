@@ -14,8 +14,13 @@ void main(){
       '/Hallily' : (BuildContext context) => new Hallily(),
       '/Halrey' : (BuildContext context) => new Halrey(),
       '/Halchloe' : (BuildContext context) => new Halchloe(),
+      '/Halwarteg' : (BuildContext context) => new Halwarteg(),
       '/Halsettings' : (BuildContext context) => new Halsettings(),
-      '/SchedTable' : (BuildContext context) => new SchedTable()
+      '/SchedTable' : (BuildContext context) => new SchedTable(),
+      '/Donoepel' : (BuildContext context) => new Donoepel(),
+      '/Donolily' : (BuildContext context) => new Donolily(),
+      '/Donorey' : (BuildContext context) => new Donorey(),
+      '/Donochloe' : (BuildContext context) => new Donochloe(),
     }
   ));
 }
@@ -61,7 +66,13 @@ class Halawal extends StatelessWidget {
                 },
               ),//button chloe
               FlatButton(
-                child: new ButtonPlacement(icon: Icons.add_a_photo, teks:"Settings"),
+                child: new ButtonWarteg(/*icon: Icons.add_a_photo, teks:"All About Chloe pawapua"*/),
+                onPressed: (){
+                  Navigator.pushNamed(context, '/Halwarteg');
+                },
+              ),
+              FlatButton(
+                child: new ButtonPlacement(icon: Icons.settings, teks:"Settings"),
                 onPressed: (){
                   Navigator.pushNamed(context, '/Halsettings');
                 },
@@ -91,7 +102,7 @@ class Halepel extends StatelessWidget {
           ElevatedButton(
             child: Text("Donation"),
             onPressed: () {
-              Navigator.pushNamed(context, '/Halawal');
+              Navigator.pushNamed(context, '/Donoepel');
             },
           ), //Donation
           ElevatedButton(
@@ -131,7 +142,7 @@ class Hallily extends StatelessWidget {
             ElevatedButton(
               child: Text("Donation"),
               onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
+                Navigator.pushNamed(context, '/Donolily');
               },
             ), //Donation
             ElevatedButton(
@@ -171,7 +182,7 @@ class Halrey extends StatelessWidget {
             ElevatedButton(
               child: Text("Donation"),
               onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
+                Navigator.pushNamed(context, '/Donorey');
               },
             ), //Donation
             ElevatedButton(
@@ -211,7 +222,7 @@ class Halchloe extends StatelessWidget {
             ElevatedButton(
               child: Text("Donation"),
               onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
+                Navigator.pushNamed(context, '/Donochloe');
               },
             ), //Donation
             ElevatedButton(
@@ -220,6 +231,62 @@ class Halchloe extends StatelessWidget {
                 Navigator.pushNamed(context, '/Halawal');
               },
             ),// sched
+            ElevatedButton(
+              child: Text("Kembali"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ), //Kembali
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Halwarteg extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(title: new Text("Warteg Epelz Page"),),
+      body: new Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(
+              child: Text("Jadwal Podcast"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),// Profile
+            ElevatedButton(
+              child: Text("Jadwal Radio"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ), //Donation
+            ElevatedButton(
+              child: Text("Jadwal Makrab"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),// sched
+            ElevatedButton(
+                child: Text("Discord Link"),
+                onPressed: () async {
+                  if (await canLaunch('https://s.id/wartegepel')){
+                    await launch('https://s.id/wartegepel');
+                  };
+                }
+            ),
+            ElevatedButton(
+              child: Text("Donation"),
+                onPressed: () async {
+                  if (await canLaunch('https://trakteer.id/wartegepelz')){
+                    await launch('https://trakteer.id/wartegepelz');
+                  };
+                }
+            ),
             ElevatedButton(
               child: Text("Kembali"),
               onPressed: () {
@@ -261,13 +328,7 @@ class Halsettings extends StatelessWidget {
                   ],
                 );
               },
-            ), //Donation
-            FlatButton(
-              child: Text("Schedule"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),// sched
+            ), //Donation// sched
             FlatButton(
               child: Text("Kembali"),
               onPressed: () {
@@ -397,13 +458,34 @@ class ButtonChloe extends StatelessWidget{
   }
 }
 
+class ButtonWarteg extends StatelessWidget{
+  ButtonWarteg({this.navigasi});
+
+  final String navigasi;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(0.0),
+      color: Colors.blueAccent,
+      child: new Card(
+        child: new Column(
+          children: <Widget>[
+            new Image.asset('Image/BannerWarteg.png')
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class SchedTable extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-            title: Text('Flutter DataTable Example'),
+            title: Text('Evelyn Livestream/Premier Schedule'),
           ),
           body: ListView(children: <Widget>[
             Center(
@@ -458,6 +540,170 @@ class SchedTable extends StatelessWidget{
               ],
             ),
           ])
+      ),
+    );
+  }
+}
+
+class Donoepel extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(title: new Text("Donations"),),
+      body: new Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            FlatButton(
+                child: Text("Trakteer (IDR/Gopay/Ovo/Etc)"),
+                onPressed: () async {
+                  if (await canLaunch('https://www.trakteer.id/evelynvtuber')) {
+                    await launch('https://www.trakteer.id/evelynvtuber');
+                  };
+                }
+            ), // Profile
+            FlatButton(
+                child: Text("Karyakarsa (IDR)"),
+                onPressed: () async {
+                  if (await canLaunch(
+                      'https://www.karyakarsa.com/evelynvtuber')) {
+                    await launch('https://www.karyakarsa.com/evelynvtuber');
+                  };
+                }
+            ),
+            FlatButton(
+                child: Text("Streamlabs (Paypal,Etc)"),
+                onPressed: () async {
+                  if (await canLaunch(
+                      'https://streamlabs.com/evelynvtuber/tip')) {
+                    await launch('https://streamlabs.com/evelynvtuber/tip');
+                  };
+                }
+            ), //Donation// sched
+            FlatButton(
+              child: Text("Kembali"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halepel');
+              },
+            ), //Kembali
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Donolily extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(title: new Text("Donations"),),
+      body: new Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            FlatButton(
+                child: Text("Trakteer (IDR/Gopay/Ovo/Etc)"),
+                onPressed: () async {
+                  if (await canLaunch('https://trakteer.id/lilyifeta')) {
+                    await launch('https://trakteer.id/lilyifeta');
+                  };
+                }
+            ), // Profile
+            FlatButton(
+                child: Text("Streamlabs (Paypal,Etc"),
+                onPressed: () async {
+                  if (await canLaunch('https://streamlabs.com/lilyifeta/tip')) {
+                    await launch('https://streamlabs.com/lilyifeta/tip');
+                  };
+                }
+            ), //Donation// sched
+            FlatButton(
+              child: Text("Kembali"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Hallily');
+              },
+            ), //Kembali
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Donorey extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(title: new Text("Donations"),),
+      body: new Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            FlatButton(
+                child: Text("Trakteer (IDR/Gopay/Ovo/Etc)"),
+                onPressed: () async {
+                  if (await canLaunch('https://trakteer.id/reynardblanc')) {
+                    await launch('https://trakteer.id/reynardblanc');
+                  };
+                }
+            ), // Profile
+            FlatButton(
+                child: Text("Streamlabs (Paypal,etc"),
+                onPressed: () async {
+                  if (await canLaunch(
+                      'https://streamlabs.com/reynardblanc/tip')) {
+                    await launch('https://streamlabs.com/reynardblanc/tip');
+                  };
+                }
+            ), //Donation// sched
+            FlatButton(
+              child: Text("Kembali"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halrey');
+              },
+            ), //Kembali
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Donochloe extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(title: new Text("Donations"),),
+      body: new Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            FlatButton(
+                child: Text("Trakteer (IDR/Gopay/Ovo/Etc)"),
+                onPressed: () async {
+                  if (await canLaunch('https://trakteer.id/chloepawapua')) {
+                    await launch('https://trakteer.id/chloepawapua');
+                  };
+                }
+            ), // Profile
+            FlatButton(
+                child: Text("Streamlabs(Paypal,Etc)"),
+                onPressed: () async {
+                  if (await canLaunch(
+                      'https://streamlabs.com/chloepawapuach/tip')) {
+                    await launch('https://streamlabs.com/chloepawapuach/tip');
+                  };
+                }
+            ), //Donation// sched
+            FlatButton(
+              child: Text("Kembali"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Halchloe');
+              },
+            ), //Kembali
+          ],
+        ),
       ),
     );
   }
