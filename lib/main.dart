@@ -5,27 +5,31 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'dart:async';
+import 'EpelPage.dart';
+import 'LilyPage.dart';
+import 'ReyPage.dart';
+import 'ChloePage.dart';
 
 const warteg_url = 'https://s.id/wartegepel';
 
 void main(){
   runApp(new MaterialApp(
-    home: new SplashScreenPage(),
-    title: "Warteg Evelyn",
-    routes: <String, WidgetBuilder>{
-      '/Halawal' : (BuildContext context) => new Halawal(),
-      '/Halepel' : (BuildContext context) => new Halepel(),
-      '/Hallily' : (BuildContext context) => new Hallily(),
-      '/Halrey' : (BuildContext context) => new Halrey(),
-      '/Halchloe' : (BuildContext context) => new Halchloe(),
-      '/Halwarteg' : (BuildContext context) => new Halwarteg(),
-      '/Halsettings' : (BuildContext context) => new Halsettings(),
-      '/SchedTable' : (BuildContext context) => new SchedTable(),
-      '/Donoepel' : (BuildContext context) => new Donoepel(),
-      '/Donolily' : (BuildContext context) => new Donolily(),
-      '/Donorey' : (BuildContext context) => new Donorey(),
-      '/Donochloe' : (BuildContext context) => new Donochloe(),
-    }
+      home: new SplashScreenPage(),
+      title: "Warteg Evelyn",
+      routes: <String, WidgetBuilder>{
+        '/Halawal' : (BuildContext context) => new Halawal(),
+        '/Halepel' : (BuildContext context) => new Halepel(),
+        '/Hallily' : (BuildContext context) => new Hallily(),
+        '/Halrey' : (BuildContext context) => new Halrey(),
+        '/Halchloe' : (BuildContext context) => new Halchloe(),
+        '/Halwarteg' : (BuildContext context) => new Halwarteg(),
+        '/Halsettings' : (BuildContext context) => new Halsettings(),
+        '/SchedTable' : (BuildContext context) => new SchedTable(),
+        '/Donoepel' : (BuildContext context) => new Donoepel(),
+        '/Donolily' : (BuildContext context) => new Donolily(),
+        '/Donorey' : (BuildContext context) => new Donorey(),
+        '/Donochloe' : (BuildContext context) => new Donochloe(),
+      }
   ));
 }
 
@@ -88,11 +92,11 @@ class _Halawal extends State<Halawal> {
       onWillPop: _onWillPop,
       child: new Scaffold(
         appBar: new AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.blue[500],
-        title:
-        new Text('Warteg Evelyn'),
-      ),
+          centerTitle: true,
+          backgroundColor: Colors.blue[500],
+          title:
+          new Text('Warteg Evelyn'),
+        ),
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
@@ -147,16 +151,16 @@ class _Halawal extends State<Halawal> {
             ],
           ),
         ),
-      body: new Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        body: new Center(
+          child: new Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-          FlatButton(
-            child: new ButtonEpel(/*icon: Icons.add_a_photo, teks:"All About Evelyn"*/),//icon dan teks disable
-               onPressed: (){
-                 Navigator.pushNamed(context, '/Halepel');
-            },
-        ),//button epel
+              FlatButton(
+                child: new ButtonEpel(/*icon: Icons.add_a_photo, teks:"All About Evelyn"*/),//icon dan teks disable
+                onPressed: (){
+                  Navigator.pushNamed(context, '/Halepel');
+                },
+              ),//button epel
               FlatButton(
                 child: new ButtonLily(/*icon: Icons.add_a_photo, teks:"All About Lily Ifeta"*/),
                 onPressed: (){
@@ -181,385 +185,8 @@ class _Halawal extends State<Halawal> {
                   Navigator.pushNamed(context, '/Halwarteg');
                 },
               ),
-      ],
-    ),
-    ),
-    ),
-    );
-  }
-}
-
-class Halepel extends StatelessWidget {
-
-@override
-  Widget build(BuildContext context) {
-  return new Scaffold(
-    appBar: new AppBar(title: new Text("All About Epel"),),
-    body: new Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          ElevatedButton(
-            child: Text("Profile Epel"),
-            onPressed: () {
-              Navigator.pushNamed(context, '/Halawal');
-            },
-          ),// Profile
-          ElevatedButton(
-            child: Text("Donation"),
-            onPressed: () {
-              Navigator.pushNamed(context, '/Donoepel');
-            },
-          ), //Donation
-          ElevatedButton(
-            child: Text("Schedule"),
-            onPressed: () {
-              Navigator.pushNamed(context, '/SchedTable');
-            },
-          ),// sched
-          ElevatedButton(
-            child: Text("Kembali"),
-            onPressed: () {
-              Navigator.pushNamed(context, '/Halawal');
-            },
-          ), //Kembali
-        ],
-    ),
-  ),
-    drawer: Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            child: Text('Warteg Portable'),
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
+            ],
           ),
-          ListTile(
-            title: Text('Home'),
-            onTap: () {
-              Navigator.pushNamed(context, '/Halawal');
-            },
-          ),
-          ListTile(
-            title: Text('Settings'),
-            onTap: () {
-              Navigator.pushNamed(context, '/Halsettings');
-            },
-          ),
-          ListTile(
-              title: Text("Discord Link"),
-              onTap: () async {
-                if (await canLaunch('https://s.id/wartegepel')){
-                  await launch('https://s.id/wartegepel');
-                };
-              }
-          ),
-          ListTile(
-            title: Text('About Us'),
-            onTap: () {
-              showAboutDialog(context: context,
-                applicationIcon: FlutterLogo(),
-                applicationName: 'Warteg Epel Project',
-                applicationVersion: '0.0.2',
-                applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
-                children: <Widget>[
-                  Text(
-                      'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
-                ],
-              );
-            },
-          ),
-          ListTile(
-            title: Text('Close App'),
-            onTap: () {
-              SystemNavigator.pop();
-            },
-          ),
-        ],
-      ),
-    ),
-  );
-}
-}
-
-class Hallily extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(title: new Text("All About Lily"),),
-      body: new Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              child: Text("Profile Lily"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),// Profile
-            ElevatedButton(
-              child: Text("Donation"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Donolily');
-              },
-            ), //Donation
-            ElevatedButton(
-              child: Text("Schedule"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),// sched
-            ElevatedButton(
-              child: Text("Kembali"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ), //Kembali
-          ],
-        ),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Warteg Portable'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
-            ListTile(
-              title: Text('Home'),
-              onTap: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),
-            ListTile(
-              title: Text('Settings'),
-              onTap: () {
-                Navigator.pushNamed(context, '/Halsettings');
-              },
-            ),
-            ListTile(
-                title: Text("Discord Link"),
-                onTap: () async {
-                  if (await canLaunch('https://s.id/wartegepel')){
-                    await launch('https://s.id/wartegepel');
-                  };
-                }
-            ),
-            ListTile(
-              title: Text('About Us'),
-              onTap: () {
-                showAboutDialog(context: context,
-                  applicationIcon: FlutterLogo(),
-                  applicationName: 'Warteg Epel Project',
-                  applicationVersion: '0.0.2',
-                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
-                  children: <Widget>[
-                    Text(
-                        'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
-                  ],
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Close App'),
-              onTap: () {
-                SystemNavigator.pop();
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Halrey extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(title: new Text("All About Reynard"),),
-      body: new Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              child: Text("Profile Reynard"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),// Profile
-            ElevatedButton(
-              child: Text("Donation"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Donorey');
-              },
-            ), //Donation
-            ElevatedButton(
-              child: Text("Schedule"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),// sched
-            ElevatedButton(
-              child: Text("Kembali"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ), //Kembali
-          ],
-        ),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Warteg Portable'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
-            ListTile(
-              title: Text('Home'),
-              onTap: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),
-            ListTile(
-              title: Text('Settings'),
-              onTap: () {
-                Navigator.pushNamed(context, '/Halsettings');
-              },
-            ),
-            ListTile(
-                title: Text("Discord Link"),
-                onTap: () async {
-                  if (await canLaunch('https://s.id/wartegepel')){
-                    await launch('https://s.id/wartegepel');
-                  };
-                }
-            ),
-            ListTile(
-              title: Text('About Us'),
-              onTap: () {
-                showAboutDialog(context: context,
-                  applicationIcon: FlutterLogo(),
-                  applicationName: 'Warteg Epel Project',
-                  applicationVersion: '0.0.2',
-                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
-                  children: <Widget>[
-                    Text(
-                        'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
-                  ],
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Close App'),
-              onTap: () {
-                SystemNavigator.pop();
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Halchloe extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(title: new Text("All About Chloe"),),
-      body: new Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              child: Text("Profile Chloe"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),// Profile
-            ElevatedButton(
-              child: Text("Donation"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Donochloe');
-              },
-            ), //Donation
-            ElevatedButton(
-              child: Text("Schedule"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),// sched
-            ElevatedButton(
-              child: Text("Kembali"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ), //Kembali
-          ],
-        ),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Warteg Portable'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
-            ListTile(
-              title: Text('Home'),
-              onTap: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),
-            ListTile(
-              title: Text('Settings'),
-              onTap: () {
-                Navigator.pushNamed(context, '/Halsettings');
-              },
-            ),
-            ListTile(
-                title: Text("Discord Link"),
-                onTap: () async {
-                  if (await canLaunch('https://s.id/wartegepel')){
-                    await launch('https://s.id/wartegepel');
-                  };
-                }
-            ),
-            ListTile(
-              title: Text('About Us'),
-              onTap: () {
-                showAboutDialog(context: context,
-                  applicationIcon: FlutterLogo(),
-                  applicationName: 'Warteg Epel Project',
-                  applicationVersion: '0.0.2',
-                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
-                  children: <Widget>[
-                    Text(
-                        'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
-                  ],
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Close App'),
-              onTap: () {
-                SystemNavigator.pop();
-              },
-            ),
-          ],
         ),
       ),
     );
@@ -594,7 +221,7 @@ class Halwarteg extends StatelessWidget {
               },
             ),// sched
             ElevatedButton(
-              child: Text("Donation"),
+                child: Text("Donation"),
                 onPressed: () async {
                   if (await canLaunch('https://trakteer.id/wartegepelz')){
                     await launch('https://trakteer.id/wartegepelz');
@@ -874,236 +501,6 @@ class ButtonWarteg extends StatelessWidget{
         child: new Column(
           children: <Widget>[
             new Image.asset('Image/BannerWarteg.png')
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class SchedTable extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('Evelyn Livestream/Premier Schedule'),
-          ),
-          body: ListView(children: <Widget>[
-            Center(
-                child: Text(
-                  'Evelyn Schedule 23 Feb - 27 Feb 2021',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                )),
-            DataTable(
-              columns: [
-                DataColumn(label: Text(
-                    'No',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                )),
-                DataColumn(label: Text(
-                    'Tanggal',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                )),
-                DataColumn(label: Text(
-                    'Judul',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                )),
-                DataColumn(label: Text(
-                    'Jam',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                )),
-              ],
-              rows: [
-                DataRow(cells: [
-                  DataCell(Text('1')),
-                  DataCell(Text('23 Feb 2021')),
-                  DataCell(Text('Omori')),
-                  DataCell(Text('19.00')),
-                ]),
-                DataRow(cells: [
-                  DataCell(Text('2')),
-                  DataCell(Text('24 Feb 2021')),
-                  DataCell(Text('RFA')),
-                  DataCell(Text('06.00')),
-                ]),
-                DataRow(cells: [
-                  DataCell(Text('3')),
-                  DataCell(Text('24 Feb 2021')),
-                  DataCell(Text('Minecraft')),
-                  DataCell(Text('09.00')),
-                ]),
-                DataRow(cells: [
-                  DataCell(Text('4')),
-                  DataCell(Text('24 Feb 2021')),
-                  DataCell(Text('JackBox Collab')),
-                  DataCell(Text('19.00')),
-                ]),
-              ],
-            ),
-          ])
-      ),
-    );
-  }
-}
-
-class Donoepel extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(title: new Text("Donations"),),
-      body: new Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            FlatButton(
-                child: Text("Trakteer (IDR/Gopay/Ovo/Etc)"),
-                onPressed: () async {
-                  if (await canLaunch('https://www.trakteer.id/evelynvtuber')) {
-                    await launch('https://www.trakteer.id/evelynvtuber');
-                  };
-                }
-            ), // Profile
-            FlatButton(
-                child: Text("Karyakarsa (IDR)"),
-                onPressed: () async {
-                  if (await canLaunch(
-                      'https://www.karyakarsa.com/evelynvtuber')) {
-                    await launch('https://www.karyakarsa.com/evelynvtuber');
-                  };
-                }
-            ),
-            FlatButton(
-                child: Text("Streamlabs (Paypal,Etc)"),
-                onPressed: () async {
-                  if (await canLaunch(
-                      'https://streamlabs.com/evelynvtuber/tip')) {
-                    await launch('https://streamlabs.com/evelynvtuber/tip');
-                  };
-                }
-            ), //Donation// sched
-            FlatButton(
-              child: Text("Kembali"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halepel');
-              },
-            ), //Kembali
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Donolily extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(title: new Text("Donations"),),
-      body: new Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            FlatButton(
-                child: Text("Trakteer (IDR/Gopay/Ovo/Etc)"),
-                onPressed: () async {
-                  if (await canLaunch('https://trakteer.id/lilyifeta')) {
-                    await launch('https://trakteer.id/lilyifeta');
-                  };
-                }
-            ), // Profile
-            FlatButton(
-                child: Text("Streamlabs (Paypal,Etc"),
-                onPressed: () async {
-                  if (await canLaunch('https://streamlabs.com/lilyifeta/tip')) {
-                    await launch('https://streamlabs.com/lilyifeta/tip');
-                  };
-                }
-            ), //Donation// sched
-            FlatButton(
-              child: Text("Kembali"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Hallily');
-              },
-            ), //Kembali
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Donorey extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(title: new Text("Donations"),),
-      body: new Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            FlatButton(
-                child: Text("Trakteer (IDR/Gopay/Ovo/Etc)"),
-                onPressed: () async {
-                  if (await canLaunch('https://trakteer.id/reynardblanc')) {
-                    await launch('https://trakteer.id/reynardblanc');
-                  };
-                }
-            ), // Profile
-            FlatButton(
-                child: Text("Streamlabs (Paypal,etc"),
-                onPressed: () async {
-                  if (await canLaunch(
-                      'https://streamlabs.com/reynardblanc/tip')) {
-                    await launch('https://streamlabs.com/reynardblanc/tip');
-                  };
-                }
-            ), //Donation// sched
-            FlatButton(
-              child: Text("Kembali"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halrey');
-              },
-            ), //Kembali
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Donochloe extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(title: new Text("Donations"),),
-      body: new Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            FlatButton(
-                child: Text("Trakteer (IDR/Gopay/Ovo/Etc)"),
-                onPressed: () async {
-                  if (await canLaunch('https://trakteer.id/chloepawapua')) {
-                    await launch('https://trakteer.id/chloepawapua');
-                  };
-                }
-            ), // Profile
-            FlatButton(
-                child: Text("Streamlabs(Paypal,Etc)"),
-                onPressed: () async {
-                  if (await canLaunch(
-                      'https://streamlabs.com/chloepawapuach/tip')) {
-                    await launch('https://streamlabs.com/chloepawapuach/tip');
-                  };
-                }
-            ), //Donation// sched
-            FlatButton(
-              child: Text("Kembali"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halchloe');
-              },
-            ), //Kembali
           ],
         ),
       ),
