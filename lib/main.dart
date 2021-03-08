@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/settings.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:splashscreen/splashscreen.dart';
@@ -33,6 +34,8 @@ void main(){
         '/profilerey' : (BuildContext context) => new profilerey(),
         '/profilechloe' : (BuildContext context) => new profilechloe(),
         '/profilelily' : (BuildContext context) => new profilelily(),
+        '/notifsett' : (BuildContext context) => new notifsett(),
+
       }
   ));
 }
@@ -50,12 +53,13 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
       navigateAfterSeconds: new Halawal(),
       title: new Text(
         'Welcome To Warteg Mobile',
-        style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+        style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
       ),
-      image: new Image.network(
-          'https://flutter.io/images/catalog-widget-placeholder.png'),
-      backgroundColor: Colors.cyan,
+      image: new Image.asset('Image/page2.jpg'),
+      photoSize: 150.0,
+      backgroundColor: Colors.cyan.shade200,
       loaderColor: Colors.green,
+      loadingText: Text('The DualSim(P) team'),
     );
   }
 }
@@ -83,7 +87,7 @@ class _Halawal extends State<Halawal> {
             child: new Text('No'),
           ),
           new FlatButton(
-            onPressed: () => Navigator.of(context).pop(true),
+            onPressed: () => SystemNavigator.pop(),
             child: new Text('Yes'),
           ),
         ],
@@ -278,82 +282,6 @@ class Halwarteg extends StatelessWidget {
                   applicationIcon: FlutterLogo(),
                   applicationName: 'Warteg Epel Project',
                   applicationVersion: '0.0.5',
-                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
-                  children: <Widget>[
-                    Text(
-                        'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
-                  ],
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Close App'),
-              onTap: () {
-                SystemNavigator.pop();
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Halsettings extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(title: new Text("Settings"),),
-      body: new Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start ,
-          children: <Widget>[
-            FlatButton(
-              child: Text("Setting Notifikasi"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),
-            FlatButton(
-              child: Text("Kembali"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ), //Kembali
-          ],
-        ),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Warteg Portable'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
-            ListTile(
-              title: Text('Home'),
-              onTap: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),
-            ListTile(
-                title: Text("Discord Link"),
-                onTap: () async {
-                  if (await canLaunch('https://s.id/wartegepel')){
-                    await launch('https://s.id/wartegepel');
-                  };
-                }
-            ),
-            ListTile(
-              title: Text('About Us'),
-              onTap: () {
-                showAboutDialog(context: context,
-                  applicationIcon: FlutterLogo(),
-                  applicationName: 'Warteg Epel Project',
-                  applicationVersion: '0.0.2',
                   applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
                   children: <Widget>[
                     Text(
