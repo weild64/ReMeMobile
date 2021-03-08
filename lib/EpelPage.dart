@@ -1,9 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:splashscreen/splashscreen.dart';
+
 
 class Halepel extends StatelessWidget {
   @override
@@ -17,7 +19,7 @@ class Halepel extends StatelessWidget {
             ElevatedButton(
               child: Text("Profile Epel"),
               onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
+                Navigator.pushNamed(context, '/profileepel');
               },
             ),// Profile
             ElevatedButton(
@@ -33,7 +35,7 @@ class Halepel extends StatelessWidget {
               },
             ),// sched
             ElevatedButton(
-              child: Text("Kembali"),
+              child: Text("Back"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
@@ -77,7 +79,7 @@ class Halepel extends StatelessWidget {
                 showAboutDialog(context: context,
                   applicationIcon: FlutterLogo(),
                   applicationName: 'Warteg Epel Project',
-                  applicationVersion: '0.0.2',
+                  applicationVersion: '0.0.5',
                   applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
                   children: <Widget>[
                     Text(
@@ -201,12 +203,168 @@ class Donoepel extends StatelessWidget {
                 }
             ), //Donation// sched
             FlatButton(
-              child: Text("Kembali"),
+              child: Text("Back"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Halepel');
               },
             ), //Kembali
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class profileepel extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+    return new Scaffold(
+      backgroundColor: Colors.pink.shade100,
+      appBar: AppBar(
+        backgroundColor: Colors.pink.shade100,
+        title: Text('Evelyn Profile', style: TextStyle(color: Colors.lightBlue),),
+      ),
+      body: Column(
+        children: <Widget>[
+          Stack(
+          alignment: Alignment.topLeft,
+          children: <Widget>[
+            Image(
+              height: MediaQuery.of(context).size.height / 4,
+                fit: BoxFit.fill,
+                image: AssetImage('Image/Epel.jpg')
+            ),
+            Positioned(
+              child: CircleAvatar(
+                      radius: 80,
+                      backgroundColor: Colors.white,
+                      backgroundImage: AssetImage('Image/A-epel.jpg')
+                ),),
+             ],
+        ),
+        SizedBox(height: 20,),
+          ListTileTheme(tileColor: Colors.pink.shade50,
+            child: ListTile(title: Text('Evelyn -Vtuber-', style: TextStyle(fontSize: 20,),), subtitle: Text('Virtual Moodbooster kalian'),),),
+          ListTileTheme(tileColor: Colors.pink.shade50,
+            child: ListTile(title: Text('About Me'),
+            subtitle: Text("my name is Evelyn but you can call me Epel!,\nI'm here for become your virtual mood booster through my Youtube contents~ ᕦ( ᐛ )ᕡ,\nPlease be one of my #Epelable friends because I can't do this without you guys~(  >ㅅ<)b,\nID/EN OK! 日本語は少しだけ分かります。"),),),
+          ListTile(
+            title: Text('Bussiness inquiries and collaboration matters'),
+          ),
+          FlatButton.icon(
+              onPressed: () => _launchURL('evelyn.vtuber@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Evelyn'),
+            icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
+            color: Colors.lightBlueAccent,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          ),
+          Text(''),
+          Text(''),
+          ListTile(
+            title: Text('Link Media'),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              FlatButton(
+                child: twtepel(),
+                onPressed: () async {
+                  if (await canLaunch('https://twitter.com/EvelynVtuber')) {
+                    await launch('https://twitter.com/EvelynVtuber');
+                  };
+                },
+              ),
+              FlatButton(
+                child: ytepel(),
+                onPressed: () async {
+                  if (await canLaunch('https://www.youtube.com/channel/UCMxxFFeuhFQ30quuePTym0A')) {
+                    await launch('https://www.youtube.com/channel/UCMxxFFeuhFQ30quuePTym0A');
+                  };
+                },
+              ),
+              FlatButton(
+                child: fbepel(),
+                onPressed: () async {
+                  if (await canLaunch('https://web.facebook.com/evelyn.vtuberr')) {
+                    await launch('https://web.facebook.com/evelyn.vtuberr');
+                  };
+                },
+              ),
+    ],
+          )
+        ],
+    ),
+    );
+  }
+  _launchURL(String toMailId, String subject, String body) async {
+    var url = 'mailto:$toMailId?subject=$subject&body=$body';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+}
+
+class ytepel extends StatelessWidget{
+  ytepel({this.navigasi});
+
+  final String navigasi;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(0.0),
+      width: 70.0,
+      height: 45.0,
+      alignment: Alignment.center,
+      decoration: new BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('Image/yticon.png'),
+          fit: BoxFit.fill
+        ),
+        ),
+      );
+  }
+}
+
+class fbepel extends StatelessWidget{
+  fbepel({this.navigasi});
+
+  final String navigasi;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(0.0),
+      width: 45.0,
+      height: 45.0,
+      alignment: Alignment.center,
+      decoration: new BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('Image/fbicon.png'),
+            fit: BoxFit.fill
+        ),
+      ),
+    );
+  }
+}
+
+class twtepel extends StatelessWidget{
+  twtepel({this.navigasi});
+
+  final String navigasi;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(0.0),
+      width: 45.0,
+      height: 45.0,
+      alignment: Alignment.center,
+      decoration: new BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('Image/twittericon.png'),
+            fit: BoxFit.fitHeight
         ),
       ),
     );

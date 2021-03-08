@@ -29,6 +29,10 @@ void main(){
         '/Donolily' : (BuildContext context) => new Donolily(),
         '/Donorey' : (BuildContext context) => new Donorey(),
         '/Donochloe' : (BuildContext context) => new Donochloe(),
+        '/profileepel' : (BuildContext context) => new profileepel(),
+        '/profilerey' : (BuildContext context) => new profilerey(),
+        '/profilechloe' : (BuildContext context) => new profilechloe(),
+        '/profilelily' : (BuildContext context) => new profilelily(),
       }
   ));
 }
@@ -133,7 +137,7 @@ class _Halawal extends State<Halawal> {
                   showAboutDialog(context: context,
                     applicationIcon: FlutterLogo(),
                     applicationName: 'Warteg Epel Project',
-                    applicationVersion: '0.0.2',
+                    applicationVersion: '0.0.5',
                     applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
                     children: <Widget>[
                       Text(
@@ -229,7 +233,7 @@ class Halwarteg extends StatelessWidget {
                 }
             ),
             ElevatedButton(
-              child: Text("Kembali"),
+              child: Text("Back"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
@@ -273,7 +277,7 @@ class Halwarteg extends StatelessWidget {
                 showAboutDialog(context: context,
                   applicationIcon: FlutterLogo(),
                   applicationName: 'Warteg Epel Project',
-                  applicationVersion: '0.0.2',
+                  applicationVersion: '0.0.5',
                   applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
                   children: <Widget>[
                     Text(
@@ -504,6 +508,42 @@ class ButtonWarteg extends StatelessWidget{
           ],
         ),
       ),
+    );
+  }
+}
+
+class profileepelbase extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      body: profileepel(),
+    );
+  }
+}
+
+class profilereybase extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      body: profilerey(),
+    );
+  }
+}
+
+class profilechloebase extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      body: profilechloe(),
+    );
+  }
+}
+
+class profilelilybase extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      body: profilelily(),
     );
   }
 }
