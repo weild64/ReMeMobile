@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "1085091153290",
-    "project_id": "wartegmobileapp-fa08f",
-    "storage_bucket": "wartegmobileapp-fa08f.appspot.com"
+    "project_number": "847631271911",
+    "firebase_url": "https://wartegmobileapp-4be26-default-rtdb.firebaseio.com",
+    "project_id": "wartegmobileapp-4be26",
+    "storage_bucket": "wartegmobileapp-4be26.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1085091153290:android:e79ed3064309c7279bf473",
+        "mobilesdk_app_id": "1:847631271911:android:db07077972549b4d1a1f42",
         "android_client_info": {
-          "package_name": "com.warteg.evelyn_family_app"
+          "package_name": "com.warteg.evelynfamilyapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1085091153290-rgkp7buf4meotk7c1kvnul64u5hbfl4k.apps.googleusercontent.com",
+          "client_id": "847631271911-lqeg565ttqbd4bncv4ag2nfi6019hke4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyClKCC65AGTEn50zg4rxUkwZ9DcthjGAeQ"
+          "current_key": "AIzaSyC3wtm0OFKEucFPLWk2GaBngHEXrTYcrGE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1085091153290-rgkp7buf4meotk7c1kvnul64u5hbfl4k.apps.googleusercontent.com",
+              "client_id": "847631271911-lqeg565ttqbd4bncv4ag2nfi6019hke4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
