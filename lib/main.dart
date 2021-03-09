@@ -1,7 +1,9 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/settings.dart';
+import 'package:flutter_app/services/auth.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:splashscreen/splashscreen.dart';
@@ -35,7 +37,6 @@ void main(){
         '/profilechloe' : (BuildContext context) => new profilechloe(),
         '/profilelily' : (BuildContext context) => new profilelily(),
         '/notifsett' : (BuildContext context) => new notifsett(),
-
       }
   ));
 }
@@ -64,7 +65,6 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   }
 }
 
-
 class Halawal extends StatefulWidget {
   Halawal({Key key, this.title}) :super(key: key);
 
@@ -73,7 +73,27 @@ class Halawal extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _Halawal();
 }
+
 class _Halawal extends State<Halawal> {
+  final databaseReference = FirebaseDatabase.instance.reference();
+  final AuthService _auth = AuthService();
+
+  void readData(){
+    databaseReference.once().then((DataSnapshot snapshot) {
+      print('Data : ${snapshot.value}');
+    });
+  }
+
+  void createRecord(){
+    databaseReference.child("2").set({
+      'title': 'Mastering EJB',
+      'description': 'Programming Guide for J2EE'
+    });
+    databaseReference.child("3").set({
+      'title': 'Flutter in Action',
+      'description': 'Complete Programming Guide to learn Flutter'
+    });
+  }
 
   Future<bool> _onWillPop() async {
     return (await showDialog(
@@ -165,8 +185,16 @@ class _Halawal extends State<Halawal> {
             children: <Widget>[
               FlatButton(
                 child: new ButtonEpel(/*icon: Icons.add_a_photo, teks:"All About Evelyn"*/),//icon dan teks disable
-                onPressed: (){
+                onPressed: () async{
                   Navigator.pushNamed(context, '/Halepel');
+                  //readData();
+                  //createRecord();
+                  /*dynamic result = await _auth.signInAnon();
+                  if(result == null){
+                    print('error');
+                  }else{
+                    print(result);
+                  }*/
                 },
               ),//button epel
               FlatButton(
