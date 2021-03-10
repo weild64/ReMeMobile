@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -5,7 +6,22 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:splashscreen/splashscreen.dart';
+import 'package:firebase_database/firebase_database.dart';
 
+final schedEpel = FirebaseDatabase.instance.reference().child("/Schedules/ScheduleEpel");
+
+List<DataRow> _createRows(QuerySnapshot snapshot) {
+
+  List<DataRow> newList = snapshot.documents.map((DocumentSnapshot documentSnapshot) {
+    //var tgl = new DateTime.fromMicrosecondsSinceEpoch(documentSnapshot['Date']);
+    print(documentSnapshot['Date']);
+    return new DataRow(cells: [
+      DataCell(Text(documentSnapshot['Date'])),
+      DataCell(Text(documentSnapshot['Title'])),
+      DataCell(Text(documentSnapshot['Time'])),]);
+  }).toList();
+  return newList;
+}
 
 class Halepel extends StatelessWidget {
   @override
@@ -32,6 +48,7 @@ class Halepel extends StatelessWidget {
               child: Text("Schedule"),
               onPressed: () {
                 Navigator.pushNamed(context, '/SchedTable');
+                //readData();
               },
             ),// sched
             ElevatedButton(
@@ -101,71 +118,112 @@ class Halepel extends StatelessWidget {
   }
 }
 
-class SchedTable extends StatelessWidget{
+class SchedTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('Evelyn Livestream/Premier Schedule'),
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection('ScheduleEpel').snapshots(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) return LinearProgressIndicator();
+
+        return MaterialApp(
+          home: Scaffold(
+              appBar: AppBar(
+                title: Text('Evelyn Livestream/Premier Schedule'),
+              ),
+              body: ListView(children: <Widget>[
+                Center(
+                    child: Text(
+                      'Evelyn Schedule',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    )),
+                DataTable(
+                  columns: [
+                    DataColumn(label: Text(
+                        'Tanggal',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                    )),
+                    DataColumn(label: Text(
+                        'Judul',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                    )),
+                    DataColumn(label: Text(
+                        'Jam',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                    )),
+                  ],
+                  rows: _createRows(snapshot.data)
+                  ,
+                ),
+              ])
           ),
-          body: ListView(children: <Widget>[
-            Center(
-                child: Text(
-                  'Evelyn Schedule 23 Feb - 27 Feb 2021',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                )),
-            DataTable(
-              columns: [
-                DataColumn(label: Text(
-                    'No',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                )),
-                DataColumn(label: Text(
-                    'Tanggal',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                )),
-                DataColumn(label: Text(
-                    'Judul',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                )),
-                DataColumn(label: Text(
-                    'Jam',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                )),
-              ],
-              rows: [
-                DataRow(cells: [
-                  DataCell(Text('1')),
-                  DataCell(Text('23 Feb 2021')),
-                  DataCell(Text('Omori')),
-                  DataCell(Text('19.00')),
-                ]),
-                DataRow(cells: [
-                  DataCell(Text('2')),
-                  DataCell(Text('24 Feb 2021')),
-                  DataCell(Text('RFA')),
-                  DataCell(Text('06.00')),
-                ]),
-                DataRow(cells: [
-                  DataCell(Text('3')),
-                  DataCell(Text('24 Feb 2021')),
-                  DataCell(Text('Minecraft')),
-                  DataCell(Text('09.00')),
-                ]),
-                DataRow(cells: [
-                  DataCell(Text('4')),
-                  DataCell(Text('24 Feb 2021')),
-                  DataCell(Text('JackBox Collab')),
-                  DataCell(Text('19.00')),
-                ]),
-              ],
-            ),
-          ])
-      ),
+        );
+      },
     );
+
   }
 }
+
+// class SchedTable extends StatelessWidget{
+//   @override
+//   Widget build(BuildContext context) {
+//     return FutureBuilder(
+//         future: schedEpel.once(),
+//         builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
+//           if (snapshot.hasData) {
+//             var lists = [];
+//             lists.clear();
+//             Map<dynamic, dynamic> values = snapshot.data.value;
+//             values.forEach((key, values) {
+//               lists.add(values);
+//             });
+//             //print(lists);
+//             return new Scaffold(
+//               appBar: new AppBar(title: new Text("All About Epel"),),
+//                 body: ListView(children: <Widget>[
+//                   Center(
+//                       child: Text(
+//                         'Evelyn Schedule',
+//                         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+//                       )),
+//                   DataTable(
+//                     columns: [
+//                       DataColumn(label: Text(
+//                           'Tanggal',
+//                           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+//                       )),
+//                       DataColumn(label: Text(
+//                           'Judul',
+//                           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+//                       )),
+//                       DataColumn(label: Text(
+//                           'Jam',
+//                           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+//                       )),
+//                     ],
+//                     rows: [ _createRows(snapshot.data),
+//                       DataRow(cells: [
+//                         DataCell(Text('23 Feb 2021')),
+//                         DataCell(Text('Omori')),
+//                         DataCell(Text('19.00')),
+//                       ]),
+//                     ],
+//                   ),
+//                 ])
+//             );
+//             //return new ListView.builder(
+//                 //return new Scaffold();
+//                 // shrinkWrap: true,
+//                 // itemCount: lists.length,
+//                 // itemBuilder: (BuildContext context, int index) {
+//                 //
+//                 // }
+//                 //);
+//           }
+//           return CircularProgressIndicator();
+//         });
+//   }
+// }
 
 class Donoepel extends StatelessWidget {
   @override
@@ -224,41 +282,59 @@ class profileepel extends StatelessWidget {
         backgroundColor: Colors.pink.shade100,
         title: Text('Evelyn Profile', style: TextStyle(color: Colors.lightBlue),),
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
           Stack(
           alignment: Alignment.topLeft,
           children: <Widget>[
-            Image(
+            Center(
+            child: Image(
               height: MediaQuery.of(context).size.height / 4,
                 fit: BoxFit.fill,
-                image: AssetImage('Image/Epel.jpg')
+                image: AssetImage('Image/placeholderepel.png')
+            ),
             ),
             Positioned(
               child: CircleAvatar(
-                      radius: 80,
-                      backgroundColor: Colors.white,
-                      backgroundImage: AssetImage('Image/A-epel.jpg')
-                ),),
+                  radius: 90,
+                  backgroundColor: Colors.white,
+                  backgroundImage: AssetImage('Image/A-epel.jpg')
+              ),
+            ),
              ],
         ),
         SizedBox(height: 20,),
           ListTileTheme(tileColor: Colors.pink.shade50,
-            child: ListTile(title: Text('Evelyn -Vtuber-', style: TextStyle(fontSize: 20,),), subtitle: Text('Virtual Moodbooster kalian'),),),
+            child: ListTile(title: Text('Evelyn -Vtuber-', style: TextStyle(fontSize: 20,),),
+              subtitle: Text('Virtual Moodbooster kalian'),),),
           ListTileTheme(tileColor: Colors.pink.shade50,
             child: ListTile(title: Text('About Me'),
-            subtitle: Text("my name is Evelyn but you can call me Epel!,\nI'm here for become your virtual mood booster through my Youtube contents~ ᕦ( ᐛ )ᕡ,\nPlease be one of my #Epelable friends because I can't do this without you guys~(  >ㅅ<)b,\nID/EN OK! 日本語は少しだけ分かります。"),),),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("My name is Evelyn but you can call me Epel!,\nI'm here for become your virtual mood booster through my Youtube contents~ ᕦ( ᐛ )ᕡ,\nPlease be one of my #Epelable friends because I can't do this without you guys~(  >ㅅ<)b,\nID/EN OK! 日本語は少しだけ分かります。\n",),
+                  Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text('1 December',textAlign: TextAlign.end,),
+                  Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
+                  Text('160Cm + 5Cm (Ahoge)'),
+                  Text('Papa & Mama',style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text('Reinly & Nabs'),
+            ],
+              ),
+            ),
+          ),
           ListTile(
             title: Text('Bussiness inquiries and collaboration matters'),
           ),
-          FlatButton.icon(
+          Center(
+          child: FlatButton.icon(
               onPressed: () => _launchURL('evelyn.vtuber@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Evelyn'),
             icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
             color: Colors.lightBlueAccent,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            height: 30,
           ),
-          Text(''),
-          Text(''),
+          ),
           ListTile(
             title: Text('Link Media'),
           ),
