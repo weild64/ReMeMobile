@@ -53,12 +53,14 @@ class Halsettings extends StatelessWidget {
               ),
             ),
             ListTile(
+              leading: Icon(Icons.home),
               title: Text('Home'),
               onTap: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
             ),
             ListTile(
+              leading: Icon(Icons.chat_outlined),
                 title: Text("Discord Link"),
                 onTap: () async {
                   if (await canLaunch('https://s.id/wartegepel')){
@@ -67,6 +69,7 @@ class Halsettings extends StatelessWidget {
                 }
             ),
             ListTile(
+              leading: Icon(Icons.info_outline_rounded),
               title: Text('About Us'),
               onTap: () {
                 showAboutDialog(context: context,
@@ -82,6 +85,7 @@ class Halsettings extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: Icon(Icons.close),
               title: Text('Close App'),
               onTap: () {
                 SystemNavigator.pop();

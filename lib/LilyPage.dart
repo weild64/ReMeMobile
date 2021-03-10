@@ -9,35 +9,70 @@ class Hallily extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("All About Lily"),),
+      backgroundColor: Colors.lightBlue.shade50,
+      appBar: new AppBar(title: new Text("All About Lily", style: TextStyle(color: Colors.pink.shade200),),
+        backgroundColor: Colors.lightBlue.shade100,),
       body: new Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              child: Text("Profile Lily"),
+            Spacer(flex: 4),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.lightBlue.shade100,
+                onPrimary: Colors.pink.shade200,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 51, vertical: 10),
+              ),
+              icon: Icon(Icons.assignment_ind),
+              label: Text("Profile Lily"),
               onPressed: () {
                 Navigator.pushNamed(context, '/profilelily');
               },
-            ),// Profile
-            ElevatedButton(
-              child: Text("Donation"),
+            ),
+            Spacer(flex: 1),// Profile
+            ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.lightBlue.shade100,
+                  onPrimary: Colors.pink.shade200,
+                  elevation: 5,
+                  padding: EdgeInsets.symmetric(horizontal: 56, vertical: 10),
+                ),
+                icon: Icon(Icons.attach_money_rounded),
+                label:Text("Donation"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Donolily');
               },
-            ), //Donation
-            ElevatedButton(
-              child: Text("Schedule"),
+            ),
+            Spacer(flex: 1),//Donation
+            ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.lightBlue.shade100,
+                  onPrimary: Colors.pink.shade200,
+                  elevation: 5,
+                  padding: EdgeInsets.symmetric(horizontal: 55, vertical: 10),
+                ),
+                icon: Icon(Icons.calendar_today_outlined),
+                label: Text("Schedule"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
-            ),// sched
-            ElevatedButton(
-              child: Text("Back"),
+            ),
+            Spacer(flex: 1),// sched
+            ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.lightBlue.shade100,
+                  onPrimary: Colors.pink.shade200,
+                  elevation: 5,
+                  padding: EdgeInsets.symmetric(horizontal: 68, vertical: 10),
+                ),
+                icon: Icon(Icons.arrow_back),
+              label: Text("Back"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
-            ), //Kembali
+            ),
+            Spacer(flex: 4),
           ],
         ),
       ),
@@ -52,18 +87,21 @@ class Hallily extends StatelessWidget {
               ),
             ),
             ListTile(
+              leading: Icon(Icons.home),
               title: Text('Home'),
               onTap: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
             ),
             ListTile(
+              leading: Icon(Icons.settings),
               title: Text('Settings'),
               onTap: () {
                 Navigator.pushNamed(context, '/Halsettings');
               },
             ),
             ListTile(
+              leading: Icon(Icons.chat_outlined),
                 title: Text("Discord Link"),
                 onTap: () async {
                   if (await canLaunch('https://s.id/wartegepel')){
@@ -72,6 +110,7 @@ class Hallily extends StatelessWidget {
                 }
             ),
             ListTile(
+              leading: Icon(Icons.info_outline_rounded),
               title: Text('About Us'),
               onTap: () {
                 showAboutDialog(context: context,
@@ -87,6 +126,7 @@ class Hallily extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: Icon(Icons.close),
               title: Text('Close App'),
               onTap: () {
                 SystemNavigator.pop();
@@ -141,21 +181,22 @@ class profilelily extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return new Scaffold(
-      backgroundColor: Colors.lightBlueAccent.shade100,
+      backgroundColor: Colors.lightBlue.shade100,
       appBar: AppBar(
-        backgroundColor: Colors.lightBlueAccent.shade100,
+        backgroundColor: Colors.lightBlue.shade100,
         title: Text('Lily Profile', style: TextStyle(color: Colors.pink.shade200),),
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
           Stack(
             alignment: Alignment.topLeft,
             children: <Widget>[
-              Image(
+              Center(
+                child: Image(
                   height: MediaQuery.of(context).size.height / 4,
                   fit: BoxFit.fill,
-                  image: AssetImage('Image/lily.jpg')
-              ),
+                  image: AssetImage('Image/placeholderlily.png')
+              ),),
               Positioned(
                 child: CircleAvatar(
                     radius: 80,
@@ -169,18 +210,33 @@ class profilelily extends StatelessWidget {
             child: ListTile(title: Text('Lily Ifeta', style: TextStyle(fontSize: 20,),), subtitle: Text('Virtual Angel'),),),
           ListTileTheme(tileColor: Colors.lightBlue.shade50,
             child: ListTile(title: Text('About Me'),
-              subtitle: Text("Hayohaa !\nLily Ifeta here, I came to earth from heaven to destroy or maybe bless all human in this world . Of course also make you happy and cheerful everyday ~\nDon’t forget to be happy okay ?\n\nBe my cancimen and I will always makes you smile  U w U)7"),),),
+              subtitle:  Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+              Text("Hayohaa !\nLily Ifeta here, I came to earth from heaven to destroy or maybe bless all human in this world . Of course also make you happy and cheerful everyday ~\nDon’t forget to be happy okay ?\n\nBe my cancimen and I will always makes you smile  U w U)7"),
+              Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
+              Text('9 September',textAlign: TextAlign.end,),
+              Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
+              Text('156Cm'),
+              Text('Papa',style: TextStyle(fontWeight: FontWeight.bold),),
+              Text('Reinly'),
+                  Text('Background : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text('A Problematic angel who thrown to earth. To make it back to heaven, she have to collect enough happiness from human.'),
+              ],
+            ),
+          ),
+    ),
           ListTile(
             title: Text('Bussiness inquiries and collaboration matters'),
           ),
-          FlatButton.icon(
+          Center (
+          child: FlatButton.icon(
             onPressed: () => _launchURL('lily.ifeta@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Lily'),
             icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
             color: Colors.lightBlueAccent,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           ),
-          Text(''),
-          Text(''),
+          ),
           ListTile(
             title: Text('Link Media'),
           ),

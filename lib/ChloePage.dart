@@ -9,35 +9,70 @@ class Halchloe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("All About Chloe"),),
+      backgroundColor: Colors.yellow.shade50,
+      appBar: new AppBar(title: new Text("All About Chloe",style: TextStyle(color: Colors.green),),
+      backgroundColor: Colors.yellow.shade300,),
       body: new Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              child: Text("Profile Chloe"),
+            Spacer(flex: 4),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.yellow.shade300,
+                onPrimary: Colors.green,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 53, vertical: 10),
+              ),
+              icon: Icon(Icons.assignment_ind),
+              label: Text("Profile Chloe"),
               onPressed: () {
                 Navigator.pushNamed(context, '/profilechloe');
               },
-            ),// Profile
-            ElevatedButton(
-              child: Text("Donation"),
+            ),
+            Spacer(flex: 1),// Profile
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+              primary: Colors.yellow.shade300,
+              onPrimary: Colors.green,
+              elevation: 5,
+              padding: EdgeInsets.symmetric(horizontal: 63, vertical: 10),
+            ),
+              icon: Icon(Icons.attach_money_rounded),
+              label: Text("Donation"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Donochloe');
               },
-            ), //Donation
-            ElevatedButton(
-              child: Text("Schedule"),
+            ),
+            Spacer(flex: 1),//Donation
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.yellow.shade300,
+                onPrimary: Colors.green,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 63, vertical: 10),
+              ),
+              icon: Icon(Icons.calendar_today_outlined),
+              label: Text("Schedule"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
-            ),// sched
-            ElevatedButton(
-              child: Text("Back"),
+            ),
+            Spacer(flex: 1),// sched
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.yellow.shade300,
+                onPrimary: Colors.green,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 75,vertical: 10),
+              ),
+              icon: Icon(Icons.arrow_back),
+              label: Text("Back"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
-            ), //Kembali
+            ),
+            Spacer(flex: 4),//Kembali
           ],
         ),
       ),
@@ -52,18 +87,21 @@ class Halchloe extends StatelessWidget {
               ),
             ),
             ListTile(
+              leading: Icon(Icons.home),
               title: Text('Home'),
               onTap: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
             ),
             ListTile(
+              leading: Icon(Icons.settings),
               title: Text('Settings'),
               onTap: () {
                 Navigator.pushNamed(context, '/Halsettings');
               },
             ),
             ListTile(
+              leading: Icon(Icons.chat_outlined),
                 title: Text("Discord Link"),
                 onTap: () async {
                   if (await canLaunch('https://s.id/wartegepel')){
@@ -72,6 +110,7 @@ class Halchloe extends StatelessWidget {
                 }
             ),
             ListTile(
+              leading: Icon(Icons.info_outline_rounded),
               title: Text('About Us'),
               onTap: () {
                 showAboutDialog(context: context,
@@ -87,6 +126,7 @@ class Halchloe extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: Icon(Icons.close),
               title: Text('Close App'),
               onTap: () {
                 SystemNavigator.pop();
@@ -147,16 +187,17 @@ class profilechloe extends StatelessWidget {
         backgroundColor: Colors.yellow.shade300,
         title: Text('Chloe Profile', style: TextStyle(color: Colors.green),),
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
           Stack(
             alignment: Alignment.topLeft,
             children: <Widget>[
-              Image(
+              Center(
+                child: Image(
                   height: MediaQuery.of(context).size.height / 4,
                   fit: BoxFit.fill,
-                  image: AssetImage('Image/chloe.jpg')
-              ),
+                  image: AssetImage('Image/placeholderchloe.png')
+              ),),
               Positioned(
                 child: CircleAvatar(
                     radius: 80,
@@ -170,18 +211,34 @@ class profilechloe extends StatelessWidget {
             child: ListTile(title: Text('Chloe Pawapua', style: TextStyle(fontSize: 20,),), subtitle: Text('Virtual Magician'),),),
           ListTileTheme(tileColor: Colors.yellow.shade50,
             child: ListTile(title: Text('About Me'),
-              subtitle: Text("Kawahionapua~ \nI am a wizard who are not talented in magic, Chloe Pawapua.\nGive me information about how to life because I want to prevent extinction of Pawapua clan, it's wizard clan, my clan.\nYou can also join Pawapua clan anyway. ehehe.."),),),
+              subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Kawahionapua~ \nI am a wizard who are not talented in magic, Chloe Pawapua.\nGive me information about how to life because I want to prevent extinction of Pawapua clan, it's wizard clan, my clan.\nYou can also join Pawapua clan anyway. ehehe.."),
+                    Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                    Text('29 February',textAlign: TextAlign.end,),
+                    Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
+                    Text('160Cm'),
+                    Text('Papa',style: TextStyle(fontWeight: FontWeight.bold),),
+                    Text('Reinly'),
+                    Text('Background : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                    Text('Wizard who are not talented in magic. Seek the information about life to adapt with normal humans, this all for prevent the extinction of the Pawapua populations.'),
+                       ],
+                  ),
+               ),
+            ),
           ListTile(
             title: Text('Bussiness inquiries and collaboration matters'),
           ),
-          FlatButton.icon(
+      Center(
+        child: FlatButton.icon(
             onPressed: () => _launchURL('chloepawapua@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Chloe'),
             icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
             color: Colors.lightBlueAccent,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          height: 30,
           ),
-          Text(''),
-          Text(''),
+      ),
           ListTile(
             title: Text('Link Media'),
           ),

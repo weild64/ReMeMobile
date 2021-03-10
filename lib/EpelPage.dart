@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -6,57 +5,76 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'package:firebase_database/firebase_database.dart';
 
-final schedEpel = FirebaseDatabase.instance.reference().child("/Schedules/ScheduleEpel");
-
-List<DataRow> _createRows(QuerySnapshot snapshot) {
-
-  List<DataRow> newList = snapshot.documents.map((DocumentSnapshot documentSnapshot) {
-    //var tgl = new DateTime.fromMicrosecondsSinceEpoch(documentSnapshot['Date']);
-    print(documentSnapshot['Date']);
-    return new DataRow(cells: [
-      DataCell(Text(documentSnapshot['Date'])),
-      DataCell(Text(documentSnapshot['Title'])),
-      DataCell(Text(documentSnapshot['Time'])),]);
-  }).toList();
-  return newList;
-}
 
 class Halepel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("All About Epel"),),
+      backgroundColor: Colors.pink.shade50,
+      appBar: new AppBar(title: new Text("All About Epel", style: TextStyle(color: Colors.lightBlue),),
+        backgroundColor: Colors.pink.shade100,),
       body: new Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              child: Text("Profile Epel"),
+            Spacer(flex: 4),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.pink.shade100,
+                onPrimary: Colors.lightBlue,
+                elevation: 5,
+                  padding: EdgeInsets.symmetric(horizontal: 53, vertical: 10),
+              ),
+              icon: Icon(Icons.assignment_ind),
+              label: Text("Profile Epel"),
               onPressed: () {
                 Navigator.pushNamed(context, '/profileepel');
               },
-            ),// Profile
-            ElevatedButton(
-              child: Text("Donation"),
+            ),
+            Spacer(flex: 1),// Profile
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.pink.shade100,
+                onPrimary: Colors.lightBlue,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 60, vertical: 10),
+              ),
+              icon: Icon(Icons.attach_money_rounded),
+              label: Text("Donation"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Donoepel');
               },
-            ), //Donation
-            ElevatedButton(
-              child: Text("Schedule"),
+            ),
+            Spacer(flex: 1),//Donation
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.pink.shade100,
+                onPrimary: Colors.lightBlue,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 60, vertical: 10),
+              ),
+              icon: Icon(Icons.calendar_today_outlined),
+              label: Text("Schedule"),
               onPressed: () {
                 Navigator.pushNamed(context, '/SchedTable');
-                //readData();
               },
-            ),// sched
-            ElevatedButton(
-              child: Text("Back"),
+            ),
+            Spacer(flex: 1),// sched
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.pink.shade100,
+                onPrimary: Colors.lightBlue,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 73, vertical: 10),
+              ),
+              icon: Icon(Icons.arrow_back),
+              label: Text("Back"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
-            ), //Kembali
+            ),
+            Spacer(flex: 4),//Kembali
           ],
         ),
       ),
@@ -71,18 +89,21 @@ class Halepel extends StatelessWidget {
               ),
             ),
             ListTile(
+              leading: Icon(Icons.home),
               title: Text('Home'),
               onTap: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
             ),
             ListTile(
+              leading: Icon(Icons.settings),
               title: Text('Settings'),
               onTap: () {
                 Navigator.pushNamed(context, '/Halsettings');
               },
             ),
             ListTile(
+              leading: Icon(Icons.chat_outlined),
                 title: Text("Discord Link"),
                 onTap: () async {
                   if (await canLaunch('https://s.id/wartegepel')){
@@ -91,6 +112,7 @@ class Halepel extends StatelessWidget {
                 }
             ),
             ListTile(
+              leading: Icon(Icons.info_outline_rounded),
               title: Text('About Us'),
               onTap: () {
                 showAboutDialog(context: context,
@@ -106,6 +128,7 @@ class Halepel extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: Icon(Icons.close),
               title: Text('Close App'),
               onTap: () {
                 SystemNavigator.pop();
@@ -118,112 +141,71 @@ class Halepel extends StatelessWidget {
   }
 }
 
-class SchedTable extends StatelessWidget {
+class SchedTable extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('ScheduleEpel').snapshots(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) return LinearProgressIndicator();
-
-        return MaterialApp(
-          home: Scaffold(
-              appBar: AppBar(
-                title: Text('Evelyn Livestream/Premier Schedule'),
-              ),
-              body: ListView(children: <Widget>[
-                Center(
-                    child: Text(
-                      'Evelyn Schedule',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    )),
-                DataTable(
-                  columns: [
-                    DataColumn(label: Text(
-                        'Tanggal',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                    )),
-                    DataColumn(label: Text(
-                        'Judul',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                    )),
-                    DataColumn(label: Text(
-                        'Jam',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                    )),
-                  ],
-                  rows: _createRows(snapshot.data)
-                  ,
-                ),
-              ])
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text('Evelyn Livestream/Premier Schedule'),
           ),
-        );
-      },
+          body: ListView(children: <Widget>[
+            Center(
+                child: Text(
+                  'Evelyn Schedule 23 Feb - 27 Feb 2021',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                )),
+            DataTable(
+              columns: [
+                DataColumn(label: Text(
+                    'No',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                )),
+                DataColumn(label: Text(
+                    'Tanggal',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                )),
+                DataColumn(label: Text(
+                    'Judul',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                )),
+                DataColumn(label: Text(
+                    'Jam',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                )),
+              ],
+              rows: [
+                DataRow(cells: [
+                  DataCell(Text('1')),
+                  DataCell(Text('23 Feb 2021')),
+                  DataCell(Text('Omori')),
+                  DataCell(Text('19.00')),
+                ]),
+                DataRow(cells: [
+                  DataCell(Text('2')),
+                  DataCell(Text('24 Feb 2021')),
+                  DataCell(Text('RFA')),
+                  DataCell(Text('06.00')),
+                ]),
+                DataRow(cells: [
+                  DataCell(Text('3')),
+                  DataCell(Text('24 Feb 2021')),
+                  DataCell(Text('Minecraft')),
+                  DataCell(Text('09.00')),
+                ]),
+                DataRow(cells: [
+                  DataCell(Text('4')),
+                  DataCell(Text('24 Feb 2021')),
+                  DataCell(Text('JackBox Collab')),
+                  DataCell(Text('19.00')),
+                ]),
+              ],
+            ),
+          ])
+      ),
     );
-
   }
 }
-
-// class SchedTable extends StatelessWidget{
-//   @override
-//   Widget build(BuildContext context) {
-//     return FutureBuilder(
-//         future: schedEpel.once(),
-//         builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
-//           if (snapshot.hasData) {
-//             var lists = [];
-//             lists.clear();
-//             Map<dynamic, dynamic> values = snapshot.data.value;
-//             values.forEach((key, values) {
-//               lists.add(values);
-//             });
-//             //print(lists);
-//             return new Scaffold(
-//               appBar: new AppBar(title: new Text("All About Epel"),),
-//                 body: ListView(children: <Widget>[
-//                   Center(
-//                       child: Text(
-//                         'Evelyn Schedule',
-//                         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//                       )),
-//                   DataTable(
-//                     columns: [
-//                       DataColumn(label: Text(
-//                           'Tanggal',
-//                           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-//                       )),
-//                       DataColumn(label: Text(
-//                           'Judul',
-//                           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-//                       )),
-//                       DataColumn(label: Text(
-//                           'Jam',
-//                           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-//                       )),
-//                     ],
-//                     rows: [ _createRows(snapshot.data),
-//                       DataRow(cells: [
-//                         DataCell(Text('23 Feb 2021')),
-//                         DataCell(Text('Omori')),
-//                         DataCell(Text('19.00')),
-//                       ]),
-//                     ],
-//                   ),
-//                 ])
-//             );
-//             //return new ListView.builder(
-//                 //return new Scaffold();
-//                 // shrinkWrap: true,
-//                 // itemCount: lists.length,
-//                 // itemBuilder: (BuildContext context, int index) {
-//                 //
-//                 // }
-//                 //);
-//           }
-//           return CircularProgressIndicator();
-//         });
-//   }
-// }
 
 class Donoepel extends StatelessWidget {
   @override
@@ -319,6 +301,8 @@ class profileepel extends StatelessWidget {
                   Text('160Cm + 5Cm (Ahoge)'),
                   Text('Papa & Mama',style: TextStyle(fontWeight: FontWeight.bold),),
                   Text('Reinly & Nabs'),
+                  Text('Background : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text("Normal college student who aspire to become everyone's mood booster, so she become a Vtuber. Very normal Student. Totally nromal. Not Receh at all."),
             ],
               ),
             ),

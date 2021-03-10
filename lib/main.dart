@@ -1,4 +1,3 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +11,8 @@ import 'EpelPage.dart';
 import 'LilyPage.dart';
 import 'ReyPage.dart';
 import 'ChloePage.dart';
+import 'settings.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 const warteg_url = 'https://s.id/wartegepel';
 
@@ -37,6 +38,7 @@ void main(){
         '/profilechloe' : (BuildContext context) => new profilechloe(),
         '/profilelily' : (BuildContext context) => new profilelily(),
         '/notifsett' : (BuildContext context) => new notifsett(),
+
       }
   ));
 }
@@ -65,6 +67,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   }
 }
 
+
 class Halawal extends StatefulWidget {
   Halawal({Key key, this.title}) :super(key: key);
 
@@ -73,7 +76,6 @@ class Halawal extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _Halawal();
 }
-
 class _Halawal extends State<Halawal> {
   final databaseReference = FirebaseDatabase.instance.reference();
   final AuthService _auth = AuthService();
@@ -136,18 +138,21 @@ class _Halawal extends State<Halawal> {
                 ),
               ),
               ListTile(
+                leading: Icon(Icons.home),
                 title: Text('Home'),
                 onTap: () {
                   Navigator.pushNamed(context, '/Halawal');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.settings),
                 title: Text('Settings'),
                 onTap: () {
                   Navigator.pushNamed(context, '/Halsettings');
                 },
               ),
               ListTile(
+                leading: Icon(Icons.chat_outlined),
                   title: Text("Discord Link"),
                   onTap: () async {
                     if (await canLaunch('https://s.id/wartegepel')){
@@ -156,6 +161,7 @@ class _Halawal extends State<Halawal> {
                   }
               ),
               ListTile(
+                leading: Icon(Icons.info_outline_rounded),
                 title: Text('About Us'),
                 onTap: () {
                   showAboutDialog(context: context,
@@ -171,6 +177,7 @@ class _Halawal extends State<Halawal> {
                 },
               ),
               ListTile(
+                leading: Icon(Icons.close),
                 title: Text('Close App'),
                 onTap: () {
                   SystemNavigator.pop();
@@ -185,7 +192,7 @@ class _Halawal extends State<Halawal> {
             children: <Widget>[
               FlatButton(
                 child: new ButtonEpel(/*icon: Icons.add_a_photo, teks:"All About Evelyn"*/),//icon dan teks disable
-                onPressed: () async{
+                onPressed: () async {
                   Navigator.pushNamed(context, '/Halepel');
                   //readData();
                   //createRecord();

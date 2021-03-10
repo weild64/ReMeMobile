@@ -9,35 +9,70 @@ class Halrey extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("All About Reynard"),),
+      backgroundColor: Colors.grey.shade300,
+      appBar: new AppBar(title: new Text("All About Reynard"),
+        backgroundColor: Colors.grey.shade400,),
       body: new Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              child: Text("Profile Reynard"),
+            Spacer(flex: 4),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.grey.shade400,
+                onPrimary: Colors.white,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 47, vertical: 10),
+              ),
+              icon: Icon(Icons.assignment_ind),
+              label: Text("Profile Reynard"),
               onPressed: () {
                 Navigator.pushNamed(context, '/profilerey');
               },
-            ),// Profile
-            ElevatedButton(
-              child: Text("Donation"),
+            ),
+            Spacer(flex: 1),// Profile
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.grey.shade400,
+                onPrimary: Colors.white,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 64, vertical: 10),
+              ),
+              icon: Icon(Icons.attach_money_rounded),
+              label: Text("Donation"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Donorey');
               },
-            ), //Donation
-            ElevatedButton(
-              child: Text("Schedule"),
+            ),
+            Spacer(flex: 1),//Donation
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.grey.shade400,
+                onPrimary: Colors.white,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 63, vertical: 10),
+              ),
+              icon: Icon(Icons.calendar_today_outlined),
+              label: Text("Schedule"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
-            ),// sched
-            ElevatedButton(
-              child: Text("Back"),
+            ),
+            Spacer(flex: 1),// sched
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.grey.shade400,
+                onPrimary: Colors.white,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 75, vertical: 10),
+              ),
+              icon: Icon(Icons.arrow_back),
+              label: Text("Back"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
-            ), //Kembali
+            ),
+            Spacer(flex: 4),
           ],
         ),
       ),
@@ -52,18 +87,21 @@ class Halrey extends StatelessWidget {
               ),
             ),
             ListTile(
+              leading: Icon(Icons.home),
               title: Text('Home'),
               onTap: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
             ),
             ListTile(
+              leading: Icon(Icons.settings),
               title: Text('Settings'),
               onTap: () {
                 Navigator.pushNamed(context, '/Halsettings');
               },
             ),
             ListTile(
+              leading: Icon(Icons.chat_outlined),
                 title: Text("Discord Link"),
                 onTap: () async {
                   if (await canLaunch('https://s.id/wartegepel')){
@@ -72,6 +110,7 @@ class Halrey extends StatelessWidget {
                 }
             ),
             ListTile(
+              leading: Icon(Icons.info_outline_rounded),
               title: Text('About Us'),
               onTap: () {
                 showAboutDialog(context: context,
@@ -87,6 +126,7 @@ class Halrey extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: Icon(Icons.close),
               title: Text('Close App'),
               onTap: () {
                 SystemNavigator.pop();
@@ -147,16 +187,17 @@ class profilerey extends StatelessWidget {
         backgroundColor: Colors.grey.shade400,
         title: Text('Reynard Profile'),
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
           Stack(
             alignment: Alignment.topLeft,
             children: <Widget>[
-              Image(
+              Center(
+                child: Image(
                   height: MediaQuery.of(context).size.height / 4,
                   fit: BoxFit.fill,
-                  image: AssetImage('Image/rey.jpg')
-              ),
+                  image: AssetImage('Image/placeholderrey.png')
+              ),),
               Positioned(
                 child: CircleAvatar(
                     radius: 80,
@@ -170,18 +211,33 @@ class profilerey extends StatelessWidget {
             child: ListTile(title: Text('Reynard Blanc', style: TextStyle(fontSize: 20,),), subtitle: Text('Virtual Musician'),),),
           ListTileTheme(tileColor: Colors.grey.shade50,
             child: ListTile(title: Text('About Me'),
-              subtitle: Text("Hi!~ /ᐠ .⋏. ᐟﾉ\nFox Guy Virtual Musician, Reynard Blanc here~~\nI love to make music, so please listen to my musics xD\nBe one of my Reysteners won't you? ;3"),),),
+              subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+              Text("Hi!~ /ᐠ .⋏. ᐟﾉ\nFox Guy Virtual Musician, Reynard Blanc here~~\nI love to make music, so please listen to my musics xD\nBe one of my Reysteners won't you? ;3"),
+                    Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                    Text('1 March',textAlign: TextAlign.end,),
+                    Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
+                    Text('180Cm'),
+                    Text('Papa',style: TextStyle(fontWeight: FontWeight.bold),),
+                    Text('Reinly'),
+                    Text('Background : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                    Text('A Fox demon from mythical village in indonesia. He Come to the big city searching for wealth and catch his dream to become a Musician.'),
+                  ],
+              ),
+            ),
+          ),
           ListTile(
             title: Text('Bussiness inquiries and collaboration matters'),
           ),
-          FlatButton.icon(
+          Center(
+          child: FlatButton.icon(
             onPressed: () => _launchURL('reynardblanc@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Reynard'),
             icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
             color: Colors.lightBlueAccent,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           ),
-          Text(''),
-          Text(''),
+    ),
           ListTile(
             title: Text('Link Media'),
           ),
