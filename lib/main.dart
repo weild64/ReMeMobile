@@ -80,25 +80,6 @@ class Halawal extends StatefulWidget {
   State<StatefulWidget> createState() => new _Halawal();
 }
 class _Halawal extends State<Halawal> {
-  final databaseReference = FirebaseDatabase.instance.reference();
-  final AuthService _auth = AuthService();
-
-  void readData(){
-    databaseReference.once().then((DataSnapshot snapshot) {
-      print('Data : ${snapshot.value}');
-    });
-  }
-
-  void createRecord(){
-    databaseReference.child("2").set({
-      'title': 'Mastering EJB',
-      'description': 'Programming Guide for J2EE'
-    });
-    databaseReference.child("3").set({
-      'title': 'Flutter in Action',
-      'description': 'Complete Programming Guide to learn Flutter'
-    });
-  }
 
   Future<bool> _onWillPop() async {
     return (await showDialog(
@@ -197,14 +178,6 @@ class _Halawal extends State<Halawal> {
                 child: new ButtonEpel(/*icon: Icons.add_a_photo, teks:"All About Evelyn"*/),//icon dan teks disable
                 onPressed: () async {
                   Navigator.pushNamed(context, '/Halepel');
-                  //readData();
-                  //createRecord();
-                  /*dynamic result = await _auth.signInAnon();
-                  if(result == null){
-                    print('error');
-                  }else{
-                    print(result);
-                  }*/
                 },
               ),//button epel
               FlatButton(
