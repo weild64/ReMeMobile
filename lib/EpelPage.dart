@@ -25,6 +25,15 @@ class Halepel extends StatelessWidget {
     return new Scaffold(
       backgroundColor: Colors.pink.shade50,
       appBar: new AppBar(title: new Text("All About Epel", style: TextStyle(color: Colors.lightBlue),),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(Icons.menu, color: Colors.lightBlue),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );},),
         backgroundColor: Colors.pink.shade100,),
       body: new Center(
         child: Column(
@@ -83,7 +92,7 @@ class Halepel extends StatelessWidget {
               icon: Icon(Icons.arrow_back),
               label: Text("Back"),
               onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
+                Navigator.of(context).pop();
               },
             ),
             Spacer(flex: 4),//Kembali
@@ -165,6 +174,10 @@ class SchedTableEpel extends StatelessWidget{
               home: Scaffold(
                   backgroundColor: Colors.pink.shade50,
                 appBar: AppBar(
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back, color: Colors.lightBlue),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
                   title: Text('Evelyn Livestream/Premier Schedule', style: TextStyle(color: Colors.lightBlue),),
                 backgroundColor: Colors.pink.shade100,),
                 body: ListView(children: <Widget>[
@@ -227,7 +240,7 @@ class Donoepel extends StatelessWidget {
             FlatButton(
               child: Text("Back"),
               onPressed: () {
-                Navigator.pushNamed(context, '/Halepel');
+                Navigator.of(context).pop();
               },
             ), //Kembali
           ],
@@ -243,6 +256,10 @@ class profileepel extends StatelessWidget {
     return new Scaffold(
       backgroundColor: Colors.pink.shade100,
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.lightBlue),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         backgroundColor: Colors.pink.shade100,
         title: Text('Evelyn Profile', style: TextStyle(color: Colors.lightBlue),),
       ),

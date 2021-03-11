@@ -24,6 +24,15 @@ class Hallily extends StatelessWidget {
     return new Scaffold(
       backgroundColor: Colors.lightBlue.shade50,
       appBar: new AppBar(title: new Text("All About Lily", style: TextStyle(color: Colors.pink.shade200),),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(Icons.menu, color: Colors.pink.shade200),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );},),
         backgroundColor: Colors.lightBlue.shade100,),
       body: new Center(
         child: Column(
@@ -82,7 +91,7 @@ class Hallily extends StatelessWidget {
                 icon: Icon(Icons.arrow_back),
               label: Text("Back"),
               onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
+                Navigator.of(context).pop();
               },
             ),
             Spacer(flex: 4),
@@ -164,6 +173,10 @@ class SchedTableLily extends StatelessWidget{
           home: Scaffold(
             backgroundColor: Colors.lightBlue.shade100,
               appBar: AppBar(
+                leading: IconButton(
+                  icon: Icon(Icons.arrow_back, color: Colors.pink.shade200),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
                 title: Text('Lily Livestream/Premier Schedule', style: TextStyle(color: Colors.pink.shade200),),
                 backgroundColor: Colors.lightBlue.shade100,),
               body: ListView(children: <Widget>[
@@ -216,7 +229,7 @@ class Donolily extends StatelessWidget {
             FlatButton(
               child: Text("Back"),
               onPressed: () {
-                Navigator.pushNamed(context, '/Hallily');
+                Navigator.of(context).pop();
               },
             ), //Kembali
           ],
@@ -232,6 +245,10 @@ class profilelily extends StatelessWidget {
     return new Scaffold(
       backgroundColor: Colors.lightBlue.shade100,
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.pink.shade200),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         backgroundColor: Colors.lightBlue.shade100,
         title: Text('Lily Profile', style: TextStyle(color: Colors.pink.shade200),),
       ),

@@ -25,7 +25,16 @@ class Halchloe extends StatelessWidget {
     return new Scaffold(
       backgroundColor: Colors.yellow.shade50,
       appBar: new AppBar(title: new Text("All About Chloe",style: TextStyle(color: Colors.green),),
-      backgroundColor: Colors.yellow.shade300,),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(Icons.menu, color: Colors.green),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );},),
+        backgroundColor: Colors.yellow.shade300,),
       body: new Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -83,7 +92,7 @@ class Halchloe extends StatelessWidget {
               icon: Icon(Icons.arrow_back),
               label: Text("Back"),
               onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
+                Navigator.of(context).pop();
               },
             ),
             Spacer(flex: 4),//Kembali
@@ -165,6 +174,10 @@ class SchedTableChloe extends StatelessWidget{
           home: Scaffold(
             backgroundColor: Colors.yellow.shade50,
               appBar: AppBar(
+                leading: IconButton(
+                  icon: Icon(Icons.arrow_back, color: Colors.green),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
                 title: Text('Chloe Livestream/Premier Schedule',style: TextStyle(color: Colors.green),),
             backgroundColor: Colors.yellow.shade300,),
               body: ListView(children: <Widget>[
@@ -218,7 +231,7 @@ class Donochloe extends StatelessWidget {
             FlatButton(
               child: Text("Back"),
               onPressed: () {
-                Navigator.pushNamed(context, '/Halchloe');
+                Navigator.of(context).pop();
               },
             ), //Kembali
           ],
@@ -234,6 +247,10 @@ class profilechloe extends StatelessWidget {
     return new Scaffold(
       backgroundColor: Colors.yellow.shade100,
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.green),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         backgroundColor: Colors.yellow.shade300,
         title: Text('Chloe Profile', style: TextStyle(color: Colors.green),),
       ),

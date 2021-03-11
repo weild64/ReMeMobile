@@ -22,8 +22,18 @@ class Halrey extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+
       backgroundColor: Colors.grey.shade300,
       appBar: new AppBar(title: new Text("All About Reynard"),
+      leading: Builder(
+      builder: (BuildContext context) {
+      return IconButton(
+      icon: const Icon(Icons.menu, color: Colors.white),
+      onPressed: () {
+      Scaffold.of(context).openDrawer();
+      },
+        tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+          );},),
         backgroundColor: Colors.grey.shade400,),
       body: new Center(
         child: Column(
@@ -82,7 +92,7 @@ class Halrey extends StatelessWidget {
               icon: Icon(Icons.arrow_back),
               label: Text("Back"),
               onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
+                Navigator.of(context).pop();
               },
             ),
             Spacer(flex: 4),
@@ -159,11 +169,14 @@ class SchedTableRey extends StatelessWidget{
       stream: Firestore.instance.collection('ScheduleRey').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return LinearProgressIndicator();
-
         return MaterialApp(
           home: Scaffold(
               backgroundColor: Colors.grey.shade300,
               appBar: AppBar(
+                leading: IconButton(
+                  icon: Icon(Icons.arrow_back, color: Colors.white),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
                 title: Text('Reynard Livestream/Premier Schedule'),
                 backgroundColor: Colors.grey.shade400,),
               body: ListView(children: <Widget>[
@@ -217,7 +230,7 @@ class Donorey extends StatelessWidget {
             FlatButton(
               child: Text("Back"),
               onPressed: () {
-                Navigator.pushNamed(context, '/Halrey');
+                Navigator.of(context).pop();
               },
             ), //Kembali
           ],
