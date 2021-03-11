@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -6,6 +7,17 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:splashscreen/splashscreen.dart';
 
+List<DataRow> _createRows(QuerySnapshot snapshot) {
+
+  List<DataRow> newList = snapshot.documents.map((DocumentSnapshot documentSnapshot) {
+    //var tgl = new DateTime.fromMicrosecondsSinceEpoch(documentSnapshot['Date']);
+    return new DataRow(cells: [
+      DataCell(Text(documentSnapshot['Date'])),
+      DataCell(Text(documentSnapshot['Title'])),
+      DataCell(Text(documentSnapshot['Time'])),]);
+  }).toList();
+  return newList;
+}
 
 class Halepel extends StatelessWidget {
   @override
@@ -57,7 +69,7 @@ class Halepel extends StatelessWidget {
               icon: Icon(Icons.calendar_today_outlined),
               label: Text("Schedule"),
               onPressed: () {
-                Navigator.pushNamed(context, '/SchedTable');
+                Navigator.pushNamed(context, '/SchedTableEpel');
               },
             ),
             Spacer(flex: 1),// sched
@@ -141,68 +153,35 @@ class Halepel extends StatelessWidget {
   }
 }
 
-class SchedTable extends StatelessWidget{
+class SchedTableEpel extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('Evelyn Livestream/Premier Schedule'),
-          ),
-          body: ListView(children: <Widget>[
-            Center(
-                child: Text(
-                  'Evelyn Schedule 23 Feb - 27 Feb 2021',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                )),
-            DataTable(
-              columns: [
-                DataColumn(label: Text(
-                    'No',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                )),
-                DataColumn(label: Text(
-                    'Tanggal',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                )),
-                DataColumn(label: Text(
-                    'Judul',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                )),
-                DataColumn(label: Text(
-                    'Jam',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                )),
-              ],
-              rows: [
-                DataRow(cells: [
-                  DataCell(Text('1')),
-                  DataCell(Text('23 Feb 2021')),
-                  DataCell(Text('Omori')),
-                  DataCell(Text('19.00')),
-                ]),
-                DataRow(cells: [
-                  DataCell(Text('2')),
-                  DataCell(Text('24 Feb 2021')),
-                  DataCell(Text('RFA')),
-                  DataCell(Text('06.00')),
-                ]),
-                DataRow(cells: [
-                  DataCell(Text('3')),
-                  DataCell(Text('24 Feb 2021')),
-                  DataCell(Text('Minecraft')),
-                  DataCell(Text('09.00')),
-                ]),
-                DataRow(cells: [
-                  DataCell(Text('4')),
-                  DataCell(Text('24 Feb 2021')),
-                  DataCell(Text('JackBox Collab')),
-                  DataCell(Text('19.00')),
-                ]),
-              ],
-            ),
-          ])
-      ),
+    return StreamBuilder<QuerySnapshot>(
+        stream: Firestore.instance.collection('ScheduleEpel').snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) return LinearProgressIndicator();
+
+          return MaterialApp(
+              home: Scaffold(
+                appBar: AppBar(
+                  title: Text('Evelyn Livestream/Premier Schedule'),
+                ),
+                body: ListView(children: <Widget>[
+                 Center(
+                  child: Text(
+                    'Evelyn Schedule',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                  DataTable(
+                    columns: [
+                      DataColumn(label: Text('Tanggal',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                      DataColumn(label: Text('Judul',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                      DataColumn(label: Text('Jam',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                    ],
+                    rows: _createRows(snapshot.data),
+                  ),
+                ])
+              ),
+          );
+        },
     );
   }
 }
