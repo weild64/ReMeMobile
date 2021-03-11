@@ -162,18 +162,21 @@ class SchedTableRey extends StatelessWidget{
 
         return MaterialApp(
           home: Scaffold(
+              backgroundColor: Colors.grey.shade300,
               appBar: AppBar(
                 title: Text('Reynard Livestream/Premier Schedule'),
-              ),
+                backgroundColor: Colors.grey.shade400,),
               body: ListView(children: <Widget>[
+                Text(''),
                 Center(
                     child: Text(
-                      'Reynard Schedule',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                      'Reynard Schedule (GMT+7)',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                Text(''),
                 DataTable(
                   columns: [
-                    DataColumn(label: Text('Tanggal',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                    DataColumn(label: Text('Judul',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                    DataColumn(label: Text('Jam',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text('Date',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text('Title',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text('Time',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
                   ],
                   rows: _createRows(snapshot.data),
                 ),

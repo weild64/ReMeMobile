@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_app/services/auth.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:splashscreen/splashscreen.dart';
 
@@ -162,18 +163,21 @@ class SchedTableChloe extends StatelessWidget{
 
         return MaterialApp(
           home: Scaffold(
+            backgroundColor: Colors.yellow.shade50,
               appBar: AppBar(
-                title: Text('Chloe Livestream/Premier Schedule'),
-              ),
+                title: Text('Chloe Livestream/Premier Schedule',style: TextStyle(color: Colors.green),),
+            backgroundColor: Colors.yellow.shade300,),
               body: ListView(children: <Widget>[
+                Text(''),
                 Center(
                     child: Text(
-                      'Chloe Schedule',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                      'Chloe Schedule (GMT+7)',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                Text(''),
                 DataTable(
                   columns: [
-                    DataColumn(label: Text('Tanggal',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                    DataColumn(label: Text('Judul',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                    DataColumn(label: Text('Jam',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text('Date',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text('Title',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text('Time',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
                   ],
                   rows: _createRows(snapshot.data),
                 ),
@@ -254,7 +258,7 @@ class profilechloe extends StatelessWidget {
           ),
           SizedBox(height: 20,),
           ListTileTheme(tileColor: Colors.yellow.shade50,
-            child: ListTile(title: Text('Chloe Pawapua', style: TextStyle(fontSize: 20,),), subtitle: Text('Virtual Magician'),),),
+            child: ListTile(title: Text('Chloe Pawapua', style: TextStyle(fontSize: 20,),), subtitle: Text('Virtual Wizard'),),),
           ListTileTheme(tileColor: Colors.yellow.shade50,
             child: ListTile(title: Text('About Me'),
               subtitle: Column(

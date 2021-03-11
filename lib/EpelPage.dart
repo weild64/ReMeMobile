@@ -163,18 +163,21 @@ class SchedTableEpel extends StatelessWidget{
 
           return MaterialApp(
               home: Scaffold(
+                  backgroundColor: Colors.pink.shade50,
                 appBar: AppBar(
-                  title: Text('Evelyn Livestream/Premier Schedule'),
-                ),
+                  title: Text('Evelyn Livestream/Premier Schedule', style: TextStyle(color: Colors.lightBlue),),
+                backgroundColor: Colors.pink.shade100,),
                 body: ListView(children: <Widget>[
+                  Text(''),
                  Center(
                   child: Text(
-                    'Evelyn Schedule',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                    'Evelyn Schedule (GMT +7)',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                  Text(''),
                   DataTable(
                     columns: [
-                      DataColumn(label: Text('Tanggal',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                      DataColumn(label: Text('Judul',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                      DataColumn(label: Text('Jam',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                      DataColumn(label: Text('Date',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                      DataColumn(label: Text('Title',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                      DataColumn(label: Text('Time',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
                     ],
                     rows: _createRows(snapshot.data),
                   ),
@@ -267,7 +270,7 @@ class profileepel extends StatelessWidget {
         SizedBox(height: 20,),
           ListTileTheme(tileColor: Colors.pink.shade50,
             child: ListTile(title: Text('Evelyn -Vtuber-', style: TextStyle(fontSize: 20,),),
-              subtitle: Text('Virtual Moodbooster kalian'),),),
+              subtitle: Text('Virtual College Student'),),),
           ListTileTheme(tileColor: Colors.pink.shade50,
             child: ListTile(title: Text('About Me'),
               subtitle: Column(
@@ -281,7 +284,7 @@ class profileepel extends StatelessWidget {
                   Text('Papa & Mama',style: TextStyle(fontWeight: FontWeight.bold),),
                   Text('Reinly & Nabs'),
                   Text('Background : ',style: TextStyle(fontWeight: FontWeight.bold),),
-                  Text("Normal college student who aspire to become everyone's mood booster, so she become a Vtuber. Very normal Student. Totally nromal. Not Receh at all."),
+                  Text("Normal college student who aspire to become everyone's mood booster, so she become a Vtuber. Very normal Student. Totally normal. Not Receh at all."),
             ],
               ),
             ),

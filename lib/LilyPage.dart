@@ -162,22 +162,25 @@ class SchedTableLily extends StatelessWidget{
 
         return MaterialApp(
           home: Scaffold(
+            backgroundColor: Colors.lightBlue.shade100,
               appBar: AppBar(
-                title: Text('Lily Livestream/Premier Schedule'),
-              ),
+                title: Text('Lily Livestream/Premier Schedule', style: TextStyle(color: Colors.pink.shade200),),
+                backgroundColor: Colors.lightBlue.shade100,),
               body: ListView(children: <Widget>[
+                Text(''),
                 Center(
                     child: Text(
-                      'Lily Schedule',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                      'Lily Schedule (GMT+7)',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                Text(''),
                 DataTable(
                   columns: [
-                    DataColumn(label: Text('Tanggal',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                    DataColumn(label: Text('Judul',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                    DataColumn(label: Text('Jam',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text('Date',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text('Title',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text('Time',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
                   ],
                   rows: _createRows(snapshot.data),
                 ),
-              ])
+              ],),
           ),
         );
       },
