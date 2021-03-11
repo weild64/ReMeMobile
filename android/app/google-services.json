@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:847631271911:android:e6f73a5c9402fd9c1a1f42",
+        "android_client_info": {
+          "package_name": "com.warteg.evelyn_family_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847631271911-lqeg565ttqbd4bncv4ag2nfi6019hke4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3wtm0OFKEucFPLWk2GaBngHEXrTYcrGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847631271911-lqeg565ttqbd4bncv4ag2nfi6019hke4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:847631271911:android:db07077972549b4d1a1f42",
         "android_client_info": {
           "package_name": "com.warteg.evelynfamilyapp"
