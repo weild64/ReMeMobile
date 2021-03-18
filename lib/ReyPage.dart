@@ -25,15 +25,15 @@ class Halrey extends StatelessWidget {
 
       backgroundColor: Colors.grey.shade300,
       appBar: new AppBar(title: new Text("All About Reynard"),
-      leading: Builder(
-      builder: (BuildContext context) {
-      return IconButton(
-      icon: const Icon(Icons.menu, color: Colors.white),
-      onPressed: () {
-      Scaffold.of(context).openDrawer();
-      },
-        tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-          );},),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.menu, color: Colors.white),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );},),
         backgroundColor: Colors.grey.shade400,),
       body: new Center(
         child: Column(
@@ -104,9 +104,12 @@ class Halrey extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('Warteg Portable'),
               decoration: BoxDecoration(
                 color: Colors.blue,
+                image: DecorationImage(
+                  image: AssetImage('Image/drawer-02.png'),
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
             ListTile(
@@ -124,7 +127,7 @@ class Halrey extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.chat_outlined),
+                leading: Icon(Icons.chat_outlined),
                 title: Text("Discord Link"),
                 onTap: () async {
                   if (await canLaunch('https://s.id/wartegepel')){
@@ -256,16 +259,16 @@ class profilerey extends StatelessWidget {
             children: <Widget>[
               Center(
                 child: Image(
-                  height: MediaQuery.of(context).size.height / 4,
-                  fit: BoxFit.fill,
-                  image: AssetImage('Image/placeholderrey.png')
-              ),),
-              Positioned(
-                child: CircleAvatar(
-                    radius: 80,
-                    backgroundColor: Colors.white,
-                    backgroundImage: AssetImage('Image/A-rey.jpg')
+                    height: MediaQuery.of(context).size.height / 4,
+                    fit: BoxFit.fill,
+                    image: AssetImage('Image/rey.jpg')
                 ),),
+              // Positioned(
+              //   child: CircleAvatar(
+              //       radius: 80,
+              //       backgroundColor: Colors.white,
+              //       backgroundImage: AssetImage('Image/A-rey.jpg')
+              //   ),),
             ],
           ),
           SizedBox(height: 20,),
@@ -274,18 +277,18 @@ class profilerey extends StatelessWidget {
           ListTileTheme(tileColor: Colors.grey.shade50,
             child: ListTile(title: Text('About Me'),
               subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-              Text("Hi!~ /ᐠ .⋏. ᐟﾉ\nFox Guy Virtual Musician, Reynard Blanc here~~\nI love to make music, so please listen to my musics xD\nBe one of my Reysteners won't you? ;3"),
-                    Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
-                    Text('1 March',textAlign: TextAlign.end,),
-                    Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
-                    Text('180Cm'),
-                    Text('Papa',style: TextStyle(fontWeight: FontWeight.bold),),
-                    Text('Reinly'),
-                    Text('Background : ',style: TextStyle(fontWeight: FontWeight.bold),),
-                    Text('A Fox demon from mythical village in indonesia. He Come to the big city searching for wealth and catch his dream to become a Musician.'),
-                  ],
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Hi!~ /ᐠ .⋏. ᐟﾉ\nFox Guy Virtual Musician, Reynard Blanc here~~\nI love to make music, so please listen to my musics xD\nBe one of my Reysteners won't you? ;3"),
+                  // Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text('1 March',textAlign: TextAlign.end,),
+                  // Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
+                  // Text('180Cm'),
+                  // Text('Papa',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text('Reinly'),
+                  // Text('Background : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text('A Fox demon from mythical village in indonesia. He Come to the big city searching for wealth and catch his dream to become a Musician.'),
+                ],
               ),
             ),
           ),
@@ -293,13 +296,13 @@ class profilerey extends StatelessWidget {
             title: Text('Bussiness inquiries and collaboration matters'),
           ),
           Center(
-          child: FlatButton.icon(
-            onPressed: () => _launchURL('reynardblanc@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Reynard'),
-            icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
-            color: Colors.lightBlueAccent,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            child: FlatButton.icon(
+              onPressed: () => _launchURL('reynardblanc@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Reynard'),
+              icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
+              color: Colors.lightBlueAccent,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            ),
           ),
-    ),
           ListTile(
             title: Text('Link Media'),
           ),

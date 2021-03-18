@@ -47,9 +47,12 @@ class Halsettings extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('Warteg Portable'),
               decoration: BoxDecoration(
                 color: Colors.blue,
+                image: DecorationImage(
+                  image: AssetImage('Image/drawer-02.png'),
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
             ListTile(

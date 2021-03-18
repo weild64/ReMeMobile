@@ -56,11 +56,11 @@ class Halchloe extends StatelessWidget {
             Spacer(flex: 1),// Profile
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-              primary: Colors.yellow.shade300,
-              onPrimary: Colors.green,
-              elevation: 5,
-              padding: EdgeInsets.symmetric(horizontal: 63, vertical: 10),
-            ),
+                primary: Colors.yellow.shade300,
+                onPrimary: Colors.green,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 63, vertical: 10),
+              ),
               icon: Icon(Icons.attach_money_rounded),
               label: Text("Donation"),
               onPressed: () {
@@ -104,9 +104,12 @@ class Halchloe extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('Warteg Portable'),
               decoration: BoxDecoration(
                 color: Colors.blue,
+                image: DecorationImage(
+                  image: AssetImage('Image/drawer-02.png'),
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
             ListTile(
@@ -124,7 +127,7 @@ class Halchloe extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.chat_outlined),
+                leading: Icon(Icons.chat_outlined),
                 title: Text("Discord Link"),
                 onTap: () async {
                   if (await canLaunch('https://s.id/wartegepel')){
@@ -172,14 +175,14 @@ class SchedTableChloe extends StatelessWidget{
 
         return MaterialApp(
           home: Scaffold(
-            backgroundColor: Colors.yellow.shade50,
+              backgroundColor: Colors.yellow.shade50,
               appBar: AppBar(
                 leading: IconButton(
                   icon: Icon(Icons.arrow_back, color: Colors.green),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
                 title: Text('Chloe Livestream/Premier Schedule',style: TextStyle(color: Colors.green),),
-            backgroundColor: Colors.yellow.shade300,),
+                backgroundColor: Colors.yellow.shade300,),
               body: ListView(children: <Widget>[
                 Text(''),
                 Center(
@@ -261,16 +264,16 @@ class profilechloe extends StatelessWidget {
             children: <Widget>[
               Center(
                 child: Image(
-                  height: MediaQuery.of(context).size.height / 4,
-                  fit: BoxFit.fill,
-                  image: AssetImage('Image/placeholderchloe.png')
-              ),),
-              Positioned(
-                child: CircleAvatar(
-                    radius: 80,
-                    backgroundColor: Colors.white,
-                    backgroundImage: AssetImage('Image/A-chloe.jpg')
+                    height: MediaQuery.of(context).size.height / 4,
+                    fit: BoxFit.fill,
+                    image: AssetImage('Image/chloe.jpg')
                 ),),
+              // Positioned(
+              //   child: CircleAvatar(
+              //       radius: 80,
+              //       backgroundColor: Colors.white,
+              //       backgroundImage: AssetImage('Image/A-chloe.jpg')
+              //   ),),
             ],
           ),
           SizedBox(height: 20,),
@@ -279,33 +282,33 @@ class profilechloe extends StatelessWidget {
           ListTileTheme(tileColor: Colors.yellow.shade50,
             child: ListTile(title: Text('About Me'),
               subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Kawahionapua~ \nI am a wizard who are not talented in magic, Chloe Pawapua.\nGive me information about how to life because I want to prevent extinction of Pawapua clan, it's wizard clan, my clan.\nYou can also join Pawapua clan anyway. ehehe.."),
-                    Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
-                    Text('29 February',textAlign: TextAlign.end,),
-                    Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
-                    Text('160Cm'),
-                    Text('Papa',style: TextStyle(fontWeight: FontWeight.bold),),
-                    Text('Reinly'),
-                    Text('Background : ',style: TextStyle(fontWeight: FontWeight.bold),),
-                    Text('Wizard who are not talented in magic. Seek the information about life to adapt with normal humans, this all for prevent the extinction of the Pawapua populations.'),
-                       ],
-                  ),
-               ),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Kawahionapua~ \nI am a wizard who are not talented in magic, Chloe Pawapua.\nGive me information about how to life because I want to prevent extinction of Pawapua clan, it's wizard clan, my clan.\nYou can also join Pawapua clan anyway. ehehe.."),
+                  // Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text('29 February',textAlign: TextAlign.end,),
+                  // Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
+                  // Text('160Cm'),
+                  // Text('Papa',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text('Reinly'),
+                  // Text('Background : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text('Wizard who are not talented in magic. Seek the information about life to adapt with normal humans, this all for prevent the extinction of the Pawapua populations.'),
+                ],
+              ),
             ),
+          ),
           ListTile(
             title: Text('Bussiness inquiries and collaboration matters'),
           ),
-      Center(
-        child: FlatButton.icon(
-            onPressed: () => _launchURL('chloepawapua@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Chloe'),
-            icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
-            color: Colors.lightBlueAccent,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          height: 30,
+          Center(
+            child: FlatButton.icon(
+              onPressed: () => _launchURL('chloepawapua@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Chloe'),
+              icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
+              color: Colors.lightBlueAccent,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              height: 30,
+            ),
           ),
-      ),
           ListTile(
             title: Text('Link Media'),
           ),

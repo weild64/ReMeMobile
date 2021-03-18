@@ -45,7 +45,7 @@ class Halepel extends StatelessWidget {
                 primary: Colors.pink.shade100,
                 onPrimary: Colors.lightBlue,
                 elevation: 5,
-                  padding: EdgeInsets.symmetric(horizontal: 53, vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 53, vertical: 10),
               ),
               icon: Icon(Icons.assignment_ind),
               label: Text("Profile Epel"),
@@ -104,9 +104,12 @@ class Halepel extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('Warteg Portable'),
               decoration: BoxDecoration(
                 color: Colors.blue,
+                image: DecorationImage(
+                  image: AssetImage('Image/drawer-02.png'),
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
             ListTile(
@@ -124,7 +127,7 @@ class Halepel extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.chat_outlined),
+                leading: Icon(Icons.chat_outlined),
                 title: Text("Discord Link"),
                 onTap: () async {
                   if (await canLaunch('https://s.id/wartegepel')){
@@ -166,38 +169,38 @@ class SchedTableEpel extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: Firestore.instance.collection('ScheduleEpel').snapshots(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) return LinearProgressIndicator();
+      stream: Firestore.instance.collection('ScheduleEpel').snapshots(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) return LinearProgressIndicator();
 
-          return MaterialApp(
-              home: Scaffold(
-                  backgroundColor: Colors.pink.shade50,
-                appBar: AppBar(
-                  leading: IconButton(
-                    icon: Icon(Icons.arrow_back, color: Colors.lightBlue),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                  title: Text('Evelyn Livestream/Premier Schedule', style: TextStyle(color: Colors.lightBlue),),
+        return MaterialApp(
+          home: Scaffold(
+              backgroundColor: Colors.pink.shade50,
+              appBar: AppBar(
+                leading: IconButton(
+                  icon: Icon(Icons.arrow_back, color: Colors.lightBlue),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+                title: Text('Evelyn Livestream/Premier Schedule', style: TextStyle(color: Colors.lightBlue),),
                 backgroundColor: Colors.pink.shade100,),
-                body: ListView(children: <Widget>[
-                  Text(''),
-                 Center(
-                  child: Text(
-                    'Evelyn Schedule (GMT +7)',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
-                  Text(''),
-                  DataTable(
-                    columns: [
-                      DataColumn(label: Text('Date',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                      DataColumn(label: Text('Title',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                      DataColumn(label: Text('Time',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                    ],
-                    rows: _createRows(snapshot.data),
-                  ),
-                ])
-              ),
-          );
-        },
+              body: ListView(children: <Widget>[
+                Text(''),
+                Center(
+                    child: Text(
+                      'Evelyn Schedule (GMT +7)',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                Text(''),
+                DataTable(
+                  columns: [
+                    DataColumn(label: Text('Date',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text('Title',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                    DataColumn(label: Text('Time',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                  ],
+                  rows: _createRows(snapshot.data),
+                ),
+              ])
+          ),
+        );
+      },
     );
   }
 }
@@ -266,25 +269,25 @@ class profileepel extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           Stack(
-          alignment: Alignment.topLeft,
-          children: <Widget>[
-            Center(
-            child: Image(
-              height: MediaQuery.of(context).size.height / 4,
-                fit: BoxFit.fill,
-                image: AssetImage('Image/placeholderepel.png')
-            ),
-            ),
-            Positioned(
-              child: CircleAvatar(
-                  radius: 90,
-                  backgroundColor: Colors.white,
-                  backgroundImage: AssetImage('Image/A-epel.jpg')
+            alignment: Alignment.topLeft,
+            children: <Widget>[
+              Center(
+                child: Image(
+                    height: MediaQuery.of(context).size.height / 4,
+                    fit: BoxFit.fill,
+                    image: AssetImage('Image/Epel.jpg')
+                ),
               ),
-            ),
-             ],
-        ),
-        SizedBox(height: 20,),
+              // Positioned(
+              //   child: CircleAvatar(
+              //       radius: 90,
+              //       backgroundColor: Colors.white,
+              //       backgroundImage: AssetImage('Image/A-epel.jpg')
+              //   ),
+              // ),
+            ],
+          ),
+          SizedBox(height: 20,),
           ListTileTheme(tileColor: Colors.pink.shade50,
             child: ListTile(title: Text('Evelyn -Vtuber-', style: TextStyle(fontSize: 20,),),
               subtitle: Text('Virtual College Student'),),),
@@ -294,15 +297,15 @@ class profileepel extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("My name is Evelyn but you can call me Epel!,\nI'm here for become your virtual mood booster through my Youtube contents~ ᕦ( ᐛ )ᕡ,\nPlease be one of my #Epelable friends because I can't do this without you guys~(  >ㅅ<)b,\nID/EN OK! 日本語は少しだけ分かります。\n",),
-                  Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
-                  Text('1 December',textAlign: TextAlign.end,),
-                  Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
-                  Text('160Cm + 5Cm (Ahoge)'),
-                  Text('Papa & Mama',style: TextStyle(fontWeight: FontWeight.bold),),
-                  Text('Reinly & Nabs'),
-                  Text('Background : ',style: TextStyle(fontWeight: FontWeight.bold),),
-                  Text("Normal college student who aspire to become everyone's mood booster, so she become a Vtuber. Very normal Student. Totally normal. Not Receh at all."),
-            ],
+                  // Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text('1 December',textAlign: TextAlign.end,),
+                  // Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
+                  // Text('160Cm + 5Cm (Ahoge)'),
+                  // Text('Papa & Mama',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text('Reinly & Nabs'),
+                  // Text('Background : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text("Normal college student who aspire to become everyone's mood booster, so she become a Vtuber. Very normal Student. Totally normal. Not Receh at all."),
+                ],
               ),
             ),
           ),
@@ -310,13 +313,13 @@ class profileepel extends StatelessWidget {
             title: Text('Bussiness inquiries and collaboration matters'),
           ),
           Center(
-          child: FlatButton.icon(
+            child: FlatButton.icon(
               onPressed: () => _launchURL('evelyn.vtuber@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Evelyn'),
-            icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
-            color: Colors.lightBlueAccent,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            height: 30,
-          ),
+              icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
+              color: Colors.lightBlueAccent,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              height: 30,
+            ),
           ),
           ListTile(
             title: Text('Link Media'),
@@ -348,10 +351,10 @@ class profileepel extends StatelessWidget {
                   };
                 },
               ),
-    ],
+            ],
           )
         ],
-    ),
+      ),
     );
   }
   _launchURL(String toMailId, String subject, String body) async {
@@ -378,11 +381,11 @@ class ytepel extends StatelessWidget{
       alignment: Alignment.center,
       decoration: new BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('Image/yticon.png'),
-          fit: BoxFit.fill
+            image: AssetImage('Image/yticon.png'),
+            fit: BoxFit.fill
         ),
-        ),
-      );
+      ),
+    );
   }
 }
 

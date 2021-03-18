@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/settings.dart';
-import 'package:flutter_app/services/auth.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'dart:async';
 import 'EpelPage.dart';
@@ -12,7 +10,7 @@ import 'LilyPage.dart';
 import 'ReyPage.dart';
 import 'ChloePage.dart';
 import 'settings.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'WartegPage.dart';
 
 const warteg_url = 'https://s.id/wartegepel';
 
@@ -32,6 +30,9 @@ void main(){
         '/SchedTableLily' : (BuildContext context) => new SchedTableLily(),
         '/SchedTableRey' : (BuildContext context) => new SchedTableRey(),
         '/SchedTableChloe' : (BuildContext context) => new SchedTableChloe(),
+        '/SchedTableRadio' : (BuildContext context) => new SchedTableRadio(),
+        '/SchedTablePodcast' : (BuildContext context) => new SchedTablePodcast(),
+        '/SchedTableMakrab' : (BuildContext context) => new SchedTableMakrab(),
         '/Donoepel' : (BuildContext context) => new Donoepel(),
         '/Donolily' : (BuildContext context) => new Donolily(),
         '/Donorey' : (BuildContext context) => new Donorey(),
@@ -55,16 +56,15 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context) {
     return new SplashScreen(
-      seconds: 5,
+      seconds: 7,
       navigateAfterSeconds: new Halawal(),
       title: new Text(
         'Welcome To Warteg Mobile',
         style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
       ),
-      image: new Image.asset('Image/page2.jpg'),
+      image: new Image.asset('Image/logo.gif'),
       photoSize: 150.0,
       backgroundColor: Colors.cyan.shade200,
-      loaderColor: Colors.green,
       loadingText: Text('The DualSim(P) team'),
     );
   }
@@ -108,17 +108,19 @@ class _Halawal extends State<Halawal> {
         appBar: new AppBar(
           centerTitle: true,
           backgroundColor: Colors.blue[500],
-          title:
-          new Text('Warteg Evelyn'),
+          title: new Text('Warteg Evelyn'),
         ),
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
               DrawerHeader(
-                child: Text('Warteg Portable'),
                 decoration: BoxDecoration(
                   color: Colors.blue,
+                  image: DecorationImage(
+                    image: AssetImage('Image/drawer-02.png'),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
               ListTile(
@@ -212,108 +214,6 @@ class _Halawal extends State<Halawal> {
   }
 }
 
-class Halwarteg extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(title: new Text("Warteg Epelz Page"),),
-      body: new Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              child: Text("Jadwal Podcast"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),// Profile
-            ElevatedButton(
-              child: Text("Jadwal Radio"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ), //Donation
-            ElevatedButton(
-              child: Text("Jadwal Makrab"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),// sched
-            ElevatedButton(
-                child: Text("Donation"),
-                onPressed: () async {
-                  if (await canLaunch('https://trakteer.id/wartegepelz')){
-                    await launch('https://trakteer.id/wartegepelz');
-                  };
-                }
-            ),
-            ElevatedButton(
-              child: Text("Back"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ), //Kembali
-          ],
-        ),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Warteg Portable'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
-            ListTile(
-              title: Text('Home'),
-              onTap: () {
-                Navigator.pushNamed(context, '/Halawal');
-              },
-            ),
-            ListTile(
-              title: Text('Settings'),
-              onTap: () {
-                Navigator.pushNamed(context, '/Halsettings');
-              },
-            ),
-            ListTile(
-                title: Text("Discord Link"),
-                onTap: () async {
-                  if (await canLaunch('https://s.id/wartegepel')){
-                    await launch('https://s.id/wartegepel');
-                  };
-                }
-            ),
-            ListTile(
-              title: Text('About Us'),
-              onTap: () {
-                showAboutDialog(context: context,
-                  applicationIcon: FlutterLogo(),
-                  applicationName: 'Warteg Epel Project',
-                  applicationVersion: '0.0.5',
-                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
-                  children: <Widget>[
-                    Text(
-                        'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
-                  ],
-                );
-              },
-            ),
-            ListTile(
-              title: Text('Close App'),
-              onTap: () {
-                SystemNavigator.pop();
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class ButtonPlacement extends StatelessWidget {
   ButtonPlacement({this.icon, this.teks, this.navigasi});
 
@@ -358,7 +258,7 @@ class ButtonEpel extends StatelessWidget{
       child: new Card(
         child: new Column(
           children: <Widget>[
-            new Image.asset('Image/BannerEpel.png')
+            new Image.asset('Image/BannerEpel_02.png')
           ],
         ),
       ),
@@ -379,7 +279,7 @@ class ButtonLily extends StatelessWidget{
       child: new Card(
         child: new Column(
           children: <Widget>[
-            new Image.asset('Image/BannerLily.png')
+            new Image.asset('Image/BannerLily_02.png')
           ],
         ),
       ),
@@ -400,7 +300,7 @@ class ButtonReynard extends StatelessWidget{
       child: new Card(
         child: new Column(
           children: <Widget>[
-            new Image.asset('Image/BannerRey.png')
+            new Image.asset('Image/BannerRey_02.png')
           ],
         ),
       ),
@@ -422,7 +322,7 @@ class ButtonChloe extends StatelessWidget{
       child: new Card(
         child: new Column(
           children: <Widget>[
-            new Image.asset('Image/BannerChloe.png')
+            new Image.asset('Image/BannerChloe_02.png')
           ],
         ),
       ),
@@ -443,7 +343,7 @@ class ButtonWarteg extends StatelessWidget{
       child: new Card(
         child: new Column(
           children: <Widget>[
-            new Image.asset('Image/BannerWarteg.png')
+            new Image.asset('Image/BannerWarteg_02.png')
           ],
         ),
       ),

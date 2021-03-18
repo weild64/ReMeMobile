@@ -54,41 +54,41 @@ class Hallily extends StatelessWidget {
             ),
             Spacer(flex: 1),// Profile
             ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.lightBlue.shade100,
-                  onPrimary: Colors.pink.shade200,
-                  elevation: 5,
-                  padding: EdgeInsets.symmetric(horizontal: 56, vertical: 10),
-                ),
-                icon: Icon(Icons.attach_money_rounded),
-                label:Text("Donation"),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.lightBlue.shade100,
+                onPrimary: Colors.pink.shade200,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 56, vertical: 10),
+              ),
+              icon: Icon(Icons.attach_money_rounded),
+              label:Text("Donation"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Donolily');
               },
             ),
             Spacer(flex: 1),//Donation
             ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.lightBlue.shade100,
-                  onPrimary: Colors.pink.shade200,
-                  elevation: 5,
-                  padding: EdgeInsets.symmetric(horizontal: 55, vertical: 10),
-                ),
-                icon: Icon(Icons.calendar_today_outlined),
-                label: Text("Schedule"),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.lightBlue.shade100,
+                onPrimary: Colors.pink.shade200,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 55, vertical: 10),
+              ),
+              icon: Icon(Icons.calendar_today_outlined),
+              label: Text("Schedule"),
               onPressed: () {
                 Navigator.pushNamed(context, '/SchedTableLily');
               },
             ),
             Spacer(flex: 1),// sched
             ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.lightBlue.shade100,
-                  onPrimary: Colors.pink.shade200,
-                  elevation: 5,
-                  padding: EdgeInsets.symmetric(horizontal: 68, vertical: 10),
-                ),
-                icon: Icon(Icons.arrow_back),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.lightBlue.shade100,
+                onPrimary: Colors.pink.shade200,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 68, vertical: 10),
+              ),
+              icon: Icon(Icons.arrow_back),
               label: Text("Back"),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -103,9 +103,12 @@ class Hallily extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('Warteg Portable'),
               decoration: BoxDecoration(
                 color: Colors.blue,
+                image: DecorationImage(
+                  image: AssetImage('Image/drawer-02.png'),
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
             ListTile(
@@ -123,7 +126,7 @@ class Hallily extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.chat_outlined),
+                leading: Icon(Icons.chat_outlined),
                 title: Text("Discord Link"),
                 onTap: () async {
                   if (await canLaunch('https://s.id/wartegepel')){
@@ -172,28 +175,28 @@ class SchedTableLily extends StatelessWidget{
         return MaterialApp(
           home: Scaffold(
             backgroundColor: Colors.lightBlue.shade100,
-              appBar: AppBar(
-                leading: IconButton(
-                  icon: Icon(Icons.arrow_back, color: Colors.pink.shade200),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-                title: Text('Lily Livestream/Premier Schedule', style: TextStyle(color: Colors.pink.shade200),),
-                backgroundColor: Colors.lightBlue.shade100,),
-              body: ListView(children: <Widget>[
-                Text(''),
-                Center(
-                    child: Text(
-                      'Lily Schedule (GMT+7)',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
-                Text(''),
-                DataTable(
-                  columns: [
-                    DataColumn(label: Text('Date',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                    DataColumn(label: Text('Title',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                    DataColumn(label: Text('Time',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                  ],
-                  rows: _createRows(snapshot.data),
-                ),
-              ],),
+            appBar: AppBar(
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back, color: Colors.pink.shade200),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              title: Text('Lily Livestream/Premier Schedule', style: TextStyle(color: Colors.pink.shade200),),
+              backgroundColor: Colors.lightBlue.shade100,),
+            body: ListView(children: <Widget>[
+              Text(''),
+              Center(
+                  child: Text(
+                    'Lily Schedule (GMT+7)',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+              Text(''),
+              DataTable(
+                columns: [
+                  DataColumn(label: Text('Date',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                  DataColumn(label: Text('Title',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                  DataColumn(label: Text('Time',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                ],
+                rows: _createRows(snapshot.data),
+              ),
+            ],),
           ),
         );
       },
@@ -259,16 +262,16 @@ class profilelily extends StatelessWidget {
             children: <Widget>[
               Center(
                 child: Image(
-                  height: MediaQuery.of(context).size.height / 4,
-                  fit: BoxFit.fill,
-                  image: AssetImage('Image/placeholderlily.png')
-              ),),
-              Positioned(
-                child: CircleAvatar(
-                    radius: 80,
-                    backgroundColor: Colors.white,
-                    backgroundImage: AssetImage('Image/A-lily.jpg')
+                    height: MediaQuery.of(context).size.height / 4,
+                    fit: BoxFit.fill,
+                    image: AssetImage('Image/lily.jpg')
                 ),),
+              // Positioned(
+              //   child: CircleAvatar(
+              //       radius: 80,
+              //       backgroundColor: Colors.white,
+              //       backgroundImage: AssetImage('Image/A-lily.jpg')
+              //   ),),
             ],
           ),
           SizedBox(height: 20,),
@@ -279,29 +282,29 @@ class profilelily extends StatelessWidget {
               subtitle:  Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-              Text("Hayohaa !\nLily Ifeta here, I came to earth from heaven to destroy or maybe bless all human in this world . Of course also make you happy and cheerful everyday ~\nDon’t forget to be happy okay ?\n\nBe my cancimen and I will always makes you smile  U w U)7"),
-              Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
-              Text('9 September',textAlign: TextAlign.end,),
-              Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
-              Text('156Cm'),
-              Text('Papa',style: TextStyle(fontWeight: FontWeight.bold),),
-              Text('Reinly'),
-                  Text('Background : ',style: TextStyle(fontWeight: FontWeight.bold),),
-                  Text('A Problematic angel who thrown to earth. To make it back to heaven, she have to collect enough happiness from human.'),
-              ],
+                  Text("Hayohaa !\nLily Ifeta here, I came to earth from heaven to destroy or maybe bless all human in this world . Of course also make you happy and cheerful everyday ~\nDon’t forget to be happy okay ?\n\nBe my cancimen and I will always makes you smile  U w U)7"),
+                  // Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text('9 September',textAlign: TextAlign.end,),
+                  // Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
+                  // Text('156Cm'),
+                  // Text('Papa',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text('Reinly'),
+                  // Text('Background : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text('A Problematic angel who thrown to earth. To make it back to heaven, she have to collect enough happiness from human.'),
+                ],
+              ),
             ),
           ),
-    ),
           ListTile(
             title: Text('Bussiness inquiries and collaboration matters'),
           ),
           Center (
-          child: FlatButton.icon(
-            onPressed: () => _launchURL('lily.ifeta@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Lily'),
-            icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
-            color: Colors.lightBlueAccent,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          ),
+            child: FlatButton.icon(
+              onPressed: () => _launchURL('lily.ifeta@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Lily'),
+              icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
+              color: Colors.lightBlueAccent,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            ),
           ),
           ListTile(
             title: Text('Link Media'),
