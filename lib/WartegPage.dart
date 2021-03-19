@@ -109,6 +109,11 @@ class Halwarteg extends StatelessWidget {
               },
             ),
             ListTile(
+                leading: Icon(Icons.feedback_outlined),
+                title: Text("Feedback"),
+                onTap: _launchEmail
+            ),
+            ListTile(
               title: Text('Close App'),
               onTap: () {
                 SystemNavigator.pop();
@@ -119,6 +124,10 @@ class Halwarteg extends StatelessWidget {
       ),
     );
   }
+}
+_launchEmail() async {
+  launch(
+      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=Here The App Feedback from me%20plugin");
 }
 
 class SchedTableRadio extends StatelessWidget{

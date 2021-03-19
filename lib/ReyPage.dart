@@ -152,6 +152,11 @@ class Halrey extends StatelessWidget {
               },
             ),
             ListTile(
+                leading: Icon(Icons.feedback_outlined),
+                title: Text("Feedback"),
+                onTap: _launchEmail
+            ),
+            ListTile(
               leading: Icon(Icons.close),
               title: Text('Close App'),
               onTap: () {
@@ -164,7 +169,10 @@ class Halrey extends StatelessWidget {
     );
   }
 }
-
+_launchEmail() async {
+  launch(
+      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=Here The App Feedback from me%20plugin");
+}
 class SchedTableRey extends StatelessWidget{
   @override
   Widget build(BuildContext context) {

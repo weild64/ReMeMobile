@@ -163,6 +163,11 @@ class _Halawal extends State<Halawal> {
                 },
               ),
               ListTile(
+                  leading: Icon(Icons.feedback_outlined),
+                  title: Text("Feedback"),
+                     onTap: _launchEmail
+              ),
+              ListTile(
                 leading: Icon(Icons.close),
                 title: Text('Close App'),
                 onTap: () {
@@ -212,6 +217,10 @@ class _Halawal extends State<Halawal> {
       ),
     );
   }
+}
+_launchEmail() async {
+  launch(
+      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=Here The App Feedback from me%20plugin");
 }
 
 class ButtonPlacement extends StatelessWidget {
