@@ -25,43 +25,95 @@ class Halwarteg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("Warteg Epelz Page"),),
+      backgroundColor: Colors.white,
+      appBar: new AppBar(title: new Text("Warteg Epelz Event Schedule", style: TextStyle(color: Colors.white),),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(Icons.menu, color: Colors.white),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );},),
+        backgroundColor: Colors.blue,),
       body: new Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              child: Text("Jadwal Podcast"),
+            Spacer(flex: 4),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.purple.shade200,
+                onPrimary: Colors.white,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 53, vertical: 10),
+              ),
+              icon: Icon(Icons.mic_outlined),
+              label: Text("Podcast Warteg Schedule"),
               onPressed: () {
                 Navigator.pushNamed(context, '/SchedTablePodcast');
               },
-            ),// Profile
-            ElevatedButton(
-              child: Text("Jadwal Radio"),
-              onPressed: () {
-                Navigator.pushNamed(context, '/SchedTableRadio');
-              },
-            ), //Donation
-            ElevatedButton(
-              child: Text("Jadwal Makrab"),
+            ),
+            Spacer(flex: 1),// Profile
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.red,
+                onPrimary: Colors.white,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 57, vertical: 10),
+              ),
+              icon: Icon(Icons.videogame_asset),
+              label: Text("Makrab Warteg Schedule"),
               onPressed: () {
                 Navigator.pushNamed(context, '/SchedTableMakrab');
               },
-            ),// sched
-            ElevatedButton(
-                child: Text("Donation"),
-                onPressed: () async {
-                  if (await canLaunch('https://trakteer.id/wartegepelz')){
-                    await launch('https://trakteer.id/wartegepelz');
-                  };
-                }
             ),
-            ElevatedButton(
-              child: Text("Back"),
+            Spacer(flex: 1),//Donation
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                onPrimary: Colors.white,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 63, vertical: 10),
+              ),
+              icon: Icon(Icons.radio),
+              label: Text("Warteg Radio Schedule"),
               onPressed: () {
-                Navigator.pushNamed(context, '/Halawal');
+                Navigator.pushNamed(context, '/SchedTableRadio');
               },
-            ), //Kembali
+            ),
+            Spacer(flex: 1),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.grey.shade400,
+                onPrimary: Colors.white,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 86, vertical: 10),
+              ),
+              icon: Icon(Icons.attach_money_outlined),
+              label: Text("Donations (IDR)"),
+              onPressed: () async {
+                if (await canLaunch('https://trakteer.id/wartegepelz')) {
+                  await launch('https://trakteer.id/wartegepelz');
+                };
+              },
+            ),
+            Spacer(flex: 1),// sched
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green.shade400,
+                onPrimary: Colors.white,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 116, vertical: 10),
+              ),
+              icon: Icon(Icons.arrow_back),
+              label: Text("Back"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            Spacer(flex: 4),//Kembali
           ],
         ),
       ),
@@ -79,18 +131,21 @@ class Halwarteg extends StatelessWidget {
               ),
             ),
             ListTile(
+              leading: Icon(Icons.home),
               title: Text('Home'),
               onTap: () {
                 Navigator.pushNamed(context, '/Halawal');
               },
             ),
             ListTile(
+              leading: Icon(Icons.settings),
               title: Text('Settings'),
               onTap: () {
                 Navigator.pushNamed(context, '/Halsettings');
               },
             ),
             ListTile(
+                leading: Icon(Icons.chat_outlined),
                 title: Text("Discord Link"),
                 onTap: () async {
                   if (await canLaunch('https://s.id/wartegepel')){
@@ -99,16 +154,17 @@ class Halwarteg extends StatelessWidget {
                 }
             ),
             ListTile(
+              leading: Icon(Icons.info_outline_rounded),
               title: Text('About Us'),
               onTap: () {
                 showAboutDialog(context: context,
                   applicationIcon: FlutterLogo(),
                   applicationName: 'Warteg Epel Project',
                   applicationVersion: '1.0.2',
-                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
+                  applicationLegalese: 'Created by DuoSim(P)',
                   children: <Widget>[
                     Text(
-                        'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
+                        'About us, We are from team called "Duo Sim(P)" with two member, called Renkyushi and Zafkiel'),
                   ],
                 );
               },
@@ -119,11 +175,12 @@ class Halwarteg extends StatelessWidget {
                 onTap: _launchEmail
             ),
             ListTile(
+              leading: Icon(Icons.close),
               title: Text('Close App'),
               onTap: () {
                 SystemNavigator.pop();
               },
-            ),
+            )
           ],
         ),
       ),

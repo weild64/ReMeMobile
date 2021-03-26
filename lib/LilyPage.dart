@@ -144,10 +144,10 @@ class Hallily extends StatelessWidget {
                   applicationIcon: FlutterLogo(),
                   applicationName: 'Warteg Epel Project',
                   applicationVersion: '1.0.2',
-                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
+                  applicationLegalese: 'Created by DuoSim(P)',
                   children: <Widget>[
                     Text(
-                        'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
+                        'About us, We are from team called "Duo Sim(P)" with two member, called Renkyushi and Zafkiel'),
                   ],
                 );
               },
@@ -163,7 +163,7 @@ class Hallily extends StatelessWidget {
               onTap: () {
                 SystemNavigator.pop();
               },
-            ),
+            )
           ],
         ),
       ),
@@ -220,33 +220,137 @@ class Donolily extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("Donations"),),
+      backgroundColor: Colors.lightBlue.shade50,
+      appBar: new AppBar(title: new Text("Donations", style: TextStyle(color: Colors.pink.shade200),),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(Icons.menu, color: Colors.pink.shade200),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );},),
+        backgroundColor: Colors.lightBlue.shade100,),
       body: new Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            FlatButton(
-                child: Text("Trakteer (IDR/Gopay/Ovo/Etc)"),
-                onPressed: () async {
-                  if (await canLaunch('https://trakteer.id/lilyifeta')) {
-                    await launch('https://trakteer.id/lilyifeta');
-                  };
-                }
+            Spacer(flex: 4),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.lightBlue.shade100,
+                onPrimary: Colors.pink.shade200,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 65, vertical: 10),
+              ),
+              icon: Icon(Icons.wallet_giftcard_rounded),
+              label: Text("Trakteer(IDR)"),
+              onPressed: () async {
+                if (await canLaunch('https://trakteer.id/lilyifeta')) {
+                  await launch('https://trakteer.id/lilyifeta');
+                };
+              },
             ), // Profile
-            FlatButton(
-                child: Text("Streamlabs (Paypal,Etc"),
-                onPressed: () async {
-                  if (await canLaunch('https://streamlabs.com/lilyifeta/tip')) {
-                    await launch('https://streamlabs.com/lilyifeta/tip');
-                  };
-                }
-            ), //Donation// sched
-            FlatButton(
-              child: Text("Back"),
+            Spacer(flex: 1),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.lightBlue.shade100,
+                onPrimary: Colors.pink.shade200,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 38, vertical: 10),
+              ),
+              icon: Icon(Icons.wallet_giftcard_rounded),
+              label: Text("Streamlabs (Paypal,Etc)"),
+              onPressed: () async {
+                if (await canLaunch('https://streamlabs.com/lilyifeta/tip')) {
+                  await launch('https://streamlabs.com/lilyifeta/tip');
+                };
+              },
+            ),
+            Spacer(flex: 1),//Donation// sched
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.lightBlue.shade100,
+                onPrimary: Colors.pink.shade200,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 92, vertical: 10),
+              ),
+              icon: Icon(Icons.arrow_back),
+              label: Text("Back"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
-            ), //Kembali
+            ),
+            Spacer(flex: 4),
+            //Kembali
+          ],
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                image: DecorationImage(
+                  image: AssetImage('Image/drawer-02.png'),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () {
+                Navigator.pushNamed(context, '/Halsettings');
+              },
+            ),
+            ListTile(
+                leading: Icon(Icons.chat_outlined),
+                title: Text("Discord Link"),
+                onTap: () async {
+                  if (await canLaunch('https://s.id/wartegepel')){
+                    await launch('https://s.id/wartegepel');
+                  };
+                }
+            ),
+            ListTile(
+              leading: Icon(Icons.info_outline_rounded),
+              title: Text('About Us'),
+              onTap: () {
+                showAboutDialog(context: context,
+                  applicationIcon: FlutterLogo(),
+                  applicationName: 'Warteg Epel Project',
+                  applicationVersion: '1.0.2',
+                  applicationLegalese: 'Created by DuoSim(P)',
+                  children: <Widget>[
+                    Text(
+                        'About us, We are from team called "Duo Sim(P)" with two member, called Renkyushi and Zafkiel'),
+                  ],
+                );
+              },
+            ),
+            ListTile(
+                leading: Icon(Icons.feedback_outlined),
+                title: Text("Feedback"),
+                onTap: _launchEmail
+            ),
+            ListTile(
+              leading: Icon(Icons.close),
+              title: Text('Close App'),
+              onTap: () {
+                SystemNavigator.pop();
+              },
+            ),
           ],
         ),
       ),

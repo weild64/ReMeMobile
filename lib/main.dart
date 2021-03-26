@@ -154,10 +154,10 @@ class _Halawal extends State<Halawal> {
                     applicationIcon: FlutterLogo(),
                     applicationName: 'Warteg Epel Project',
                     applicationVersion: '1.0.2',
-                    applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
+                    applicationLegalese: 'Created by DuoSim(P)',
                     children: <Widget>[
                       Text(
-                          'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
+                          'About us, We are from team called "Duo Sim(P)" with two member, called Renkyushi and Zafkiel'),
                     ],
                   );
                 },

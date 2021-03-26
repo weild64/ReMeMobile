@@ -144,10 +144,10 @@ class Halepel extends StatelessWidget {
                   applicationIcon: FlutterLogo(),
                   applicationName: 'Warteg Epel Project',
                   applicationVersion: '1.0.2',
-                  applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
+                  applicationLegalese: 'Created by DuoSim(P)',
                   children: <Widget>[
                     Text(
-                        'Tentang Kami Duo Simp, Kami Terdiri dari Dua orang Berinisialkan Renkyushi dan Zafkiel'),
+                        'About us, We are from team called "Duo Sim(P)" with two member, called Renkyushi and Zafkiel'),
                   ],
                 );
               },
@@ -163,7 +163,7 @@ class Halepel extends StatelessWidget {
               onTap: () {
                 SystemNavigator.pop();
               },
-            ),
+            )
           ],
         ),
       ),
@@ -216,43 +216,152 @@ class Donoepel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("Donations"),),
-      body: new Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        appBar: new AppBar(title: new Text("Donations", style: TextStyle(color: Colors.lightBlue),),
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: Icon(Icons.menu, color: Colors.lightBlue),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              );},),
+          backgroundColor: Colors.pink.shade100,),
+      backgroundColor: Colors.pink.shade50,
+          body: new Center(
+              child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Spacer(flex: 4),
+                  ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.pink.shade100,
+                onPrimary: Colors.lightBlue,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 65, vertical: 10),
+              ),
+              icon: Icon(Icons.wallet_giftcard_rounded),
+              label: Text("Trakteer(IDR)"),
+              onPressed: () async {
+                if (await canLaunch('https://trakteer.id/evelynvtuber')) {
+                  await launch('https://trakteer.id/evelynvtuber');
+                };
+              },
+            ),
+                  Spacer(flex: 1),// Profile
+                  ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.pink.shade100,
+                      onPrimary: Colors.lightBlue,
+                      elevation: 5,
+                      padding: EdgeInsets.symmetric(horizontal: 58, vertical: 10),
+                    ),
+                    icon: Icon(Icons.wallet_giftcard_rounded),
+                    label: Text("KaryaKarsa(IDR)"),
+                    onPressed: () async {
+                      if (await canLaunch('https://karyakarsa.com/evelynvtuber')) {
+                        await launch('https://karyakarsa.com/evelynvtuber');
+                      };
+                    },
+                  ),
+                  Spacer(flex: 1),
+                  ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.pink.shade100,
+                      onPrimary: Colors.lightBlue,
+                      elevation: 5,
+                      padding: EdgeInsets.symmetric(horizontal: 38, vertical: 10),
+                    ),
+                    icon: Icon(Icons.wallet_giftcard_rounded),
+                    label: Text("Streamlabs (Paypal,Etc)"),
+                    onPressed: () async {
+                      if (await canLaunch('https://www.streamlabs.com/evelynvtuber/tip')) {
+                        await launch('https://www.streamlabs.com/evelynvtuber/tip');
+                      };
+                    },
+                  ),
+                  Spacer(flex: 1),//Donation// sched
+      ElevatedButton.icon(
+        style: ElevatedButton.styleFrom(
+          primary: Colors.pink.shade100,
+          onPrimary: Colors.lightBlue,
+          elevation: 5,
+          padding: EdgeInsets.symmetric(horizontal: 92, vertical: 10),
+        ),
+        icon: Icon(Icons.arrow_back),
+        label: Text("Back"),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      ),
+                  Spacer(flex: 4),//Kembali
+          ],
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
           children: <Widget>[
-            FlatButton(
-                child: Text("Trakteer (IDR/Gopay/Ovo/Etc)"),
-                onPressed: () async {
-                  if (await canLaunch('https://www.trakteer.id/evelynvtuber')) {
-                    await launch('https://www.trakteer.id/evelynvtuber');
-                  };
-                }
-            ), // Profile
-            FlatButton(
-                child: Text("Karyakarsa (IDR)"),
-                onPressed: () async {
-                  if (await canLaunch(
-                      'https://www.karyakarsa.com/evelynvtuber')) {
-                    await launch('https://www.karyakarsa.com/evelynvtuber');
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                image: DecorationImage(
+                  image: AssetImage('Image/drawer-02.png'),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pushNamed(context, '/Halawal');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () {
+                Navigator.pushNamed(context, '/Halsettings');
+              },
+            ),
+            ListTile(
+                leading: Icon(Icons.chat_outlined),
+                title: Text("Discord Link"),
+                onTap: () async {
+                  if (await canLaunch('https://s.id/wartegepel')){
+                    await launch('https://s.id/wartegepel');
                   };
                 }
             ),
-            FlatButton(
-                child: Text("Streamlabs (Paypal,Etc)"),
-                onPressed: () async {
-                  if (await canLaunch(
-                      'https://streamlabs.com/evelynvtuber/tip')) {
-                    await launch('https://streamlabs.com/evelynvtuber/tip');
-                  };
-                }
-            ), //Donation// sched
-            FlatButton(
-              child: Text("Back"),
-              onPressed: () {
-                Navigator.of(context).pop();
+            ListTile(
+              leading: Icon(Icons.info_outline_rounded),
+              title: Text('About Us'),
+              onTap: () {
+                showAboutDialog(context: context,
+                  applicationIcon: FlutterLogo(),
+                  applicationName: 'Warteg Epel Project',
+                  applicationVersion: '1.0.2',
+                  applicationLegalese: 'Created by DuoSim(P)',
+                  children: <Widget>[
+                    Text(
+                        'About us, We are from team called "Duo Sim(P)" with two member, called Renkyushi and Zafkiel'),
+                  ],
+                );
               },
-            ), //Kembali
+            ),
+            ListTile(
+                leading: Icon(Icons.feedback_outlined),
+                title: Text("Feedback"),
+                onTap: _launchEmail
+            ),
+            ListTile(
+              leading: Icon(Icons.close),
+              title: Text('Close App'),
+              onTap: () {
+                SystemNavigator.pop();
+              },
+            ),
           ],
         ),
       ),
