@@ -1,20 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:double_back_to_close_app/double_back_to_close_app.dart';
-import 'package:splashscreen/splashscreen.dart';
 
 List<DataRow> _createRows(QuerySnapshot snapshot) {
 
   List<DataRow> newList = snapshot.documents.map((DocumentSnapshot documentSnapshot) {
-    //var tgl = new DateTime.fromMicrosecondsSinceEpoch(documentSnapshot['Date']);
+    Timestamp a = documentSnapshot['Date'];
+    DateTime date = DateTime.parse(a.toDate().toString());
+
     return new DataRow(cells: [
-      DataCell(Text(documentSnapshot['Date'])),
-      DataCell(Text(documentSnapshot['Title'])),
-      DataCell(Text(documentSnapshot['Time'])),]);
+      DataCell(Text(DateFormat('dd-MM-yyyy').format(date))),
+      DataCell(Text(documentSnapshot['Title'],)),
+      DataCell(Text(DateFormat('HH:mm').format(date))),
+    ]);
   }).toList();
   return newList;
 }
@@ -142,7 +143,7 @@ class Halepel extends StatelessWidget {
                 showAboutDialog(context: context,
                   applicationIcon: FlutterLogo(),
                   applicationName: 'Warteg Epel Project',
-                  applicationVersion: '0.0.5',
+                  applicationVersion: '1.0.2',
                   applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
                   children: <Widget>[
                     Text(
@@ -192,9 +193,10 @@ class SchedTableEpel extends StatelessWidget{
                 Text(''),
                 Center(
                     child: Text(
-                      'Evelyn Schedule (GMT +7)',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                      'Evelyn Schedule',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
                 Text(''),
-                DataTable(
+                Text('*The time automatically converted to your timezone', style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic),),
+                DataTable( dataRowHeight: 55, horizontalMargin: 10,
                   columns: [
                     DataColumn(label: Text('Date',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
                     DataColumn(label: Text('Title',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),

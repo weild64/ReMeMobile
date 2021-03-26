@@ -1,10 +1,7 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:double_back_to_close_app/double_back_to_close_app.dart';
-import 'package:splashscreen/splashscreen.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 
@@ -78,7 +75,7 @@ class Halsettings extends StatelessWidget {
                 showAboutDialog(context: context,
                   applicationIcon: FlutterLogo(),
                   applicationName: 'Warteg Epel Project',
-                  applicationVersion: '0.0.2',
+                  applicationVersion: '1.0.2',
                   applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
                   children: <Widget>[
                     Text(

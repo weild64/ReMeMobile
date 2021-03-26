@@ -2,17 +2,22 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 List<DataRow> _createRows(QuerySnapshot snapshot) {
 
   List<DataRow> newList = snapshot.documents.map((DocumentSnapshot documentSnapshot) {
-    //var tgl = new DateTime.fromMicrosecondsSinceEpoch(documentSnapshot['Date']);
+    Timestamp a = documentSnapshot['Date'];
+    DateTime date = DateTime.parse(a.toDate().toString());
+
     return new DataRow(cells: [
-      DataCell(Text(documentSnapshot['Date'])),
+      DataCell(Text(DateFormat('dd-MM-yyyy').format(date))),
       DataCell(Text(documentSnapshot['Title'])),
-      DataCell(Text(documentSnapshot['Time'])),]);
+      DataCell(Text(DateFormat('HH:mm').format(date))),
+    ]);
   }).toList();
+
   return newList;
 }
 
@@ -99,7 +104,7 @@ class Halwarteg extends StatelessWidget {
                 showAboutDialog(context: context,
                   applicationIcon: FlutterLogo(),
                   applicationName: 'Warteg Epel Project',
-                  applicationVersion: '0.0.5',
+                  applicationVersion: '1.0.2',
                   applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
                   children: <Widget>[
                     Text(
@@ -151,9 +156,10 @@ class SchedTableRadio extends StatelessWidget{
                 Text(''),
                 Center(
                     child: Text(
-                      'Radio Warteg Schedule (GMT +7)',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                      'Radio Warteg Schedule',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
                 Text(''),
-                DataTable(
+                Text('*The time automatically converted to your timezone', style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic),),
+                DataTable( dataRowHeight: 55, horizontalMargin: 10,
                   columns: [
                     DataColumn(label: Text('Date',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
                     DataColumn(label: Text('Theme',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
@@ -188,11 +194,12 @@ class SchedTablePodcast extends StatelessWidget{
               ),
               body: ListView(children: <Widget>[
                 Text(''),
+                Text('*The time automatically converted to your timezone', style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic),),
                 Center(
                     child: Text(
-                      'Warteg Podcast Schedule (GMT +7)',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                      'Warteg Podcast Schedule',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
                 Text(''),
-                DataTable(
+                DataTable( dataRowHeight: 55, horizontalMargin: 10,
                   columns: [
                     DataColumn(label: Text('Date',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
                     DataColumn(label: Text('Title',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
@@ -227,11 +234,12 @@ class SchedTableMakrab extends StatelessWidget{
               ),
               body: ListView(children: <Widget>[
                 Text(''),
+                Text('*The time automatically converted to your timezone', style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic),),
                 Center(
                     child: Text(
-                      'Warteg Makrab Schedule (GMT +7)',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                      'Warteg Makrab Schedule',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
                 Text(''),
-                DataTable(
+                DataTable( dataRowHeight: 55, horizontalMargin: 10,
                   columns: [
                     DataColumn(label: Text('Date',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
                     DataColumn(label: Text('Title',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),

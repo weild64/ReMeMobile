@@ -153,7 +153,7 @@ class _Halawal extends State<Halawal> {
                   showAboutDialog(context: context,
                     applicationIcon: FlutterLogo(),
                     applicationName: 'Warteg Epel Project',
-                    applicationVersion: '0.0.5',
+                    applicationVersion: '1.0.2',
                     applicationLegalese: 'Dibuat Oleh DuoSimpTeam',
                     children: <Widget>[
                       Text(
@@ -255,14 +255,7 @@ class ButtonEpel extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new Container(
-      //width: 600.0, //testing fixed size button
-      //height: 100.0,
       padding: new EdgeInsets.all(1.0),
-      /*decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('Image/BannerEpel.png'),
-          fit: BoxFit.cover,)
-      ),*/ //testing background image
       color: Colors.pinkAccent,
       child: new Card(
         child: new Column(
