@@ -108,7 +108,7 @@ class Halchloe extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.blue,
                 image: DecorationImage(
-                  image: AssetImage('Image/drawer-02.png'),
+                  image: AssetImage('Image/drawer1-02.png'),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -141,9 +141,9 @@ class Halchloe extends StatelessWidget {
               title: Text('About Us'),
               onTap: () {
                 showAboutDialog(context: context,
-                  applicationIcon: Icon(Icons.info_rounded),
+                  applicationIcon: Image.asset('Image/ic_launcher.png'),
                   applicationName: 'Warteg Epel Project',
-                  applicationVersion: '1.0.2',
+                  applicationVersion: '1.0.3',
                   applicationLegalese: 'Created by DuoSim(P)',
                   children: <Widget>[
                     Text(
