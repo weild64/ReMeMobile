@@ -158,7 +158,7 @@ class Halwarteg extends StatelessWidget {
               title: Text('About Us'),
               onTap: () {
                 showAboutDialog(context: context,
-                  applicationIcon: FlutterLogo(),
+                  applicationIcon: Icon(Icons.info_rounded),
                   applicationName: 'Warteg Epel Project',
                   applicationVersion: '1.0.2',
                   applicationLegalese: 'Created by DuoSim(P)',
@@ -204,7 +204,7 @@ class SchedTableRadio extends StatelessWidget{
           home: Scaffold(
               appBar: AppBar(
                 leading: IconButton(
-                  icon: Icon(Icons.arrow_back, color: Colors.lightBlue),
+                  icon: Icon(Icons.arrow_back, color: Colors.white),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
                 title: Text('Radio Warteg Schedule'),
@@ -243,8 +243,9 @@ class SchedTablePodcast extends StatelessWidget{
         return MaterialApp(
           home: Scaffold(
               appBar: AppBar(
+                backgroundColor: Colors.purple.shade200,
                 leading: IconButton(
-                  icon: Icon(Icons.arrow_back, color: Colors.lightBlue),
+                  icon: Icon(Icons.arrow_back, color: Colors.white),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
                 title: Text('Warteg Podcast Schedule',),
@@ -283,8 +284,9 @@ class SchedTableMakrab extends StatelessWidget{
         return MaterialApp(
           home: Scaffold(
               appBar: AppBar(
+                backgroundColor: Colors.red,
                 leading: IconButton(
-                  icon: Icon(Icons.arrow_back, color: Colors.lightBlue),
+                  icon: Icon(Icons.arrow_back, color: Colors.white),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
                 title: Text('Warteg Makrab Schedule',),

@@ -9,7 +9,7 @@ class Halsettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("Settings"),),
+      appBar: new AppBar(title: new Text("Settings (UNDER CONSTRUCTION)"),),
       body: new Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start ,
@@ -73,7 +73,7 @@ class Halsettings extends StatelessWidget {
               title: Text('About Us'),
               onTap: () {
                 showAboutDialog(context: context,
-                  applicationIcon: FlutterLogo(),
+                  applicationIcon: Icon(Icons.info_rounded),
                   applicationName: 'Warteg Epel Project',
                   applicationVersion: '1.0.2',
                   applicationLegalese: 'Dibuat Oleh DuoSimpTeam',

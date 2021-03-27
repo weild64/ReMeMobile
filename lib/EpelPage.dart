@@ -141,7 +141,7 @@ class Halepel extends StatelessWidget {
               title: Text('About Us'),
               onTap: () {
                 showAboutDialog(context: context,
-                  applicationIcon: FlutterLogo(),
+                  applicationIcon: Icon(Icons.info_rounded),
                   applicationName: 'Warteg Epel Project',
                   applicationVersion: '1.0.2',
                   applicationLegalese: 'Created by DuoSim(P)',
@@ -339,7 +339,7 @@ class Donoepel extends StatelessWidget {
               title: Text('About Us'),
               onTap: () {
                 showAboutDialog(context: context,
-                  applicationIcon: FlutterLogo(),
+                  applicationIcon: Icon(Icons.info_rounded),
                   applicationName: 'Warteg Epel Project',
                   applicationVersion: '1.0.2',
                   applicationLegalese: 'Created by DuoSim(P)',
