@@ -172,7 +172,7 @@ class Hallily extends StatelessWidget {
 }
 _launchEmail() async {
   launch(
-      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=Here The App Feedback from me%20plugin");
+      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=This App need ....");
 }
 
 class SchedTableLily extends StatelessWidget{
@@ -398,7 +398,7 @@ class profilelily extends StatelessWidget {
               subtitle:  Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Hayohaa !\nLily Ifeta here, I came to earth from heaven to destroy or maybe bless all human in this world . Of course also make you happy and cheerful everyday ~\nDon’t forget to be happy okay ?\n\nBe my cancimen and I will always makes you smile  U w U)7"),
+                  Text("Hayohaa !\nLily Ifeta here, I came to earth from heaven to destroy or maybe bless all human in this world . Of course also make you happy and cheerful everyday ~\nDon’t forget to be happy okay ?\nBe my cancimen and I will always makes you smile  U w U)7\n"),
                   // Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
                   // Text('9 September',textAlign: TextAlign.end,),
                   // Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
@@ -411,20 +411,24 @@ class profilelily extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
-            title: Text('Bussiness inquiries and collaboration matters'),
-          ),
-          Center (
-            child: FlatButton.icon(
+      ListTileTheme(tileColor: Colors.lightBlue.shade50,
+        child: ListTile(
+            title: Text('Bussiness inquiries and collaboration matters\n'),
+            subtitle: Column(
+                children: <Widget>[ FlatButton.icon(
               onPressed: () => _launchURL('lily.ifeta@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Lily'),
               icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
               color: Colors.lightBlueAccent,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            ),
-          ),
-          ListTile(
-            title: Text('Link Media'),
-          ),
+    ),
+    ],
+    ),
+    ),
+    ),
+            ListTileTheme(tileColor: Colors.lightBlue.shade50,
+    child: ListTile(title: Text('Link Media\n'),
+    subtitle: Column(
+    children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -442,12 +446,19 @@ class profilelily extends StatelessWidget {
                   if (await canLaunch('https://www.youtube.com/LilyIfeta')) {
                     await launch('https://www.youtube.com/LilyIfeta');
                   };
-                },
-              ),
-            ],
-          )
-        ],
-      ),
+    },
+    ),
+    ],
+    ),
+      Column(
+        children: <Widget>[
+          Text(''),],
+      ),],
+    ),
+    ),
+    ),
+    ],
+    ),
     );
   }
   _launchURL(String toMailId, String subject, String body) async {

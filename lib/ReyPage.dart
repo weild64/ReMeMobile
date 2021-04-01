@@ -172,7 +172,7 @@ class Halrey extends StatelessWidget {
 }
 _launchEmail() async {
   launch(
-      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=Here The App Feedback from me%20plugin");
+      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=This App need ....");
 }
 class SchedTableRey extends StatelessWidget{
   @override
@@ -392,7 +392,7 @@ class profilerey extends StatelessWidget {
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Hi!~ /ᐠ .⋏. ᐟﾉ\nFox Guy Virtual Musician, Reynard Blanc here~~\nI love to make music, so please listen to my musics xD\nBe one of my Reysteners won't you? ;3"),
+                  Text("Hi!~ /ᐠ .⋏. ᐟﾉ\nFox Guy Virtual Musician, Reynard Blanc here~~\nI love to make music, so please listen to my musics xD\nBe one of my Reysteners won't you? ;3\n"),
                   // Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
                   // Text('1 March',textAlign: TextAlign.end,),
                   // Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
@@ -405,20 +405,24 @@ class profilerey extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
-            title: Text('Bussiness inquiries and collaboration matters'),
-          ),
-          Center(
-            child: FlatButton.icon(
+      ListTileTheme(tileColor: Colors.grey.shade50,
+        child: ListTile(
+            title: Text('Bussiness inquiries and collaboration matters\n'),
+            subtitle: Column(
+                children: <Widget>[ FlatButton.icon(
               onPressed: () => _launchURL('reynardblanc@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Reynard'),
               icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
               color: Colors.lightBlueAccent,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                ),
+                ],
             ),
-          ),
-          ListTile(
-            title: Text('Link Media'),
-          ),
+        ),
+      ),
+    ListTileTheme(tileColor: Colors.grey.shade50,
+    child: ListTile(title: Text('Link Media\n'),
+    subtitle: Column(
+    children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -447,7 +451,14 @@ class profilerey extends StatelessWidget {
                 },
               ),
             ],
-          )
+          ),
+      Column(
+        children: <Widget>[
+          Text(''),],
+      ),],
+    ),
+    ),
+    ),
         ],
       ),
     );

@@ -44,6 +44,20 @@ class Halwarteg extends StatelessWidget {
             Spacer(flex: 4),
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
+                primary: Colors.purple,
+                onPrimary: Colors.white,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 88, vertical: 10),
+              ),
+              icon: Icon(Icons.chat),
+              label: Text("About Warteg"),
+              onPressed: () {
+                Navigator.pushNamed(context, '/aboutwarteg');
+              },
+            ),
+            Spacer(flex: 1),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
                 primary: Colors.purple.shade200,
                 onPrimary: Colors.white,
                 elevation: 5,
@@ -189,7 +203,7 @@ class Halwarteg extends StatelessWidget {
 }
 _launchEmail() async {
   launch(
-      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=Here The App Feedback from me%20plugin");
+      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=This App need ....");
 }
 
 class SchedTableRadio extends StatelessWidget{
@@ -310,6 +324,109 @@ class SchedTableMakrab extends StatelessWidget{
           ),
         );
       },
+    );
+  }
+}
+
+class aboutwarteg extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+    return new Scaffold(
+      backgroundColor: Colors.blueGrey.shade300 ,
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        backgroundColor: Colors.blueGrey,
+        title: Text('About Discord Warteg Epelz', style: TextStyle(color: Colors.white),),
+      ),
+      body: ListView(
+        children: <Widget>[
+          Stack(
+            alignment: Alignment.topLeft,
+            children: <Widget>[
+              Center(
+                child: Image(
+                    height: MediaQuery.of(context).size.height / 3.5,
+                    width: MediaQuery.of(context).size.width / 1,
+                    fit: BoxFit.fill,
+                    image: AssetImage('Image/1316.png')
+                ),
+              ),
+              // Positioned(
+              //   child: CircleAvatar(
+              //       radius: 90,
+              //       backgroundColor: Colors.white,
+              //       backgroundImage: AssetImage('Image/A-epel.jpg')
+              //   ),
+              // ),
+            ],
+          ),
+          SizedBox(height: 20,),
+          ListTileTheme(tileColor: Colors.blueGrey.shade50,
+            child: ListTile(title: Text('Warteg Epelz', style: TextStyle(fontSize: 20,),),
+              subtitle: Text('Community Discord Server'),),),
+          ListTileTheme(tileColor: Colors.blueGrey.shade50,
+            child: ListTile(title: Text('About this server'),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("This is a community server that housed Evelyn family Vtubers, an indie vtuber circle.\nThey are : Evelyn, Lily Ifeta, Reynard Blanc, and Chloe Pawapua\nin this server they hold many event including podcast, listening music together, play games together and Many more\n",),
+                  // Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text('1 December',textAlign: TextAlign.end,),
+                  // Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
+                  // Text('160Cm + 5Cm (Ahoge)'),
+                  // Text('Papa & Mama',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text('Reinly & Nabs'),
+                  // Text('Background : ',style: TextStyle(fontWeight: FontWeight.bold),),
+                  // Text("Normal college student who aspire to become everyone's mood booster, so she become a Vtuber. Very normal Student. Totally normal. Not Receh at all."),
+                ],
+              ),
+            ),
+          ),
+      ListTileTheme(tileColor: Colors.blueGrey.shade50,
+        child: ListTile(title: Text('Link Discord'),
+          subtitle: Column(
+              children: <Widget>[
+    FlatButton(
+            child: aboutbtn(),
+            onPressed: () async {
+              if (await canLaunch('s.id/wartegepel')) {
+                await launch('s.id/wartegepel');
+              };
+            },
+          ),
+                Text(''),
+          ],
+          ),
+        ),
+      ),
+
+    ],
+      ),
+    );
+  }
+}
+
+class aboutbtn extends StatelessWidget{
+  aboutbtn({this.navigasi});
+
+  final String navigasi;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(0.0),
+      width: 45.0,
+      height: 45.0,
+      alignment: Alignment.center,
+      decoration: new BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('Image/dcicon.png'),
+            fit: BoxFit.fitHeight
+        ),
+      ),
     );
   }
 }

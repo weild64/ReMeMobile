@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app/settings.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:splashscreen/splashscreen.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 import 'dart:async';
 import 'EpelPage.dart';
 import 'LilyPage.dart';
@@ -178,10 +179,29 @@ class _Halawal extends State<Halawal> {
             ],
           ),
         ),
-        body: new Center(
+        body:
+        new Center(
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
+              SizedBox(
+                height: 160,
+                width: double.infinity,
+                child: Carousel(
+                    dotSize: 4.0,
+                    dotIncreasedColor: Colors.black,
+                    dotColor: Colors.grey.shade600,
+                    dotSpacing: 10,
+                    dotPosition: DotPosition.bottomLeft,
+                    dotBgColor: Colors.transparent,
+                    images: [
+                      Image.asset('Image/A-epel.jpg', fit: BoxFit.cover,),
+                      Image.asset('Image/A-rey.jpg', fit: BoxFit.cover,),
+                      Image.asset('Image/A-lily.jpg', fit: BoxFit.cover,),
+                      Image.asset('Image/A-chloe.jpg', fit: BoxFit.cover,),
+                    ]
+                ),
+              ),
               FlatButton(
                 child: new ButtonEpel(/*icon: Icons.add_a_photo, teks:"All About Evelyn"*/),//icon dan teks disable
                 onPressed: () async {

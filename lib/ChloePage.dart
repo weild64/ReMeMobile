@@ -172,7 +172,7 @@ class Halchloe extends StatelessWidget {
 }
 _launchEmail() async {
   launch(
-      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=Here The App Feedback from me%20plugin");
+      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=This App need ....");
 }
 
 class SchedTableChloe extends StatelessWidget{
@@ -360,7 +360,7 @@ class Donochloe extends StatelessWidget {
 
 class profilechloe extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return new Scaffold(
       backgroundColor: Colors.yellow.shade100,
       appBar: AppBar(
@@ -378,7 +378,10 @@ class profilechloe extends StatelessWidget {
             children: <Widget>[
               Center(
                 child: Image(
-                    height: MediaQuery.of(context).size.height / 4,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height / 4,
                     fit: BoxFit.fill,
                     image: AssetImage('Image/chloe.jpg')
                 ),),
@@ -392,13 +395,16 @@ class profilechloe extends StatelessWidget {
           ),
           SizedBox(height: 20,),
           ListTileTheme(tileColor: Colors.yellow.shade50,
-            child: ListTile(title: Text('Chloe Pawapua', style: TextStyle(fontSize: 20,),), subtitle: Text('Virtual Wizard'),),),
+            child: ListTile(
+              title: Text('Chloe Pawapua', style: TextStyle(fontSize: 20,),),
+              subtitle: Text('Virtual Wizard'),),),
           ListTileTheme(tileColor: Colors.yellow.shade50,
             child: ListTile(title: Text('About Me'),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Kawahionapua~ \nI am a wizard who are not talented in magic, Chloe Pawapua.\nGive me information about how to life because I want to prevent extinction of Pawapua clan, it's wizard clan, my clan.\nYou can also join Pawapua clan anyway. ehehe.."),
+                  Text(
+                      "Kawahionapua~ \nI am a wizard who are not talented in magic, Chloe Pawapua.\nGive me information about how to life because I want to prevent extinction of Pawapua clan, it's wizard clan, my clan.\nYou can also join Pawapua clan anyway. ehehe..\n"),
                   // Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
                   // Text('29 February',textAlign: TextAlign.end,),
                   // Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
@@ -411,42 +417,63 @@ class profilechloe extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
-            title: Text('Bussiness inquiries and collaboration matters'),
-          ),
-          Center(
-            child: FlatButton.icon(
-              onPressed: () => _launchURL('chloepawapua@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Chloe'),
-              icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
-              color: Colors.lightBlueAccent,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-              height: 30,
+          ListTileTheme(tileColor: Colors.yellow.shade50,
+            child: ListTile(
+              title: Text('Bussiness inquiries and collaboration matters\n'),
+              subtitle: Column(
+                children: <Widget>[
+                  FlatButton.icon(
+                    onPressed: () =>
+                        _launchURL('chloepawapua@gmail.com',
+                            'Bussiness inquiries and collaboration',
+                            'Hello Chloe'),
+                    icon: Icon(Icons.mail, color: Colors.white),
+                    label: Text(
+                        'Email Me', style: TextStyle(color: Colors.white)),
+                    color: Colors.lightBlueAccent,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    height: 30,
+                  ),
+                ],
+              ),
             ),
           ),
-          ListTile(
-            title: Text('Link Media'),
+          ListTileTheme(tileColor: Colors.yellow.shade50,
+            child: ListTile(title: Text('Link Media\n'),
+              subtitle: Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      FlatButton(
+                        child: twtchloe(),
+                        onPressed: () async {
+                          if (await canLaunch(
+                              'https://twitter.com/chloepawapua')) {
+                            await launch('https://twitter.com/chloepawapua');
+                          };
+                        },
+                      ),
+                      FlatButton(
+                        child: ytchloe(),
+                        onPressed: () async {
+                          if (await canLaunch(
+                              'https://www.youtube.com/channel/UCrKS2bOUZDXA_R3qhCux7ow')) {
+                            await launch(
+                                'https://www.youtube.com/channel/UCrKS2bOUZDXA_R3qhCux7ow');
+                          };
+                        },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text(''),],
+                  ),],
+              ),
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              FlatButton(
-                child: twtchloe(),
-                onPressed: () async {
-                  if (await canLaunch('https://twitter.com/chloepawapua')) {
-                    await launch('https://twitter.com/chloepawapua');
-                  };
-                },
-              ),
-              FlatButton(
-                child: ytchloe(),
-                onPressed: () async {
-                  if (await canLaunch('https://www.youtube.com/channel/UCrKS2bOUZDXA_R3qhCux7ow')) {
-                    await launch('https://www.youtube.com/channel/UCrKS2bOUZDXA_R3qhCux7ow');
-                  };
-                },
-              ),
-            ],
-          )
         ],
       ),
     );

@@ -425,21 +425,25 @@ class profileepel extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
-            title: Text('Bussiness inquiries and collaboration matters'),
-          ),
-          Center(
-            child: FlatButton.icon(
+          ListTileTheme(tileColor: Colors.pink.shade50,
+            child: ListTile(title: Text('Bussiness inquiries and collaboration matters\n'),
+              subtitle: Column(
+                  children: <Widget>[
+            FlatButton.icon(
               onPressed: () => _launchURL('evelyn.vtuber@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Evelyn'),
               icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
               color: Colors.lightBlueAccent,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               height: 30,
             ),
+      ],
           ),
-          ListTile(
-            title: Text('Link Media'),
+            ),
           ),
+    ListTileTheme(tileColor: Colors.pink.shade50,
+    child: ListTile(title: Text('Link Media\n'),
+    subtitle: Column(
+    children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -468,8 +472,15 @@ class profileepel extends StatelessWidget {
                 },
               ),
             ],
-          )
-        ],
+          ),
+      Column(
+        children: <Widget>[
+          Text(''),],
+        ),],
+      ),
+    ),
+    ),
+    ],
       ),
     );
   }
@@ -484,7 +495,7 @@ class profileepel extends StatelessWidget {
 }
 _launchEmail() async {
   launch(
-      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=Here The App Feedback from me%20plugin");
+      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=This App need ....");
 }
 
 class ytepel extends StatelessWidget{
