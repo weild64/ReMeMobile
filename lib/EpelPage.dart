@@ -445,7 +445,6 @@ class profileepel extends StatelessWidget {
     subtitle: Column(
     children: <Widget>[
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               FlatButton(
                 child: twtepel(),
@@ -468,6 +467,14 @@ class profileepel extends StatelessWidget {
                 onPressed: () async {
                   if (await canLaunch('https://web.facebook.com/evelyn.vtuberr')) {
                     await launch('https://web.facebook.com/evelyn.vtuberr');
+                  };
+                },
+              ),
+              FlatButton(
+                child: igepel(),
+                onPressed: () async {
+                  if (await canLaunch('https://www.instagram.com/evelyn.vtuber/')) {
+                    await launch('https://www.instagram.com/evelyn.vtuber/');
                   };
                 },
               ),
@@ -557,6 +564,28 @@ class twtepel extends StatelessWidget{
       decoration: new BoxDecoration(
         image: DecorationImage(
             image: AssetImage('Image/twittericon.png'),
+            fit: BoxFit.fitHeight
+        ),
+      ),
+    );
+  }
+}
+
+class igepel extends StatelessWidget{
+  igepel({this.navigasi});
+
+  final String navigasi;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(0.0),
+      width: 45.0,
+      height: 45.0,
+      alignment: Alignment.center,
+      decoration: new BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('Image/igicon_a.png'),
             fit: BoxFit.fitHeight
         ),
       ),

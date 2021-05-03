@@ -465,6 +465,16 @@ class profilechloe extends StatelessWidget {
                           };
                         },
                       ),
+                      FlatButton(
+                        child: igchloe(),
+                        onPressed: () async {
+                          if (await canLaunch(
+                              'https://www.instagram.com/chloepawapua/')) {
+                            await launch(
+                                'https://www.instagram.com/chloepawapua/');
+                          };
+                        },
+                      ),
                     ],
                   ),
                   Column(
@@ -525,6 +535,28 @@ class twtchloe extends StatelessWidget{
       decoration: new BoxDecoration(
         image: DecorationImage(
             image: AssetImage('Image/twittericon.png'),
+            fit: BoxFit.fitHeight
+        ),
+      ),
+    );
+  }
+}
+
+class igchloe extends StatelessWidget{
+  igchloe({this.navigasi});
+
+  final String navigasi;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(0.0),
+      width: 45.0,
+      height: 45.0,
+      alignment: Alignment.center,
+      decoration: new BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('Image/igicon_a.png'),
             fit: BoxFit.fitHeight
         ),
       ),

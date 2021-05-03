@@ -43,6 +43,7 @@ void main(){
         '/profilechloe' : (BuildContext context) => new profilechloe(),
         '/profilelily' : (BuildContext context) => new profilelily(),
         '/notifsett' : (BuildContext context) => new notifsett(),
+        '/aboutwarteg' : (BuildContext context) => new aboutwarteg(),
 
       }
   ));
@@ -184,11 +185,12 @@ class _Halawal extends State<Halawal> {
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              SizedBox(
+             /* SizedBox(
                 height: 160,
                 width: double.infinity,
                 child: Carousel(
                     dotSize: 4.0,
+                    animationDuration: Duration(milliseconds: 1400),
                     dotIncreasedColor: Colors.black,
                     dotColor: Colors.grey.shade600,
                     dotSpacing: 10,
@@ -201,7 +203,7 @@ class _Halawal extends State<Halawal> {
                       Image.asset('Image/A-chloe.jpg', fit: BoxFit.cover,),
                     ]
                 ),
-              ),
+              ),*/
               FlatButton(
                 child: new ButtonEpel(/*icon: Icons.add_a_photo, teks:"All About Evelyn"*/),//icon dan teks disable
                 onPressed: () async {
@@ -241,7 +243,7 @@ class _Halawal extends State<Halawal> {
 }
 _launchEmail() async {
   launch(
-      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=Here The App Feedback from me%20plugin");
+      "mailto:thedualsimp@gmail.com?subject=Feedback App&body=This App need ....");
 }
 
 class ButtonPlacement extends StatelessWidget {

@@ -245,7 +245,7 @@ class Donorey extends StatelessWidget {
               icon: Icon(Icons.wallet_giftcard_rounded),
               label: Text("Trakteer(IDR)"),
               onPressed: () async {
-                if (await canLaunch('hhttps://trakteer.id/reynardblanc')) {
+                if (await canLaunch('https://trakteer.id/reynardblanc')) {
                   await launch('https://trakteer.id/reynardblanc');
                 };
               },
@@ -450,6 +450,14 @@ class profilerey extends StatelessWidget {
                   };
                 },
               ),
+              FlatButton(
+                child: igrey(),
+                onPressed: () async {
+                  if (await canLaunch('https://www.instagram.com/reynardblanc/')) {
+                    await launch('https://www.instagram.com/reynardblanc/');
+                  };
+                },
+              ),
             ],
           ),
       Column(
@@ -532,6 +540,28 @@ class twtrey extends StatelessWidget{
       decoration: new BoxDecoration(
         image: DecorationImage(
             image: AssetImage('Image/twittericon.png'),
+            fit: BoxFit.fitHeight
+        ),
+      ),
+    );
+  }
+}
+
+class igrey extends StatelessWidget{
+  igrey({this.navigasi});
+
+  final String navigasi;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(0.0),
+      width: 45.0,
+      height: 45.0,
+      alignment: Alignment.center,
+      decoration: new BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('Image/igicon_a.png'),
             fit: BoxFit.fitHeight
         ),
       ),

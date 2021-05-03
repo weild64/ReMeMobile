@@ -448,6 +448,14 @@ class profilelily extends StatelessWidget {
                   };
     },
     ),
+              FlatButton(
+                child: iglily(),
+                onPressed: () async {
+                  if (await canLaunch('https://www.instagram.com/lily_ifeta/')) {
+                    await launch('https://www.instagram.com/lily_ifeta/');
+                  };
+                },
+              ),
     ],
     ),
       Column(
@@ -508,6 +516,28 @@ class twtlily extends StatelessWidget{
       decoration: new BoxDecoration(
         image: DecorationImage(
             image: AssetImage('Image/twittericon.png'),
+            fit: BoxFit.fitHeight
+        ),
+      ),
+    );
+  }
+}
+
+class iglily extends StatelessWidget{
+  iglily({this.navigasi});
+
+  final String navigasi;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: new EdgeInsets.all(0.0),
+      width: 45.0,
+      height: 45.0,
+      alignment: Alignment.center,
+      decoration: new BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('Image/igicon_a.png'),
             fit: BoxFit.fitHeight
         ),
       ),
