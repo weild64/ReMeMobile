@@ -15,38 +15,36 @@ import 'WartegPage.dart';
 
 const warteg_url = 'https://s.id/wartegepel';
 
-void main(){
+void main() {
   runApp(new MaterialApp(
       home: new SplashScreenPage(),
       title: "Warteg Evelyn",
       routes: <String, WidgetBuilder>{
-        '/Halawal' : (BuildContext context) => new Halawal(),
-        '/Halepel' : (BuildContext context) => new Halepel(),
-        '/Hallily' : (BuildContext context) => new Hallily(),
-        '/Halrey' : (BuildContext context) => new Halrey(),
-        '/Halchloe' : (BuildContext context) => new Halchloe(),
-        '/Halwarteg' : (BuildContext context) => new Halwarteg(),
-        '/Halsettings' : (BuildContext context) => new Halsettings(),
-        '/SchedTableEpel' : (BuildContext context) => new SchedTableEpel(),
-        '/SchedTableLily' : (BuildContext context) => new SchedTableLily(),
-        '/SchedTableRey' : (BuildContext context) => new SchedTableRey(),
-        '/SchedTableChloe' : (BuildContext context) => new SchedTableChloe(),
-        '/SchedTableRadio' : (BuildContext context) => new SchedTableRadio(),
-        '/SchedTablePodcast' : (BuildContext context) => new SchedTablePodcast(),
-        '/SchedTableMakrab' : (BuildContext context) => new SchedTableMakrab(),
-        '/Donoepel' : (BuildContext context) => new Donoepel(),
-        '/Donolily' : (BuildContext context) => new Donolily(),
-        '/Donorey' : (BuildContext context) => new Donorey(),
-        '/Donochloe' : (BuildContext context) => new Donochloe(),
-        '/profileepel' : (BuildContext context) => new profileepel(),
-        '/profilerey' : (BuildContext context) => new profilerey(),
-        '/profilechloe' : (BuildContext context) => new profilechloe(),
-        '/profilelily' : (BuildContext context) => new profilelily(),
-        '/notifsett' : (BuildContext context) => new notifsett(),
-        '/aboutwarteg' : (BuildContext context) => new aboutwarteg(),
-
-      }
-  ));
+        '/Halawal': (BuildContext context) => new Halawal(),
+        '/Halepel': (BuildContext context) => new Halepel(),
+        '/Hallily': (BuildContext context) => new Hallily(),
+        '/Halrey': (BuildContext context) => new Halrey(),
+        '/Halchloe': (BuildContext context) => new Halchloe(),
+        '/Halwarteg': (BuildContext context) => new Halwarteg(),
+        /* '/Halsettings' : (BuildContext context) => new Halsettings(),*/
+        '/SchedTableEpel': (BuildContext context) => new SchedTableEpel(),
+        '/SchedTableLily': (BuildContext context) => new SchedTableLily(),
+        '/SchedTableRey': (BuildContext context) => new SchedTableRey(),
+        '/SchedTableChloe': (BuildContext context) => new SchedTableChloe(),
+        '/SchedTableRadio': (BuildContext context) => new SchedTableRadio(),
+        '/SchedTablePodcast': (BuildContext context) => new SchedTablePodcast(),
+        '/SchedTableMakrab': (BuildContext context) => new SchedTableMakrab(),
+        '/Donoepel': (BuildContext context) => new Donoepel(),
+        '/Donolily': (BuildContext context) => new Donolily(),
+        '/Donorey': (BuildContext context) => new Donorey(),
+        '/Donochloe': (BuildContext context) => new Donochloe(),
+        '/profileepel': (BuildContext context) => new profileepel(),
+        '/profilerey': (BuildContext context) => new profilerey(),
+        '/profilechloe': (BuildContext context) => new profilechloe(),
+        '/profilelily': (BuildContext context) => new profilelily(),
+        /*'/notifsett' : (BuildContext context) => new notifsett(),*/
+        '/aboutwarteg': (BuildContext context) => new aboutwarteg(),
+      }));
 }
 
 class SplashScreenPage extends StatefulWidget {
@@ -72,35 +70,35 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   }
 }
 
-
 class Halawal extends StatefulWidget {
-  Halawal({Key key, this.title}) :super(key: key);
+  Halawal({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
   State<StatefulWidget> createState() => new _Halawal();
 }
-class _Halawal extends State<Halawal> {
 
+class _Halawal extends State<Halawal> {
   Future<bool> _onWillPop() async {
     return (await showDialog(
-      context: context,
-      builder: (context) => new AlertDialog(
-        title: new Text('Are you sure?'),
-        content: new Text('Do you want to exit an App'),
-        actions: <Widget>[
-          new FlatButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: new Text('No'),
+          context: context,
+          builder: (context) => new AlertDialog(
+            title: new Text('Are you sure?'),
+            content: new Text('Do you want to exit an App'),
+            actions: <Widget>[
+              new FlatButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: new Text('No'),
+              ),
+              new FlatButton(
+                onPressed: () => SystemNavigator.pop(),
+                child: new Text('Yes'),
+              ),
+            ],
           ),
-          new FlatButton(
-            onPressed: () => SystemNavigator.pop(),
-            child: new Text('Yes'),
-          ),
-        ],
-      ),
-    )) ?? false;
+        )) ??
+        false;
   }
 
   Widget build(BuildContext context) {
@@ -140,19 +138,20 @@ class _Halawal extends State<Halawal> {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.chat_outlined),
+                  leading: Icon(Icons.chat_outlined),
                   title: Text("Discord Link"),
                   onTap: () async {
-                    if (await canLaunch('https://s.id/wartegepel')){
+                    if (await canLaunch('https://s.id/wartegepel')) {
                       await launch('https://s.id/wartegepel');
-                    };
-                  }
-              ),
+                    }
+                    ;
+                  }),
               ListTile(
                 leading: Icon(Icons.info_outline_rounded),
                 title: Text('About Us'),
                 onTap: () {
-                  showAboutDialog(context: context,
+                  showAboutDialog(
+                    context: context,
                     //applicationIcon: Icon(Icons.info_rounded),
                     applicationIcon: Image.asset('Image/ic_launcher.png'),
                     applicationName: 'Warteg Epel Project',
@@ -168,8 +167,7 @@ class _Halawal extends State<Halawal> {
               ListTile(
                   leading: Icon(Icons.feedback_outlined),
                   title: Text("Feedback"),
-                     onTap: _launchEmail
-              ),
+                  onTap: _launchEmail),
               ListTile(
                 leading: Icon(Icons.close),
                 title: Text('Close App'),
@@ -180,12 +178,11 @@ class _Halawal extends State<Halawal> {
             ],
           ),
         ),
-        body:
-        new Center(
+        body: new Center(
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-             /* SizedBox(
+              /* SizedBox(
                 height: 160,
                 width: double.infinity,
                 child: Carousel(
@@ -205,32 +202,37 @@ class _Halawal extends State<Halawal> {
                 ),
               ),*/
               FlatButton(
-                child: new ButtonEpel(/*icon: Icons.add_a_photo, teks:"All About Evelyn"*/),//icon dan teks disable
+                child: new ButtonEpel(
+                    /*icon: Icons.add_a_photo, teks:"All About Evelyn"*/), //icon dan teks disable
                 onPressed: () async {
                   Navigator.pushNamed(context, '/Halepel');
                 },
-              ),//button epel
+              ), //button epel
               FlatButton(
-                child: new ButtonLily(/*icon: Icons.add_a_photo, teks:"All About Lily Ifeta"*/),
-                onPressed: (){
+                child: new ButtonLily(
+                    /*icon: Icons.add_a_photo, teks:"All About Lily Ifeta"*/),
+                onPressed: () {
                   Navigator.pushNamed(context, '/Hallily');
                 },
-              ),//button lily
+              ), //button lily
               FlatButton(
-                child: new ButtonReynard(/*icon: Icons.add_a_photo, teks:"All About Reynard Blanc"*/),
-                onPressed: (){
+                child: new ButtonReynard(
+                    /*icon: Icons.add_a_photo, teks:"All About Reynard Blanc"*/),
+                onPressed: () {
                   Navigator.pushNamed(context, '/Halrey');
                 },
-              ),//button rey
+              ), //button rey
               FlatButton(
-                child: new ButtonChloe(/*icon: Icons.add_a_photo, teks:"All About Chloe pawapua"*/),
-                onPressed: (){
+                child: new ButtonChloe(
+                    /*icon: Icons.add_a_photo, teks:"All About Chloe pawapua"*/),
+                onPressed: () {
                   Navigator.pushNamed(context, '/Halchloe');
                 },
-              ),//button chloe
+              ), //button chloe
               FlatButton(
-                child: new ButtonWarteg(/*icon: Icons.add_a_photo, teks:"All About Chloe pawapua"*/),
-                onPressed: (){
+                child: new ButtonWarteg(
+                    /*icon: Icons.add_a_photo, teks:"All About Chloe pawapua"*/),
+                onPressed: () {
                   Navigator.pushNamed(context, '/Halwarteg');
                 },
               ),
@@ -241,6 +243,7 @@ class _Halawal extends State<Halawal> {
     );
   }
 }
+
 _launchEmail() async {
   launch(
       "mailto:thedualsimp@gmail.com?subject=Feedback App&body=This App need ....");
@@ -260,8 +263,15 @@ class ButtonPlacement extends StatelessWidget {
       child: new Card(
         child: new Column(
           children: <Widget>[
-            new Icon(icon, size: 70.0, color: Colors.cyan,),
-            new Text(teks, style: TextStyle(fontSize: 25.0),),
+            new Icon(
+              icon,
+              size: 70.0,
+              color: Colors.cyan,
+            ),
+            new Text(
+              teks,
+              style: TextStyle(fontSize: 25.0),
+            ),
             //new Image.asset('Image/Epel.jpg')
           ],
         ),
@@ -270,7 +280,7 @@ class ButtonPlacement extends StatelessWidget {
   }
 }
 
-class ButtonEpel extends StatelessWidget{
+class ButtonEpel extends StatelessWidget {
   ButtonEpel({this.navigasi});
 
   final String navigasi;
@@ -282,16 +292,14 @@ class ButtonEpel extends StatelessWidget{
       color: Colors.pinkAccent,
       child: new Card(
         child: new Column(
-          children: <Widget>[
-            new Image.asset('Image/BannerEpel_02.png')
-          ],
+          children: <Widget>[new Image.asset('Image/BannerEpel_02.png')],
         ),
       ),
     );
   }
 }
 
-class ButtonLily extends StatelessWidget{
+class ButtonLily extends StatelessWidget {
   ButtonLily({this.navigasi});
 
   final String navigasi;
@@ -303,16 +311,14 @@ class ButtonLily extends StatelessWidget{
       color: Colors.blue,
       child: new Card(
         child: new Column(
-          children: <Widget>[
-            new Image.asset('Image/BannerLily_02.png')
-          ],
+          children: <Widget>[new Image.asset('Image/BannerLily_02.png')],
         ),
       ),
     );
   }
 }
 
-class ButtonReynard extends StatelessWidget{
+class ButtonReynard extends StatelessWidget {
   ButtonReynard({this.navigasi});
 
   final String navigasi;
@@ -324,17 +330,14 @@ class ButtonReynard extends StatelessWidget{
       color: Colors.grey,
       child: new Card(
         child: new Column(
-          children: <Widget>[
-            new Image.asset('Image/BannerRey_02.png')
-          ],
+          children: <Widget>[new Image.asset('Image/BannerRey_02.png')],
         ),
       ),
     );
   }
-
 }
 
-class ButtonChloe extends StatelessWidget{
+class ButtonChloe extends StatelessWidget {
   ButtonChloe({this.navigasi});
 
   final String navigasi;
@@ -346,16 +349,14 @@ class ButtonChloe extends StatelessWidget{
       color: Colors.green,
       child: new Card(
         child: new Column(
-          children: <Widget>[
-            new Image.asset('Image/BannerChloe_02.png')
-          ],
+          children: <Widget>[new Image.asset('Image/BannerChloe_02.png')],
         ),
       ),
     );
   }
 }
 
-class ButtonWarteg extends StatelessWidget{
+class ButtonWarteg extends StatelessWidget {
   ButtonWarteg({this.navigasi});
 
   final String navigasi;
@@ -367,45 +368,43 @@ class ButtonWarteg extends StatelessWidget{
       color: Colors.blueAccent,
       child: new Card(
         child: new Column(
-          children: <Widget>[
-            new Image.asset('Image/BannerWarteg_02.png')
-          ],
+          children: <Widget>[new Image.asset('Image/BannerWarteg_02.png')],
         ),
       ),
     );
   }
 }
 
-class profileepelbase extends StatelessWidget{
+class profileepelbase extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       body: profileepel(),
     );
   }
 }
 
-class profilereybase extends StatelessWidget{
+class profilereybase extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       body: profilerey(),
     );
   }
 }
 
-class profilechloebase extends StatelessWidget{
+class profilechloebase extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       body: profilechloe(),
     );
   }
 }
 
-class profilelilybase extends StatelessWidget{
+class profilelilybase extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       body: profilelily(),
     );
