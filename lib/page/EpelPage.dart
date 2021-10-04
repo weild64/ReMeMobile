@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -6,14 +8,16 @@ import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 List<DataRow> _createRows(QuerySnapshot snapshot) {
-
-  List<DataRow> newList = snapshot.documents.map((DocumentSnapshot documentSnapshot) {
+  List<DataRow> newList =
+      snapshot.documents.map((DocumentSnapshot documentSnapshot) {
     Timestamp a = documentSnapshot['Date'];
     DateTime date = DateTime.parse(a.toDate().toString());
 
     return new DataRow(cells: [
       DataCell(Text(DateFormat('dd-MM-yyyy').format(date))),
-      DataCell(Text(documentSnapshot['Title'],)),
+      DataCell(Text(
+        documentSnapshot['Title'],
+      )),
       DataCell(Text(DateFormat('HH:mm').format(date))),
     ]);
   }).toList();
@@ -25,7 +29,11 @@ class Halepel extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       backgroundColor: Colors.pink.shade50,
-      appBar: new AppBar(title: new Text("All About Epel", style: TextStyle(color: Colors.lightBlue),),
+      appBar: new AppBar(
+        title: new Text(
+          "All About Epel",
+          style: TextStyle(color: Colors.lightBlue),
+        ),
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
@@ -34,8 +42,11 @@ class Halepel extends StatelessWidget {
                 Scaffold.of(context).openDrawer();
               },
               tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-            );},),
-        backgroundColor: Colors.pink.shade100,),
+            );
+          },
+        ),
+        backgroundColor: Colors.pink.shade100,
+      ),
       body: new Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +65,7 @@ class Halepel extends StatelessWidget {
                 Navigator.pushNamed(context, '/profileepel');
               },
             ),
-            Spacer(flex: 1),// Profile
+            Spacer(flex: 1), // Profile
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 primary: Colors.pink.shade100,
@@ -68,7 +79,7 @@ class Halepel extends StatelessWidget {
                 Navigator.pushNamed(context, '/Donoepel');
               },
             ),
-            Spacer(flex: 1),//Donation
+            Spacer(flex: 1), //Donation
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 primary: Colors.pink.shade100,
@@ -82,7 +93,7 @@ class Halepel extends StatelessWidget {
                 Navigator.pushNamed(context, '/SchedTableEpel');
               },
             ),
-            Spacer(flex: 1),// sched
+            Spacer(flex: 1), // sched
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 primary: Colors.pink.shade100,
@@ -96,7 +107,7 @@ class Halepel extends StatelessWidget {
                 Navigator.of(context).pop();
               },
             ),
-            Spacer(flex: 4),//Kembali
+            Spacer(flex: 4), //Kembali
           ],
         ),
       ),
@@ -131,16 +142,16 @@ class Halepel extends StatelessWidget {
                 leading: Icon(Icons.chat_outlined),
                 title: Text("Discord Link"),
                 onTap: () async {
-                  if (await canLaunch('https://s.id/wartegepel')){
+                  if (await canLaunch('https://s.id/wartegepel')) {
                     await launch('https://s.id/wartegepel');
-                  };
-                }
-            ),
+                  }
+                }),
             ListTile(
               leading: Icon(Icons.info_outline_rounded),
               title: Text('About Us'),
               onTap: () {
-                showAboutDialog(context: context,
+                showAboutDialog(
+                  context: context,
                   applicationIcon: Image.asset('Image/ic_launcher.png'),
                   applicationName: 'Warteg Epel Project',
                   applicationVersion: '1.0.3',
@@ -155,8 +166,7 @@ class Halepel extends StatelessWidget {
             ListTile(
                 leading: Icon(Icons.feedback_outlined),
                 title: Text("Feedback"),
-                onTap: _launchEmail
-            ),
+                onTap: _launchEmail),
             ListTile(
               leading: Icon(Icons.close),
               title: Text('Close App'),
@@ -171,7 +181,7 @@ class Halepel extends StatelessWidget {
   }
 }
 
-class SchedTableEpel extends StatelessWidget{
+class SchedTableEpel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -187,25 +197,44 @@ class SchedTableEpel extends StatelessWidget{
                   icon: Icon(Icons.arrow_back, color: Colors.lightBlue),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
-                title: Text('Evelyn Livestream/Premier Schedule', style: TextStyle(color: Colors.lightBlue),),
-                backgroundColor: Colors.pink.shade100,),
+                title: Text(
+                  'Evelyn Livestream/Premier Schedule',
+                  style: TextStyle(color: Colors.lightBlue),
+                ),
+                backgroundColor: Colors.pink.shade100,
+              ),
               body: ListView(children: <Widget>[
                 Text(''),
                 Center(
                     child: Text(
-                      'Evelyn Schedule',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)),
+                  'Evelyn Schedule',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                )),
                 Text(''),
-                Text('*The time automatically converted to your timezone', style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic),),
-                DataTable( dataRowHeight: 55, horizontalMargin: 10,
+                Text(
+                  '*The time automatically converted to your timezone',
+                  style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
+                ),
+                DataTable(
+                  dataRowHeight: 55,
+                  horizontalMargin: 10,
                   columns: [
-                    DataColumn(label: Text('Date',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                    DataColumn(label: Text('Title',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
-                    DataColumn(label: Text('Time',style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+                    DataColumn(
+                        label: Text('Date',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold))),
+                    DataColumn(
+                        label: Text('Title',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold))),
+                    DataColumn(
+                        label: Text('Time',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold))),
                   ],
                   rows: _createRows(snapshot.data),
                 ),
-              ])
-          ),
+              ])),
         );
       },
     );
@@ -216,24 +245,31 @@ class Donoepel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(title: new Text("Donations", style: TextStyle(color: Colors.lightBlue),),
-          leading: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: Icon(Icons.menu, color: Colors.lightBlue),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-              );},),
-          backgroundColor: Colors.pink.shade100,),
+      appBar: new AppBar(
+        title: new Text(
+          "Donations",
+          style: TextStyle(color: Colors.lightBlue),
+        ),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(Icons.menu, color: Colors.lightBlue),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
+        backgroundColor: Colors.pink.shade100,
+      ),
       backgroundColor: Colors.pink.shade50,
-          body: new Center(
-              child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Spacer(flex: 4),
-                  ElevatedButton.icon(
+      body: new Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Spacer(flex: 4),
+            ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 primary: Colors.pink.shade100,
                 onPrimary: Colors.lightBlue,
@@ -245,56 +281,57 @@ class Donoepel extends StatelessWidget {
               onPressed: () async {
                 if (await canLaunch('https://trakteer.id/evelynvtuber')) {
                   await launch('https://trakteer.id/evelynvtuber');
-                };
+                }
               },
             ),
-                  Spacer(flex: 1),// Profile
-                  ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.pink.shade100,
-                      onPrimary: Colors.lightBlue,
-                      elevation: 5,
-                      padding: EdgeInsets.symmetric(horizontal: 58, vertical: 10),
-                    ),
-                    icon: Icon(Icons.wallet_giftcard_rounded),
-                    label: Text("KaryaKarsa(IDR)"),
-                    onPressed: () async {
-                      if (await canLaunch('https://karyakarsa.com/evelynvtuber')) {
-                        await launch('https://karyakarsa.com/evelynvtuber');
-                      };
-                    },
-                  ),
-                  Spacer(flex: 1),
-                  ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.pink.shade100,
-                      onPrimary: Colors.lightBlue,
-                      elevation: 5,
-                      padding: EdgeInsets.symmetric(horizontal: 38, vertical: 10),
-                    ),
-                    icon: Icon(Icons.wallet_giftcard_rounded),
-                    label: Text("Streamlabs (Paypal,Etc)"),
-                    onPressed: () async {
-                      if (await canLaunch('https://www.streamlabs.com/evelynvtuber/tip')) {
-                        await launch('https://www.streamlabs.com/evelynvtuber/tip');
-                      };
-                    },
-                  ),
-                  Spacer(flex: 1),//Donation// sched
-      ElevatedButton.icon(
-        style: ElevatedButton.styleFrom(
-          primary: Colors.pink.shade100,
-          onPrimary: Colors.lightBlue,
-          elevation: 5,
-          padding: EdgeInsets.symmetric(horizontal: 92, vertical: 10),
-        ),
-        icon: Icon(Icons.arrow_back),
-        label: Text("Back"),
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-      ),
-                  Spacer(flex: 4),//Kembali
+            Spacer(flex: 1), // Profile
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.pink.shade100,
+                onPrimary: Colors.lightBlue,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 58, vertical: 10),
+              ),
+              icon: Icon(Icons.wallet_giftcard_rounded),
+              label: Text("KaryaKarsa(IDR)"),
+              onPressed: () async {
+                if (await canLaunch('https://karyakarsa.com/evelynvtuber')) {
+                  await launch('https://karyakarsa.com/evelynvtuber');
+                }
+              },
+            ),
+            Spacer(flex: 1),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.pink.shade100,
+                onPrimary: Colors.lightBlue,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 38, vertical: 10),
+              ),
+              icon: Icon(Icons.wallet_giftcard_rounded),
+              label: Text("Streamlabs (Paypal,Etc)"),
+              onPressed: () async {
+                if (await canLaunch(
+                    'https://www.streamlabs.com/evelynvtuber/tip')) {
+                  await launch('https://www.streamlabs.com/evelynvtuber/tip');
+                }
+              },
+            ),
+            Spacer(flex: 1), //Donation// sched
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.pink.shade100,
+                onPrimary: Colors.lightBlue,
+                elevation: 5,
+                padding: EdgeInsets.symmetric(horizontal: 92, vertical: 10),
+              ),
+              icon: Icon(Icons.arrow_back),
+              label: Text("Back"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            Spacer(flex: 4), //Kembali
           ],
         ),
       ),
@@ -329,16 +366,16 @@ class Donoepel extends StatelessWidget {
                 leading: Icon(Icons.chat_outlined),
                 title: Text("Discord Link"),
                 onTap: () async {
-                  if (await canLaunch('https://s.id/wartegepel')){
+                  if (await canLaunch('https://s.id/wartegepel')) {
                     await launch('https://s.id/wartegepel');
-                  };
-                }
-            ),
+                  }
+                }),
             ListTile(
               leading: Icon(Icons.info_outline_rounded),
               title: Text('About Us'),
               onTap: () {
-                showAboutDialog(context: context,
+                showAboutDialog(
+                  context: context,
                   applicationIcon: Icon(Icons.info_rounded),
                   applicationName: 'Warteg Epel Project',
                   applicationVersion: '1.0.2',
@@ -353,8 +390,7 @@ class Donoepel extends StatelessWidget {
             ListTile(
                 leading: Icon(Icons.feedback_outlined),
                 title: Text("Feedback"),
-                onTap: _launchEmail
-            ),
+                onTap: _launchEmail),
             ListTile(
               leading: Icon(Icons.close),
               title: Text('Close App'),
@@ -371,7 +407,7 @@ class Donoepel extends StatelessWidget {
 
 class profileepel extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return new Scaffold(
       backgroundColor: Colors.pink.shade100,
       appBar: AppBar(
@@ -380,7 +416,10 @@ class profileepel extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.pink.shade100,
-        title: Text('Evelyn Profile', style: TextStyle(color: Colors.lightBlue),),
+        title: Text(
+          'Evelyn Profile',
+          style: TextStyle(color: Colors.lightBlue),
+        ),
       ),
       body: ListView(
         children: <Widget>[
@@ -391,8 +430,7 @@ class profileepel extends StatelessWidget {
                 child: Image(
                     height: MediaQuery.of(context).size.height / 4,
                     fit: BoxFit.fill,
-                    image: AssetImage('Image/Epel.jpg')
-                ),
+                    image: AssetImage('Image/Epel.jpg')),
               ),
               // Positioned(
               //   child: CircleAvatar(
@@ -403,16 +441,31 @@ class profileepel extends StatelessWidget {
               // ),
             ],
           ),
-          SizedBox(height: 20,),
-          ListTileTheme(tileColor: Colors.pink.shade50,
-            child: ListTile(title: Text('Evelyn -Vtuber-', style: TextStyle(fontSize: 20,),),
-              subtitle: Text('Virtual College Student'),),),
-          ListTileTheme(tileColor: Colors.pink.shade50,
-            child: ListTile(title: Text('About Me'),
+          SizedBox(
+            height: 20,
+          ),
+          ListTileTheme(
+            tileColor: Colors.pink.shade50,
+            child: ListTile(
+              title: Text(
+                'Evelyn -Vtuber-',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              subtitle: Text('Virtual College Student'),
+            ),
+          ),
+          ListTileTheme(
+            tileColor: Colors.pink.shade50,
+            child: ListTile(
+              title: Text('About Me'),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("My name is Evelyn but you can call me Epel!,\nI'm here for become your virtual mood booster through my Youtube contents~ ᕦ( ᐛ )ᕡ,\nPlease be one of my #Epelable friends because I can't do this without you guys~(  >ㅅ<)b,\nID/EN OK! 日本語は少しだけ分かります。\n",),
+                  Text(
+                    "My name is Evelyn but you can call me Epel!,\nI'm here for become your virtual mood booster through my Youtube contents~ ᕦ( ᐛ )ᕡ,\nPlease be one of my #Epelable friends because I can't do this without you guys~(  >ㅅ<)b,\nID/EN OK! 日本語は少しだけ分かります。\n",
+                  ),
                   // Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
                   // Text('1 December',textAlign: TextAlign.end,),
                   // Text('Height : ',style: TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.end,),
@@ -425,72 +478,93 @@ class profileepel extends StatelessWidget {
               ),
             ),
           ),
-          ListTileTheme(tileColor: Colors.pink.shade50,
-            child: ListTile(title: Text('Bussiness inquiries and collaboration matters\n'),
+          ListTileTheme(
+            tileColor: Colors.pink.shade50,
+            child: ListTile(
+              title: Text('Bussiness inquiries and collaboration matters\n'),
               subtitle: Column(
-                  children: <Widget>[
-            FlatButton.icon(
-              onPressed: () => _launchURL('evelyn.vtuber@gmail.com', 'Bussiness inquiries and collaboration', 'Hello Evelyn'),
-              icon: Icon(Icons.mail, color: Colors.white), label: Text('Email Me', style: TextStyle(color: Colors.white)),
-              color: Colors.lightBlueAccent,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-              height: 30,
+                children: <Widget>[
+                  TextButton.icon(
+                    onPressed: () => _launchURL(
+                        'evelyn.vtuber@gmail.com',
+                        'Bussiness inquiries and collaboration',
+                        'Hello Evelyn'),
+                    icon: Icon(Icons.mail, color: Colors.white),
+                    label:
+                        Text('Email Me', style: TextStyle(color: Colors.white)),
+                    style: TextButton.styleFrom(
+                      primary: Colors.white,
+                      backgroundColor: Colors.lightBlueAccent,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                    ),
+                  )
+                ],
+              ),
             ),
-      ],
           ),
+          ListTileTheme(
+            tileColor: Colors.pink.shade50,
+            child: ListTile(
+              title: Text('Link Media\n'),
+              subtitle: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      TextButton(
+                        child: twtepel(),
+                        onPressed: () async {
+                          if (await canLaunch(
+                              'https://twitter.com/EvelynVtuber')) {
+                            await launch('https://twitter.com/EvelynVtuber');
+                          }
+                        },
+                      ),
+                      TextButton(
+                          child: ytepel(),
+                          onPressed: () async {
+                            if (await canLaunch(
+                                'https://www.youtube.com/channel/UCMxxFFeuhFQ30quuePTym0A')) {
+                              await launch(
+                                  'https://www.youtube.com/channel/UCMxxFFeuhFQ30quuePTym0A');
+                            }
+                          }),
+                      TextButton(
+                        child: fbepel(),
+                        onPressed: () async {
+                          if (await canLaunch(
+                              'https://web.facebook.com/evelyn.vtuberr')) {
+                            await launch(
+                                'https://web.facebook.com/evelyn.vtuberr');
+                          }
+                        },
+                      ),
+                      TextButton(
+                        child: igepel(),
+                        onPressed: () async {
+                          if (await canLaunch(
+                              'https://www.instagram.com/evelyn.vtuber/')) {
+                            await launch(
+                                'https://www.instagram.com/evelyn.vtuber/');
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text(''),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
-    ListTileTheme(tileColor: Colors.pink.shade50,
-    child: ListTile(title: Text('Link Media\n'),
-    subtitle: Column(
-    children: <Widget>[
-          Row(
-            children: <Widget>[
-              FlatButton(
-                child: twtepel(),
-                onPressed: () async {
-                  if (await canLaunch('https://twitter.com/EvelynVtuber')) {
-                    await launch('https://twitter.com/EvelynVtuber');
-                  };
-                },
-              ),
-              FlatButton(
-                child: ytepel(),
-                onPressed: () async {
-                  if (await canLaunch('https://www.youtube.com/channel/UCMxxFFeuhFQ30quuePTym0A')) {
-                    await launch('https://www.youtube.com/channel/UCMxxFFeuhFQ30quuePTym0A');
-                  };
-                },
-              ),
-              FlatButton(
-                child: fbepel(),
-                onPressed: () async {
-                  if (await canLaunch('https://web.facebook.com/evelyn.vtuberr')) {
-                    await launch('https://web.facebook.com/evelyn.vtuberr');
-                  };
-                },
-              ),
-              FlatButton(
-                child: igepel(),
-                onPressed: () async {
-                  if (await canLaunch('https://www.instagram.com/evelyn.vtuber/')) {
-                    await launch('https://www.instagram.com/evelyn.vtuber/');
-                  };
-                },
-              ),
-            ],
-          ),
-      Column(
-        children: <Widget>[
-          Text(''),],
-        ),],
-      ),
-    ),
-    ),
-    ],
+        ],
       ),
     );
   }
+
   _launchURL(String toMailId, String subject, String body) async {
     var url = 'mailto:$toMailId?subject=$subject&body=$body';
     if (await canLaunch(url)) {
@@ -500,12 +574,13 @@ class profileepel extends StatelessWidget {
     }
   }
 }
+
 _launchEmail() async {
   launch(
       "mailto:thedualsimp@gmail.com?subject=Feedback App&body=This App need ....");
 }
 
-class ytepel extends StatelessWidget{
+class ytepel extends StatelessWidget {
   ytepel({this.navigasi});
 
   final String navigasi;
@@ -519,15 +594,13 @@ class ytepel extends StatelessWidget{
       alignment: Alignment.center,
       decoration: new BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('Image/yticon.png'),
-            fit: BoxFit.fill
-        ),
+            image: AssetImage('Image/yticon.png'), fit: BoxFit.fill),
       ),
     );
   }
 }
 
-class fbepel extends StatelessWidget{
+class fbepel extends StatelessWidget {
   fbepel({this.navigasi});
 
   final String navigasi;
@@ -541,15 +614,13 @@ class fbepel extends StatelessWidget{
       alignment: Alignment.center,
       decoration: new BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('Image/fbicon.png'),
-            fit: BoxFit.fill
-        ),
+            image: AssetImage('Image/fbicon.png'), fit: BoxFit.fill),
       ),
     );
   }
 }
 
-class twtepel extends StatelessWidget{
+class twtepel extends StatelessWidget {
   twtepel({this.navigasi});
 
   final String navigasi;
@@ -563,15 +634,13 @@ class twtepel extends StatelessWidget{
       alignment: Alignment.center,
       decoration: new BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('Image/twittericon.png'),
-            fit: BoxFit.fitHeight
-        ),
+            image: AssetImage('Image/twittericon.png'), fit: BoxFit.fitHeight),
       ),
     );
   }
 }
 
-class igepel extends StatelessWidget{
+class igepel extends StatelessWidget {
   igepel({this.navigasi});
 
   final String navigasi;
@@ -585,9 +654,7 @@ class igepel extends StatelessWidget{
       alignment: Alignment.center,
       decoration: new BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('Image/igicon_a.png'),
-            fit: BoxFit.fitHeight
-        ),
+            image: AssetImage('Image/igicon_a.png'), fit: BoxFit.fitHeight),
       ),
     );
   }

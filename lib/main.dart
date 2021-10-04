@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -59,7 +61,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
       seconds: 7,
       navigateAfterSeconds: new Halawal(),
       title: new Text(
-        'Welcome To Warteg Mobile',
+        'Welcome To Re:morable',
         style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
       ),
       image: new Image.asset('Image/logo.gif'),
@@ -87,11 +89,11 @@ class _Halawal extends State<Halawal> {
             title: new Text('Are you sure?'),
             content: new Text('Do you want to exit an App'),
             actions: <Widget>[
-              new FlatButton(
+              new TextButton(
                 onPressed: () => Navigator.of(context).pop(false),
                 child: new Text('No'),
               ),
-              new FlatButton(
+              new TextButton(
                 onPressed: () => SystemNavigator.pop(),
                 child: new Text('Yes'),
               ),
@@ -107,8 +109,8 @@ class _Halawal extends State<Halawal> {
       child: new Scaffold(
         appBar: new AppBar(
           centerTitle: true,
-          backgroundColor: Colors.blue[500],
-          title: new Text('Warteg Evelyn'),
+          backgroundColor: Color(0xff1a263c),
+          title: new Text('Re:memories Portable'),
         ),
         drawer: Drawer(
           child: ListView(
@@ -141,10 +143,9 @@ class _Halawal extends State<Halawal> {
                   leading: Icon(Icons.chat_outlined),
                   title: Text("Discord Link"),
                   onTap: () async {
-                    if (await canLaunch('https://s.id/wartegepel')) {
-                      await launch('https://s.id/wartegepel');
+                    if (await canLaunch('https://rememories.id/discord')) {
+                      await launch('https://rememories.id/discord');
                     }
-                    ;
                   }),
               ListTile(
                 leading: Icon(Icons.info_outline_rounded),
@@ -201,35 +202,35 @@ class _Halawal extends State<Halawal> {
                     ]
                 ),
               ),*/
-              FlatButton(
+              TextButton(
                 child: new ButtonEpel(
                     /*icon: Icons.add_a_photo, teks:"All About Evelyn"*/), //icon dan teks disable
                 onPressed: () async {
                   Navigator.pushNamed(context, '/Halepel');
                 },
               ), //button epel
-              FlatButton(
+              TextButton(
                 child: new ButtonLily(
                     /*icon: Icons.add_a_photo, teks:"All About Lily Ifeta"*/),
                 onPressed: () {
                   Navigator.pushNamed(context, '/Hallily');
                 },
               ), //button lily
-              FlatButton(
+              TextButton(
                 child: new ButtonReynard(
                     /*icon: Icons.add_a_photo, teks:"All About Reynard Blanc"*/),
                 onPressed: () {
                   Navigator.pushNamed(context, '/Halrey');
                 },
               ), //button rey
-              FlatButton(
+              TextButton(
                 child: new ButtonChloe(
                     /*icon: Icons.add_a_photo, teks:"All About Chloe pawapua"*/),
                 onPressed: () {
                   Navigator.pushNamed(context, '/Halchloe');
                 },
               ), //button chloe
-              FlatButton(
+              TextButton(
                 child: new ButtonWarteg(
                     /*icon: Icons.add_a_photo, teks:"All About Chloe pawapua"*/),
                 onPressed: () {
