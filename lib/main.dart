@@ -6,12 +6,12 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'dart:async';
-import 'EpelPage.dart';
-import 'LilyPage.dart';
-import 'ReyPage.dart';
-import 'ChloePage.dart';
+import 'page/EpelPage.dart';
+import 'page/LilyPage.dart';
+import 'page/ReyPage.dart';
+import 'page/ChloePage.dart';
 import 'settings.dart';
-import 'WartegPage.dart';
+import 'page/WartegPage.dart';
 
 const warteg_url = 'https://s.id/wartegepel';
 
