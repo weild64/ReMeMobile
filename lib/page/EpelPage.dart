@@ -508,8 +508,11 @@ class profileepel extends StatelessWidget {
             child: ListTile(
               title: Text('Link Media\n'),
               subtitle: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       TextButton(
                         child: twtepel(),

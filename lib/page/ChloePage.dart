@@ -496,6 +496,7 @@ class profilechloe extends StatelessWidget {
                 children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       TextButton(
                         child: twtchloe(),

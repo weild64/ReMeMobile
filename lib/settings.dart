@@ -1,36 +1,43 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-
 class Halsettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("Settings (UNDER CONSTRUCTION)"),),
+      appBar: new AppBar(
+        title: new Text("Settings (UNDER CONSTRUCTION)"),
+      ),
       body: new Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start ,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            FlatButton.icon(
+            TextButton.icon(
               onPressed: () async {
                 var status = await Permission.notification.status;
                 if (status.isUndetermined) {
                   await openAppSettings();
                 }
-                if (status.isGranted){
-                  final snackBar = SnackBar(content: Text('Notification Granted'),);
+                if (status.isGranted) {
+                  final snackBar = SnackBar(
+                    content: Text('Notification Granted'),
+                  );
                 }
                 if (status.isDenied) {
-                  final snackBar = SnackBar(content: Text('Notification been Denied'),);
+                  final snackBar = SnackBar(
+                    content: Text('Notification been Denied'),
+                  );
                 }
               },
               icon: Icon(Icons.announcement),
               label: Text("Turn On Notifications"),
             ),
-            FlatButton(
+            TextButton(
               child: Text("Back"),
               onPressed: () {
                 Navigator.pushNamed(context, '/Halawal');
@@ -60,19 +67,19 @@ class Halsettings extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.chat_outlined),
+                leading: Icon(Icons.chat_outlined),
                 title: Text("Discord Link"),
                 onTap: () async {
-                  if (await canLaunch('https://s.id/wartegepel')){
+                  if (await canLaunch('https://s.id/wartegepel')) {
                     await launch('https://s.id/wartegepel');
-                  };
-                }
-            ),
+                  }
+                }),
             ListTile(
               leading: Icon(Icons.info_outline_rounded),
               title: Text('About Us'),
               onTap: () {
-                showAboutDialog(context: context,
+                showAboutDialog(
+                  context: context,
                   applicationIcon: Image.asset('Image/ic_launcher.png'),
                   applicationName: 'Warteg Epel Project',
                   applicationVersion: '1.0.3',
@@ -98,24 +105,27 @@ class Halsettings extends StatelessWidget {
   }
 }
 
-
 class notifsett extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new Column(
         children: <Widget>[
-          FlatButton.icon(
+          TextButton.icon(
             onPressed: () async {
               var status = await Permission.notification.status;
               if (status.isUndetermined) {
                 await openAppSettings();
               }
-              if (status.isGranted){
-                final snackBar = SnackBar(content: Text('Notification Granted'),);
+              if (status.isGranted) {
+                final snackBar = SnackBar(
+                  content: Text('Notification Granted'),
+                );
               }
               if (status.isDenied) {
-                final snackBar = SnackBar(content: Text('Notification been Denied'),);
+                final snackBar = SnackBar(
+                  content: Text('Notification been Denied'),
+                );
               }
             },
             icon: Icon(Icons.announcement),

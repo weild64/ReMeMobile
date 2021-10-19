@@ -14,6 +14,10 @@ import 'page/ReyPage.dart';
 import 'page/ChloePage.dart';
 import 'settings.dart';
 import 'page/WartegPage.dart';
+import 'page/dashPel.dart';
+import 'page/dashChloe.dart';
+import 'page/dashLy.dart';
+import 'page/dashRey.dart';
 
 const warteg_url = 'https://s.id/wartegepel';
 
@@ -23,10 +27,10 @@ void main() {
       title: "Warteg Evelyn",
       routes: <String, WidgetBuilder>{
         '/Halawal': (BuildContext context) => new Halawal(),
-        '/Halepel': (BuildContext context) => new Halepel(),
-        '/Hallily': (BuildContext context) => new Hallily(),
-        '/Halrey': (BuildContext context) => new Halrey(),
-        '/Halchloe': (BuildContext context) => new Halchloe(),
+        '/Halepel': (BuildContext context) => new dashmenuPel(),
+        '/Hallily': (BuildContext context) => new dashmenuLy(),
+        '/Halrey': (BuildContext context) => new dashmenuRey(),
+        '/Halchloe': (BuildContext context) => new dashmenuChloe(),
         '/Halwarteg': (BuildContext context) => new Halwarteg(),
         /* '/Halsettings' : (BuildContext context) => new Halsettings(),*/
         '/SchedTableEpel': (BuildContext context) => new SchedTableEpel(),
