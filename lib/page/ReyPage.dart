@@ -455,7 +455,7 @@ class profilerey extends StatelessWidget {
                 children: <Widget>[
                   TextButton.icon(
                     onPressed: () => _launchURL(
-                        'reynardblanc@gmail.com',
+                        'contact@rememories.id',
                         'Bussiness inquiries and collaboration',
                         'Hello Reynard'),
                     icon: Icon(Icons.mail, color: Colors.white),

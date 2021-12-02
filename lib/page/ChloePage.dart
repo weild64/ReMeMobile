@@ -397,7 +397,7 @@ class profilechloe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Colors.yellow.shade100,
+      backgroundColor: Colors.yellow.shade200,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.green),
@@ -472,7 +472,7 @@ class profilechloe extends StatelessWidget {
                 children: <Widget>[
                   TextButton.icon(
                       onPressed: () => _launchURL(
-                          'chloepawapua@gmail.com',
+                          'contact@rememories.id',
                           'Bussiness inquiries and collaboration',
                           'Hello Chloe'),
                       icon: Icon(Icons.mail, color: Colors.white),

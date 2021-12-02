@@ -30,7 +30,7 @@ class Halwarteg extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: new AppBar(
         title: new Text(
-          "Warteg Epelz Event Schedule",
+          "Re:Memories Community Event Schedule",
           style: TextStyle(color: Colors.white),
         ),
         leading: Builder(
@@ -53,13 +53,13 @@ class Halwarteg extends StatelessWidget {
             Spacer(flex: 4),
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                primary: Colors.purple,
+                primary: Colors.blue.shade900,
                 onPrimary: Colors.white,
                 elevation: 5,
-                padding: EdgeInsets.symmetric(horizontal: 88, vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 47, vertical: 10),
               ),
               icon: Icon(Icons.chat),
-              label: Text("About Warteg"),
+              label: Text("About Re:Memories Community"),
               onPressed: () {
                 Navigator.pushNamed(context, '/aboutwarteg');
               },
@@ -67,13 +67,13 @@ class Halwarteg extends StatelessWidget {
             Spacer(flex: 1),
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                primary: Colors.purple.shade200,
+                primary: Colors.purple.shade400,
                 onPrimary: Colors.white,
                 elevation: 5,
-                padding: EdgeInsets.symmetric(horizontal: 53, vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 51, vertical: 10),
               ),
               icon: Icon(Icons.mic_outlined),
-              label: Text("Podcast Warteg Schedule"),
+              label: Text("Podcast Community Schedule"),
               onPressed: () {
                 Navigator.pushNamed(context, '/SchedTablePodcast');
               },
@@ -84,16 +84,16 @@ class Halwarteg extends StatelessWidget {
                 primary: Colors.red,
                 onPrimary: Colors.white,
                 elevation: 5,
-                padding: EdgeInsets.symmetric(horizontal: 57, vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 52, vertical: 10),
               ),
               icon: Icon(Icons.videogame_asset),
-              label: Text("Makrab Warteg Schedule"),
+              label: Text("Makrab Community Schedule"),
               onPressed: () {
                 Navigator.pushNamed(context, '/SchedTableMakrab');
               },
             ),
             Spacer(flex: 1), //Donation
-            ElevatedButton.icon(
+            /*ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 primary: Colors.blue,
                 onPrimary: Colors.white,
@@ -107,12 +107,13 @@ class Halwarteg extends StatelessWidget {
               },
             ),
             Spacer(flex: 1),
+            */
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                primary: Colors.grey.shade400,
+                primary: Colors.green.shade400,
                 onPrimary: Colors.white,
                 elevation: 5,
-                padding: EdgeInsets.symmetric(horizontal: 86, vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 91, vertical: 10),
               ),
               icon: Icon(Icons.attach_money_outlined),
               label: Text("Donations (IDR)"),
@@ -125,10 +126,10 @@ class Halwarteg extends StatelessWidget {
             Spacer(flex: 1), // sched
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                primary: Colors.green.shade400,
-                onPrimary: Colors.white,
-                elevation: 5,
-                padding: EdgeInsets.symmetric(horizontal: 116, vertical: 10),
+                primary: Colors.white,
+                onPrimary: Colors.black,
+                elevation: 0,
+                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
               ),
               icon: Icon(Icons.arrow_back),
               label: Text("Back"),
@@ -171,8 +172,8 @@ class Halwarteg extends StatelessWidget {
                 leading: Icon(Icons.chat_outlined),
                 title: Text("Discord Link"),
                 onTap: () async {
-                  if (await canLaunch('https://s.id/wartegepel')) {
-                    await launch('https://s.id/wartegepel');
+                  if (await canLaunch('https://rememories.id/discord')) {
+                    await launch('https://rememories.id/discord');
                   }
                 }),
             ListTile(
@@ -187,7 +188,7 @@ class Halwarteg extends StatelessWidget {
                   applicationLegalese: 'Created by DuoSim(P)',
                   children: <Widget>[
                     Text(
-                        'About us, We are from team called "Duo Sim(P)" with two member, called Renkyushi and Zafkiel'),
+                        'About us, We are from team called "Duo Sim(P)" with two member, called Renkyushi and Zafkiel,This program is Fan project fom us to Re:Memories'),
                   ],
                 );
               },
@@ -390,13 +391,13 @@ class aboutwarteg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Colors.blueGrey.shade300,
+      backgroundColor: Colors.blueGrey.shade700,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.blueGrey.shade800,
         title: Text(
           'About Discord Re:Memories',
           style: TextStyle(color: Colors.white),
@@ -430,7 +431,7 @@ class aboutwarteg extends StatelessWidget {
             tileColor: Colors.blueGrey.shade50,
             child: ListTile(
               title: Text(
-                'Warteg Epelz',
+                'Re:Memories Community Server',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -446,7 +447,7 @@ class aboutwarteg extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "This is a community server that housed Evelyn family Vtubers, an indie vtuber circle.\nThey are : Evelyn, Lily Ifeta, Reynard Blanc, and Chloe Pawapua\nin this server they hold many event including podcast, listening music together, play games together and Many more\n",
+                    "This is a official server that houses Re:Memories Vtubers, an indie vtuber Agency.\nThey are : Evelyn, Lily Ifeta, Reynard Blanc, and Chloe Pawapua\nin this server they hold many event including podcast, play games together and many more\n",
                   ),
                   // Text('Birthday : ',style: TextStyle(fontWeight: FontWeight.bold),),
                   // Text('1 December',textAlign: TextAlign.end,),
@@ -469,8 +470,8 @@ class aboutwarteg extends StatelessWidget {
                   TextButton(
                     child: aboutbtn(),
                     onPressed: () async {
-                      if (await canLaunch('s.id/wartegepel')) {
-                        await launch('s.id/wartegepel');
+                      if (await canLaunch('rememories.id/discord')) {
+                        await launch('rememories.id/discord');
                       }
                     },
                   ),

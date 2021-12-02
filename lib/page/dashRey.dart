@@ -26,7 +26,7 @@ class _dashmenuReyState extends State<dashmenuRey> {
           bucket: bucket,
         ),
         bottomNavigationBar: BottomAppBar(
-            color: Colors.grey.shade50,
+            color: Colors.white,
             shape: CircularNotchedRectangle(),
             notchMargin: 10,
             child: Container(
@@ -50,13 +50,13 @@ class _dashmenuReyState extends State<dashmenuRey> {
                             children: [
                               Icon(Icons.person,
                                   color: currentTab == 0
-                                      ? Colors.blue
+                                      ? Colors.orange
                                       : Colors.grey),
                               Text(
                                 "Profile",
                                 style: TextStyle(
                                     color: currentTab == 0
-                                        ? Colors.blue
+                                        ? Colors.orange
                                         : Colors.grey),
                               )
                             ],
@@ -75,13 +75,13 @@ class _dashmenuReyState extends State<dashmenuRey> {
                             children: [
                               Icon(Icons.monetization_on,
                                   color: currentTab == 1
-                                      ? Colors.blue
+                                      ? Colors.orange
                                       : Colors.grey),
                               Text(
                                 "Donations",
                                 style: TextStyle(
                                     color: currentTab == 1
-                                        ? Colors.blue
+                                        ? Colors.orange
                                         : Colors.grey),
                               )
                             ],
@@ -100,13 +100,13 @@ class _dashmenuReyState extends State<dashmenuRey> {
                             children: [
                               Icon(Icons.schedule,
                                   color: currentTab == 2
-                                      ? Colors.blue
+                                      ? Colors.orange
                                       : Colors.grey),
                               Text(
                                 "Live Schedule",
                                 style: TextStyle(
                                     color: currentTab == 2
-                                        ? Colors.blue
+                                        ? Colors.orange
                                         : Colors.grey),
                               )
                             ],

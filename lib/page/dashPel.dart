@@ -26,7 +26,7 @@ class _dashmenuPelState extends State<dashmenuPel> {
           bucket: bucket,
         ),
         bottomNavigationBar: BottomAppBar(
-            color: Colors.pink.shade50,
+            color: Colors.white,
             shape: CircularNotchedRectangle(),
             notchMargin: 10,
             child: Container(

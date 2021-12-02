@@ -158,7 +158,7 @@ class Halepel extends StatelessWidget {
                   applicationLegalese: 'Created by DuoSim(P)',
                   children: <Widget>[
                     Text(
-                        'About us, We are from team called "Duo Sim(P)" with two member, called Renkyushi and Zafkiel'),
+                        'About us, We are from team called "Duo Sim(P)" with two member, called Renkyushi and Zafkiel, This is self fan project and does not affiliated directly to Re:Memories management'),
                   ],
                 );
               },
@@ -382,7 +382,7 @@ class Donoepel extends StatelessWidget {
                   applicationLegalese: 'Created by DuoSim(P)',
                   children: <Widget>[
                     Text(
-                        'About us, We are from team called "Duo Sim(P)" with two member, called Renkyushi and Zafkiel'),
+                        'About us, We are from team called "Duo Sim(P)" with two member, called Renkyushi and Zafkiel,  This is self fan project and does not affiliated directly to Re:Memories management'),
                   ],
                 );
               },
@@ -486,7 +486,7 @@ class profileepel extends StatelessWidget {
                 children: <Widget>[
                   TextButton.icon(
                     onPressed: () => _launchURL(
-                        'evelyn.vtuber@gmail.com',
+                        'contact@rememories.id',
                         'Bussiness inquiries and collaboration',
                         'Hello Evelyn'),
                     icon: Icon(Icons.mail, color: Colors.white),

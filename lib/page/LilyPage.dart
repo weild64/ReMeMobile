@@ -473,7 +473,7 @@ class profilelily extends StatelessWidget {
               subtitle: Column(
                 children: <Widget>[
                   TextButton.icon(
-                    onPressed: () => _launchURL('lily.ifeta@gmail.com',
+                    onPressed: () => _launchURL('contact@rememories.id',
                         'Bussiness inquiries and collaboration', 'Hello Lily'),
                     icon: Icon(Icons.mail, color: Colors.white),
                     label:
